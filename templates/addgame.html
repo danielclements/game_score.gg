@@ -29,7 +29,7 @@
 			<div class="input-field col s12">
             <i class="material-icons prefix">important_devices</i>
 				<select id="platforms" name="platforms" multiple>
-                <option value="" disabled >Select Platform</option>
+                <option  disabled >Select Platform</option>
                      {% for plat in platforms %}
                         <option value="{{plat.platform_name}}">{{plat.platform_name}}</option>
                      {% endfor %}
@@ -41,9 +41,9 @@
 
 		<div class="row">
 			<div class="input-field col s12">
-				<i class="material-icons prefix">build</i>
+				<i class="material-icons prefix" >build</i>
 				<select id="developer_name" name="developer_name">
-          <option value="" disabled selected>Choose Developer</option>
+          <option  disabled selected>Choose Developer</option>
           {% for dev in developers %}
           <option value="{{dev.developer_name}}">{{dev.developer_name}}</option>
           {% endfor %}

@@ -34,8 +34,8 @@ def insert_game():
     platforms = request.values.getlist('platforms')
     categories = request.values.getlist('categories')
     game_name = request.form['game_name']
-    developer_name = request.form['developer_name']
-    publisher_name = request.form['publisher_name']
+    developer_name = request.values.getlist('developer_name')
+    publisher_name = request.values.getlist('publisher_name')
     release_date = request.form['release_date']
     affiliate_link = request.form['affiliate_link']
     games.insert_one({
@@ -59,6 +59,20 @@ def get_admin_panel():
                             publishers=mongo.db.publishers.find(),
                             developers=mongo.db.developers.find(),
                             platforms=mongo.db.platforms.find())
+
+
+# @app.route('/update_game/<game_id>', methods=["POST"])
+# def game_task(game_id):
+#    games = mongo.db.Games
+#     games.update( {'_id': ObjectId(game_id)},
+#     {
+#         'task_name':request.form.get('task_name'),
+#         'category_name':request.form.get('category_name'),
+#         'task_description': request.form.get('task_description'),
+#         'due_date': request.form.get('due_date'),
+#         'is_urgent':request.form.get('is_urgent')
+#     })
+#     return redirect(url_for('get_admin_panel'))
 
 
 
