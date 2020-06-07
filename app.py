@@ -50,13 +50,6 @@ def insert_game():
 
     return redirect(url_for('add_game'))
 
-
-@app.route('/get_categories')
-def get_categories():
-    return render_template('categories.html',
-                           categories=mongo.db.categories.find())
-
-
 @app.route('/')
 @app.route('/get_admin_panel')
 def get_admin_panel():
