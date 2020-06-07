@@ -29,9 +29,9 @@ mongo = PyMongo(app)
 def insert_game():
     games = mongo.db.Games
     platforms = request.values.getlist('platforms')
+    category_name = request.values.getlist['category_name']
     game_name = request.form['game_name']
-    category_name = request.form['category_name']
-    
+ 
     games.insert_one({
                         'game_name': game_name,
                         'category_name': category_name,
