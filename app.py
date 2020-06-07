@@ -34,10 +34,18 @@ def insert_game():
     platforms = request.values.getlist('platforms')
     categories = request.values.getlist('categories')
     game_name = request.form['game_name']
+    developer_name = request.form['developer_name']
+    publisher_name = request.form['publisher_name']
+    release_date = request.form['release_date']
+    affiliate_link = request.form['affiliate_link']
     games.insert_one({
                         'game_name': game_name,
                         'categories': categories,
-                        'platforms': platforms
+                        'platforms': platforms,
+                        'developer_name': developer_name,
+                        'publisher_name': publisher_name,
+                        'release_date': release_date,
+                        'affiliate_link': affiliate_link
                     })
 
     return redirect(url_for('add_game'))
@@ -49,12 +57,15 @@ def get_categories():
                            categories=mongo.db.categories.find())
 
 
-
+@app.route('/')
 @app.route('/get_admin_panel')
 def get_admin_panel():
     return render_template('adminpanel.html',
                             categories=mongo.db.categories.find(),
-                            games=mongo.db.Games.find())
+                            games=mongo.db.Games.find(),
+                            publishers=mongo.db.publishers.find(),
+                            developers=mongo.db.developers.find(),
+                            platforms=mongo.db.platforms.find())
 
 
 

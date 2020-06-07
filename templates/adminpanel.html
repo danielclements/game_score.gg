@@ -1,39 +1,87 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="row">
-  <div class="row">
-    <div class="col s4">
-      <h3>Categories</h3>
-      <ul class="collapsible" data-collapsible="accordion">
-        {% for category in categories %}
-        <li>
-          <div class="collapsible-header">
-            <div class="task_header">
-              <strong>{{category.category_name}}</strong>
-            </div>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
+<div class="row" style="text-align: center;">
+  <h1 style="display: inline_block;">Admin Panel</h1>
+</div>
 
-    <div class="row">
-      <div class="col s4">
-        <h3>Games</h3>
-        <ul class="collapsible" data-collapsible="accordion">
-          {% for game in games %}
-          <li>
-            <div class="collapsible-header">
-              <div class="task_header">
-                <strong>{{game.game_name}}</strong>
-              </div>
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+<div class="row">
+  <div class="col s3" style="text-align: center;">
+    <h3>Categories</h3>
+    <ul class="collapsible" data-collapsible="accordion">
+      {% for category in categories %}
+      <li>
+        <div class="collapsible-header">
+          <div class="task_header">
+            <strong>{{category.category_name}}</strong>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
   </div>
 
-  {% endblock %}
+  <div class="col s3" style="text-align: center;">
+    <h3>Games</h3>
+    <ul class="collapsible" data-collapsible="accordion">
+      {% for game in games %}
+      <li>
+        <div class="collapsible-header">
+          <div class="task_header">
+            <strong>{{game.game_name}}</strong>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="col s3" style="text-align: center;">
+    <h3>Publishers</h3>
+    <ul class="collapsible" data-collapsible="accordion">
+      {% for pub in publishers %}
+      <li>
+        <div class="collapsible-header">
+          <div class="task_header">
+            <strong>{{pub.publisher_name}}</strong>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="col s3" style="text-align: center;">
+    <h3>Developers</h3>
+    <ul class="collapsible" data-collapsible="accordion">
+      {% for dev in developers %}
+      <li>
+        <div class="collapsible-header">
+          <div class="task_header">
+            <strong>{{dev.developer_name}}</strong>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
+
+<div class="row"style="text-align: center;">
+    <div class="col s3" style="text-align: center;">
+    <h3>Platforms</h3>
+    <ul class="collapsible" data-collapsible="accordion">
+      {% for plat in platforms %}
+      <li>
+        <div class="collapsible-header">
+          <div class="task_header">
+            <strong>{{plat.platform_name}}</strong>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>
+
+{% endblock %}
