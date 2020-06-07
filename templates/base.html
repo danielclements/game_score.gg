@@ -9,31 +9,37 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/style.css')}}"
+      type="text/css"
+    />
   </head>
   <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="{{url_for('add_game')}}" class="brand-logo"
+          ><span class="material-icons">
+            videogame_asset
+          </span></a
+        >
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="{{url_for('add_game')}}">Add Game</a></li>
+          <li><a href="{{url_for('get_categories')}}">Manage Categories</a></li>
+        </ul>
+      </div>
+    </nav>
 
-     <nav>
-    <div class="nav-wrapper">
-      <a href="{{url_for('add_game')}}" class="brand-logo">Game_Score</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="{{url_for('add_game')}}">Add Game</a></li>
-            <li><a href="{{url_for('get_categories')}}">Manage Categories</a></li>
-      </ul>
+    <div class="container">
+      {% block content %} {% endblock %}
     </div>
-  </nav>
-
-  <div class="container">
-    {% block content %} {% endblock %}
-  </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script type="text/javascript">
       $(document).ready(function () {
-          $('select').formSelect();
-          $(".datepicker").datepicker();
-
+        $("select").formSelect();
+        $(".datepicker").datepicker();
       });
     </script>
   </body>

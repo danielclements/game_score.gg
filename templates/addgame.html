@@ -19,7 +19,7 @@
 
 		<div class="row">
 			<div class="input-field col s12">
-				<i class="material-icons prefix">assignment</i>
+				<i class="material-icons prefix">gamepad</i>
 				<input id="game_name" name="game_name" type="text" />
 				<label for="icon_prefix">Game Name</label>
 			</div>
@@ -27,9 +27,8 @@
 
 		<div class="row">
 			<div class="input-field col s12">
-            <i class="material-icons prefix">assignment</i>
+            <i class="material-icons prefix">important_devices</i>
 				<select id="platforms" name="platforms" multiple>
-                    <option value="" disabled selected>Choose your platforms </option>
                      {% for plat in platforms %}
                         <option id="platform_id" value="{{plat.platform_name}}">{{plat.platform_name}}</option>
                      {% endfor %}
@@ -41,7 +40,7 @@
 
 		<div class="row">
 			<div class="input-field col s12">
-				<i class="material-icons prefix">poll</i>
+				<i class="material-icons prefix">build</i>
 				<select id="developer_name" name="developer_name">
           <option value="" disabled selected>Choose Developer</option>
           {% for dev in developers %}
@@ -54,7 +53,7 @@
 
 		<div class="row">
 			<div class="input-field col s12">
-				<i class="material-icons prefix">poll</i>
+				<i class="material-icons prefix">theaters</i>
 				<select id="publisher_name" name="publisher_name">
           <option value="" disabled selected>Choose Publisher</option>
           {% for pub in publishers %}
@@ -71,6 +70,15 @@
 				<i class="material-icons prefix">today</i>
 				<input id="release_date" name="release_date" type="text" class="datepicker" />
 				<label for="icon_prefix">Release Date</label>
+			</div>
+		</div>
+
+
+        <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">local_atm</i>
+				<input id="affiliate_link" name="affiliate_link" type="text" />
+				<label for="icon_prefix">Affiliate Link</label>
 			</div>
 		</div>
 
