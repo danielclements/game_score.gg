@@ -19,7 +19,10 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
 @app.route('/add_game')
 def add_game():
-    return render_template('addgame.html', categories=mongo.db.categories.find(), developers=mongo.db.developers.find(), publishers=mongo.db.publishers.find(), platforms=mongo.db.platforms.find())
+    return render_template('addgame.html', categories=mongo.db.categories.find(),
+                                           developers=mongo.db.developers.find(), 
+                                           publishers=mongo.db.publishers.find(), 
+                                           platforms=mongo.db.platforms.find())
 
 
 mongo = PyMongo(app)
@@ -29,12 +32,11 @@ mongo = PyMongo(app)
 def insert_game():
     games = mongo.db.Games
     platforms = request.values.getlist('platforms')
-    category_name = request.values.getlist['category_name']
+    categories = request.values.getlist('categories')
     game_name = request.form['game_name']
- 
     games.insert_one({
                         'game_name': game_name,
-                        'category_name': category_name,
+                        'categories': categories,
                         'platforms': platforms
                     })
 
@@ -48,7 +50,11 @@ def get_categories():
 
 
 
-
+@app.route('/get_admin_panel')
+def get_admin_panel():
+    return render_template('adminpanel.html',
+                            categories=mongo.db.categories.find(),
+                            games=mongo.db.Games.find())
 
 
 
