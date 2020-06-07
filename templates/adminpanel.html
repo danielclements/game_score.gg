@@ -28,6 +28,11 @@
         <div class="collapsible-header">
           <div class="task_header">
             <strong>{{game.game_name}}</strong>
+            <a
+              href="{{url_for('edit_game', game_id=game._id)}}"
+              class="waves-effect waves-light btn btn_small blue"
+              >Edit</a
+            >
           </div>
         </div>
       </li>
@@ -66,8 +71,8 @@
   </div>
 </div>
 
-<div class="row"style="text-align: center;">
-    <div class="col s3" style="text-align: center;">
+<div class="row" style="text-align: center;">
+  <div class="col s3" style="text-align: center;">
     <h3>Platforms</h3>
     <ul class="collapsible" data-collapsible="accordion">
       {% for plat in platforms %}
@@ -81,7 +86,6 @@
       {% endfor %}
     </ul>
   </div>
-
 </div>
 
 {% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>Edit Game</h3>
+<div class="row">
+	<form action="{{ url_for('update_game', game_id=game._id) }}" method="POST" class="col s12">
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">category</i>
+				<select id="categories" name="categories" multiple>
+                <option value="" disabled >Select Category</option>
+                     {% for category in categories %}
+                        <option value="{{category.category_name}}">{{category.category_name}}</option>
+                     {% endfor %}
+                </select>
+				<label>Game Categories</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input id="game_name" name="game_name" type="text"/>
+				<label for="icon_prefix">Game Name</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">important_devices</i>
+				<select id="platforms" name="platforms" multiple>
+                <option  disabled >Select Platform</option>
+                     {% for plat in platforms %}
+                        <option value="{{plat.platform_name}}">{{plat.platform_name}}</option>
+                     {% endfor %}
+                </select>
+				<label>Platforms</label>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix" >build</i>
+				<select id="developer_name" name="developer_name">
+          <option  disabled selected>Choose Developer</option>
+          {% for dev in developers %}
+          <option value="{{dev.developer_name}}">{{dev.developer_name}}</option>
+          {% endfor %}
+        </select>
+				<label>Developer Name</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">theaters</i>
+				<select id="publisher_name" name="publisher_name">
+          <option value="" disabled selected>Choose Publisher</option>
+          {% for pub in publishers %}
+          <option value="{{pub.publisher_name}}">{{pub.publisher_name}}</option>
+          {% endfor %}
+        </select>
+				<label>Publisher Name</label>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div id="matfix" class="input-field col s12">
+				<i class="material-icons prefix">today</i>
+				<input id="release_date" name="release_date" type="text" class="datepicker" />
+				<label for="icon_prefix">Release Date</label>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">local_atm</i>
+				<input id="affiliate_link" name="affiliate_link" type="text" />
+				<label for="icon_prefix">Affiliate Link</label>
+			</div>
+		</div>
+
+		<div calss="row">
+			<button class="btn waves-effect waves-light" type="submit">
+      Add Game!
+      <i class="material-icons right">playlist_add</i>
+    </button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

@@ -61,18 +61,31 @@ def get_admin_panel():
                             platforms=mongo.db.platforms.find())
 
 
-# @app.route('/update_game/<game_id>', methods=["POST"])
-# def game_task(game_id):
-#    games = mongo.db.Games
-#     games.update( {'_id': ObjectId(game_id)},
-#     {
-#         'task_name':request.form.get('task_name'),
-#         'category_name':request.form.get('category_name'),
-#         'task_description': request.form.get('task_description'),
-#         'due_date': request.form.get('due_date'),
-#         'is_urgent':request.form.get('is_urgent')
-#     })
-#     return redirect(url_for('get_admin_panel'))
+@app.route('/edit_game/<game_id>')
+def edit_game(game_id):
+    the_game = mongo.db.Games.find_one({"_id": ObjectId(game_id)})
+    return render_template('editgame.html', game=the_game,
+                                            categories=mongo.db.categories.find(),
+                                            developers=mongo.db.developers.find(), 
+                                            publishers=mongo.db.publishers.find(), 
+                                            platforms=mongo.db.platforms.find())
+
+
+@app.route('/update_game/<game_id>', methods=["POST", "GET"])
+def update_game(game_id):
+    games = mongo.db.Games
+    games.update({'_id': ObjectId(game_id)},
+    {
+        'game_task_name': request.form.get('game_name'),
+        'categories': request.form.get('categories'),
+        'platforms': request.values.getlist('platforms'),
+        'developer_name': request.values.getlist('developer_name'),
+        'publisher_name': request.values.getlist('publisher_name'),
+        'release_date': request.form.get('release_date'),
+        'affiliate_link': request.form.get('affiliate_link')
+    })
+
+    return redirect(url_for('get_admin_panel'))
 
 
 
