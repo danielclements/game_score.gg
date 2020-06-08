@@ -17,15 +17,16 @@
   </head>
   <body>
     <nav>
-      <div class="nav-wrapper">
-        <a href="{{url_for('add_game')}}" class="brand-logo"
-          ><span class="material-icons">
+      <div class="nav-wrapper padding amber darken-3">
+        <a href="{{url_for('add_game')}}" class="brand-logo m_left"
+          ><span>Game</span><span>Score</span><span class="material-icons">
             videogame_asset
           </span></a
         >
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="{{url_for('get_admin_panel')}}">Admin Panel</a></li>
           <li><a href="{{url_for('add_game')}}">Add Game</a></li>
-          <li><a href="{{url_for('get_admin_panel')}}">admin panel</a></li>
+          <li><a href="{{url_for('add_category')}}">Add Category</a></li>
         </ul>
       </div>
     </nav>

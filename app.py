@@ -88,7 +88,16 @@ def update_game(game_id):
     return redirect(url_for('get_admin_panel'))
 
 
+@app.route('/add_category')
+def add_category():
+    return render_template('addcategory.html')
 
+
+@app.route('/insert_category', methods=['POST', 'GET'])
+def insert_category():
+        category_doc = {'category_name': request.form.get('category_name')}
+        mongo.db.categories.insert_one(category_doc)
+        return redirect(url_for('get_admin_panel'))
 
 
 if __name__ == '__main__':
