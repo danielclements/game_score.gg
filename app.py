@@ -76,7 +76,7 @@ def update_game(game_id):
     games = mongo.db.Games
     games.update({'_id': ObjectId(game_id)},
     {
-        'game_task_name': request.form.get('game_name'),
+        'game_name': request.form.get('game_name'),
         'categories': request.form.get('categories'),
         'platforms': request.values.getlist('platforms'),
         'developer_name': request.values.getlist('developer_name'),
