@@ -1,3 +1,29 @@
+body{
+    color: #eeeeee;
+}
+
 .m_left{
     margin-left: 100px !important;
+}
+
+
+.dr-green{
+    background-color: #222E31;
+}
+
+.dr-less-green{
+    background-color: #173539;
+}
+
+.dr-grey{
+    background-color: #1A1D21;
+}
+
+
+.hover-salmon:hover{
+    background-color: #C78074;
+}
+
+.orange-click{
+    background-color: #EBA270;
 }

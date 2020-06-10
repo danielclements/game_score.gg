@@ -15,9 +15,9 @@
       type="text/css"
     />
   </head>
-  <body>
+  <body class="dr-grey">
     <nav>
-      <div class="nav-wrapper padding amber darken-3">
+      <div class="nav-wrapper padding dr-green">
         <a href="{{url_for('add_game')}}" class="brand-logo m_left"
           ><span>Game</span><span>Score</span><span class="material-icons">
             videogame_asset
@@ -41,6 +41,7 @@
       $(document).ready(function () {
         $("select").formSelect();
         $(".datepicker").datepicker();
+        
       });
     </script>
   </body>
