@@ -20,9 +20,9 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 @app.route('/add_game')
 def add_game():
     return render_template('addgame.html', categories=mongo.db.categories.find(),
-                                           developers=mongo.db.developers.find(), 
-                                           publishers=mongo.db.publishers.find(), 
-                                           platforms=mongo.db.platforms.find())
+                           developers=mongo.db.developers.find(),
+                           publishers=mongo.db.publishers.find(),
+                           platforms=mongo.db.platforms.find())
 
 
 mongo = PyMongo(app)
@@ -39,43 +39,44 @@ def insert_game():
     release_date = request.form['release_date']
     affiliate_link = request.form['affiliate_link']
     games.insert_one({
-                        'game_name': game_name,
-                        'categories': categories,
-                        'platforms': platforms,
-                        'developer_name': developer_name,
-                        'publisher_name': publisher_name,
-                        'release_date': release_date,
-                        'affiliate_link': affiliate_link
-                    })
+        'game_name': game_name,
+        'categories': categories,
+        'platforms': platforms,
+        'developer_name': developer_name,
+        'publisher_name': publisher_name,
+        'release_date': release_date,
+        'affiliate_link': affiliate_link
+    })
 
     return redirect(url_for('add_game'))
+
 
 @app.route('/')
 @app.route('/get_admin_panel')
 def get_admin_panel():
     return render_template('adminpanel.html',
-                            categories=mongo.db.categories.find(),
-                            games=mongo.db.Games.find(),
-                            publishers=mongo.db.publishers.find(),
-                            developers=mongo.db.developers.find(),
-                            platforms=mongo.db.platforms.find())
+                           categories=mongo.db.categories.find(),
+                           games=mongo.db.Games.find(),
+                           publishers=mongo.db.publishers.find(),
+                           developers=mongo.db.developers.find(),
+                           platforms=mongo.db.platforms.find())
 
 
 @app.route('/edit_game/<game_id>')
 def edit_game(game_id):
     the_game = mongo.db.Games.find_one({"_id": ObjectId(game_id)})
     return render_template('editgame.html', game=the_game,
-                                            categories=mongo.db.categories.find(),
-                                            developers=mongo.db.developers.find(), 
-                                            publishers=mongo.db.publishers.find(), 
-                                            platforms=mongo.db.platforms.find())
+                           categories=mongo.db.categories.find(),
+                           developers=mongo.db.developers.find(),
+                           publishers=mongo.db.publishers.find(),
+                           platforms=mongo.db.platforms.find())
 
 
 @app.route('/update_game/<game_id>', methods=["POST", "GET"])
 def update_game(game_id):
     games = mongo.db.Games
     games.update({'_id': ObjectId(game_id)},
-    {
+                 {
         'game_name': request.form.get('game_name'),
         'categories': request.form.get('categories'),
         'platforms': request.values.getlist('platforms'),
@@ -99,6 +100,7 @@ def insert_category():
     mongo.db.categories.insert_one(category_doc)
     return redirect(url_for('get_admin_panel'))
 
+
 @app.route('/add_publisher')
 def add_publisher():
     return render_template('add_publisher.html')
@@ -111,11 +113,11 @@ def insert_publisher():
     publisher_desc = request.form.get('publisher_desc')
     publisher_founding_date = request.form.get('publisher_founding_date')
     publishers.insert_one({
-                        'publisher_name': publisher_name,
-                        'publisher_desc': publisher_desc,
-                        'publisher_founding_date': publisher_founding_date
+        'publisher_name': publisher_name,
+        'publisher_desc': publisher_desc,
+        'publisher_founding_date': publisher_founding_date
 
-                    })
+    })
 
     return redirect(url_for('get_admin_panel'))
 
@@ -132,14 +134,26 @@ def insert_developer():
     developer_desc = request.form.get('developer_desc')
     developer_founding_date = request.form.get('developer_founding_date')
     developers.insert_one({
-                        'developer_name': developer_name,
-                        'developer_desc': developer_desc,
-                        'developer_founding_date': developer_founding_date
-
-                    })
-
+        'developer_name': developer_name,
+        'developer_desc': developer_desc,
+        'developer_founding_date': developer_founding_date
+    })
     return redirect(url_for('get_admin_panel'))
 
+
+@app.route('/edit_category/<category_id>')
+def edit_category(category_id):
+    return render_template('edit_category.html',
+                           category=mongo.db.categories.find_one(
+                               {'_id': ObjectId(category_id)}))
+
+
+@app.route('/update_category/<category_id>', methods=['POST'])
+def update_category(category_id):
+    mongo.db.categories.update(
+        {'_id': ObjectId(category_id)},
+        {'category_name': request.form.get('category_name')})
+    return redirect(url_for('get_admin_panel'))
 
 
 if __name__ == '__main__':
