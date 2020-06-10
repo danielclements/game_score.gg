@@ -93,11 +93,11 @@ def add_category():
     return render_template('addcategory.html')
 
 
-@app.route('/insert_category', methods=['POST', 'GET'])
+@app.route('/insert_category', methods=['POST'])
 def insert_category():
-        category_doc = {'category_name': request.form.get('category_name')}
-        mongo.db.categories.insert_one(category_doc)
-        return redirect(url_for('get_admin_panel'))
+    category_doc = {'category_name': request.form.get('category_name')}
+    mongo.db.categories.insert_one(category_doc)
+    return redirect(url_for('get_admin_panel'))
 
 
 if __name__ == '__main__':
