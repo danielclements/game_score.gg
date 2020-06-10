@@ -99,6 +99,27 @@ def insert_category():
     mongo.db.categories.insert_one(category_doc)
     return redirect(url_for('get_admin_panel'))
 
+@app.route('/add_publisher')
+def add_publisher():
+    return render_template('add_publisher.html')
+
+
+@app.route('/insert_publisher', methods=['GET', 'POST'])
+def insert_publisher():
+    publishers = mongo.db.publishers
+    publisher_name = request.form.get('publisher_name')
+    publisher_desc = request.form.get('publisher_desc')
+    publisher_founding_date = request.form.get('publisher_founding_date')
+    publishers.insert_one({
+                        'publisher_name': publisher_name,
+                        'publisher_desc': publisher_desc,
+                        'publisher_founding_date': publisher_founding_date
+
+                    })
+
+    return redirect(url_for('get_admin_panel'))
+
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
