@@ -120,6 +120,27 @@ def insert_publisher():
     return redirect(url_for('get_admin_panel'))
 
 
+@app.route('/add_developer')
+def add_developer():
+    return render_template('add_developer.html')
+
+
+@app.route('/insert_developer', methods=['GET', 'POST'])
+def insert_developer():
+    developers = mongo.db.developers
+    developer_name = request.form.get('developer_name')
+    developer_desc = request.form.get('developer_desc')
+    developer_founding_date = request.form.get('developer_founding_date')
+    developers.insert_one({
+                        'developer_name': developer_name,
+                        'developer_desc': developer_desc,
+                        'developer_founding_date': developer_founding_date
+
+                    })
+
+    return redirect(url_for('get_admin_panel'))
+
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
