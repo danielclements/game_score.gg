@@ -1,37 +1,35 @@
-body{
-    color: #eeeeee;
+body {
+  color: #eeeeee;
 }
 
-.m_left{
-    margin-left: 100px !important;
+.m_left {
+  margin-left: 100px !important;
 }
 
-
-.dr-green{
-    background-color: #222E31;
+.dr-green {
+  background-color: #222e31;
 }
 
-.dr-less-green{
-    background-color: #173539;
+.dr-less-green {
+  background-color: #173539;
 }
 
-.dr-grey{
-    background-color: #1A1D21;
+.dr-grey {
+  background-color: #1a1d21;
 }
 
-
-.hover-salmon:hover{
-    background-color: #C78074;
+.hover-salmon:hover {
+  background-color: #c78074;
 }
 
-.orange-click{
-    background-color: #EBA270;
+.orange-click {
+  background-color: #eba270;
 }
 
-.text-white{
-    color: #eeeeee;
+.text-white {
+  color: #eeeeee;
 }
 
-.select-dropdown{
-    color: white;
+.select-dropdown {
+  color: white;
 }
