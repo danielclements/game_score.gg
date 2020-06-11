@@ -156,6 +156,25 @@ def update_category(category_id):
     return redirect(url_for('get_admin_panel'))
 
 
+@app.route('/edit_publisher/<publisher_id>')
+def edit_publisher(publisher_id):
+    return render_template('edit_publisher.html',
+                           publisher=mongo.db.publishers.find_one(
+                               {'_id': ObjectId(publisher_id)}))
+
+
+@app.route('/update_publisher/<publisher_id>', methods=['POST'])
+def update_publisher(publisher_id):
+    mongo.db.publisher.update({'_id': ObjectId(publisher_id)},
+                              {
+        'publisher_name': request.form.get('publisheßr_name'),
+        'publisher_desc': request.form.get('publisher_desc'),
+        'publisher_founding_date': request.form.get('publisher_foudning_date')
+    })
+
+    return redirect(url_for('get_admin_panel'))
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

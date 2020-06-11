@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>Edit Game</h3>
+<div class="row">
+	<form action="{{ url_for('update_publisher', publisher_id=publisher._id) }}" method="POST" class="col s12">
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input  class="text-white" id="publisher_name" name="publisher_name" type="text" value="{{publisher.publisher_name}}" />
+				<label  class="text-white" for="icon_prefix">Publisher Name</label>
+			</div>
+		</div>
+
+        <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input class="text-white" id="publisher_desc" name="publisher_desc" type="text" value="{{publisher.publisher_desc}}" />
+				<label for="icon_prefix">Publisher Description</label>
+			</div>
+		</div>
+		
+
+
+		<div class="row">
+			<div id="matfix" class="input-field col s12">
+				<i class="material-icons prefix">today</i>
+				<input id="publisher_founding_date" name="publisher_founding_date" type="text" class="datepicker text-white" />
+				<label for="icon_prefix">Founding Date</label>
+			</div>
+		</div>
+
+		<div calss="row">
+			<button class="btn waves-effect waves-light" type="submit">
+       Edit Publisher!
+      <i class="material-icons right">playlist_add</i>
+    </button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}
