@@ -48,7 +48,7 @@ def insert_game():
         'affiliate_link': affiliate_link
     })
 
-    return redirect(url_for('add_game'))
+    return redirect(url_for('get_admin_panel'))
 
 
 @app.route('/')
@@ -78,7 +78,7 @@ def update_game(game_id):
     games.update({'_id': ObjectId(game_id)},
                  {
         'game_name': request.form.get('game_name'),
-        'categories': request.form.get('categories'),
+        'categories': request.form.getlist('categories'),
         'platforms': request.values.getlist('platforms'),
         'developer_name': request.values.getlist('developer_name'),
         'publisher_name': request.values.getlist('publisher_name'),
