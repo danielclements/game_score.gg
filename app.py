@@ -10,7 +10,7 @@ if path.exists('env.py'):
 
 MONGODB_URI = os.getenv("MONGO_URI")
 DBS_NAME = "Game_Score"
-COLLECTION_NAME = "Games"
+COLLECTION_NAME = "games"
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'Game_score'
@@ -30,7 +30,7 @@ mongo = PyMongo(app)
 
 @app.route('/insert_game', methods=['GET', 'POST'])
 def insert_game():
-    games = mongo.db.Games
+    games = mongo.db.games
     platforms = request.values.getlist('platforms')
     categories = request.values.getlist('categories')
     game_name = request.form['game_name']
@@ -56,7 +56,7 @@ def insert_game():
 def get_admin_panel():
     return render_template('adminpanel.html',
                            categories=mongo.db.categories.find(),
-                           games=mongo.db.Games.find(),
+                           games=mongo.db.games.find(),
                            publishers=mongo.db.publishers.find(),
                            developers=mongo.db.developers.find(),
                            platforms=mongo.db.platforms.find())
@@ -64,7 +64,7 @@ def get_admin_panel():
 
 @app.route('/edit_game/<game_id>')
 def edit_game(game_id):
-    the_game = mongo.db.Games.find_one({"_id": ObjectId(game_id)})
+    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     return render_template('editgame.html', game=the_game,
                            categories=mongo.db.categories.find(),
                            developers=mongo.db.developers.find(),
@@ -74,7 +74,7 @@ def edit_game(game_id):
 
 @app.route('/update_game/<game_id>', methods=["POST", "GET"])
 def update_game(game_id):
-    games = mongo.db.Games
+    games = mongo.db.games
     games.update({'_id': ObjectId(game_id)},
                  {
         'game_name': request.form.get('game_name'),
@@ -171,6 +171,26 @@ def update_publisher(publisher_id):
         'publisher_name': request.form.get('publisher_name'),
         'publisher_desc': request.form.get('publisher_desc'),
         'publisher_founding_date': request.form.get('publisher_founding_date')
+
+    })
+    return redirect(url_for('get_admin_panel'))
+
+
+@app.route('/edit_developer/<developer_id>')
+def edit_developer(developer_id):
+    return render_template('edit_developer.html',
+                           developer=mongo.db.developers.find_one(
+                               {'_id': ObjectId(developer_id)}))
+
+
+@app.route('/update_developer/<developer_id>', methods=['POST'])
+def update_developer(developer_id):
+    developers = mongo.db.developers
+    developers.update({'_id': ObjectId(developer_id)},
+                      {
+        'developer_name': request.form.get('developer_name'),
+        'developer_desc': request.form.get('developer_desc'),
+        'developer_founding_date': request.form.get('developer_founding_date')
 
     })
     return redirect(url_for('get_admin_panel'))

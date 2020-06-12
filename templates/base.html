@@ -18,17 +18,17 @@
   <body class="dr-grey">
     <nav>
       <div class="nav-wrapper padding dr-green">
-        <a href="{{url_for('add_game')}}" class="brand-logo m_left"
+        <a href="{{url_for('get_admin_panel')}}" class="brand-logo m_left"
           ><span>Game</span><span>Score</span><span class="material-icons">
             videogame_asset
           </span></a
         >
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="{{url_for('get_admin_panel')}}">Admin Panel</a></li>
-          <li><a href="{{url_for('add_game')}}">Add Game</a></li>
-          <li><a href="{{url_for('add_category')}}">Add Category</a></li>
-          <li><a href="{{url_for('add_publisher')}}">Add Publisher</a></li>
-          <li><a href="{{url_for('add_developer')}}">Add Developer</a></li>
+          <li><a class="hover-salmon" href="{{url_for('get_admin_panel')}}">Admin Panel</a></li>
+          <li><a class="hover-salmon" href="{{url_for('add_game')}}">Add Game</a></li>
+          <li><a class="hover-salmon" href="{{url_for('add_category')}}">Add Category</a></li>
+          <li><a class="hover-salmon" href="{{url_for('add_publisher')}}">Add Publisher</a></li>
+          <li><a class="hover-salmon" href="{{url_for('add_developer')}}">Add Developer</a></li>
         </ul>
       </div>
     </nav>
