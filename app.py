@@ -165,13 +165,14 @@ def edit_publisher(publisher_id):
 
 @app.route('/update_publisher/<publisher_id>', methods=['POST'])
 def update_publisher(publisher_id):
-    mongo.db.publisher.update({'_id': ObjectId(publisher_id)},
-                              {
-        'publisher_name': request.form.get('publisheßr_name'),
+    publishers = mongo.db.publishers
+    publishers.update({'_id': ObjectId(publisher_id)},
+                      {
+        'publisher_name': request.form.get('publisher_name'),
         'publisher_desc': request.form.get('publisher_desc'),
-        'publisher_founding_date': request.form.get('publisher_foudning_date')
-    })
+        'publisher_founding_date': request.form.get('publisher_founding_date')
 
+    })
     return redirect(url_for('get_admin_panel'))
 
 
