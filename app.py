@@ -48,6 +48,7 @@ def insert_game():
     platforms = request.values.getlist('platforms')
     categories = request.values.getlist('categories')
     game_name = request.form['game_name']
+    game_summ = request.form['game_summ']
     developer_name = request.values.getlist('developer_name')
     publisher_name = request.values.getlist('publisher_name')
     release_date = request.form['release_date']
@@ -56,6 +57,7 @@ def insert_game():
         'game_name': game_name,
         'categories': categories,
         'platforms': platforms,
+        'game_summ': game_summ,
         'developer_name': developer_name,
         'publisher_name': publisher_name,
         'release_date': release_date,
@@ -125,6 +127,25 @@ def insert_review():
     return redirect(url_for('get_admin_panel'))
 
 
+@app.route('/add_developer')
+def add_developer():
+    return render_template('add_developer.html')
+
+
+@app.route('/insert_developer', methods=['GET', 'POST'])
+def insert_developer():
+    developers = mongo.db.developers
+    developer_name = request.form.get('developer_name')
+    developer_desc = request.form.get('developer_desc')
+    developer_founding_date = request.form.get('developer_founding_date')
+    developers.insert_one({
+        'developer_name': developer_name,
+        'developer_desc': developer_desc,
+        'developer_founding_date': developer_founding_date
+    })
+    return redirect(url_for('get_admin_panel'))
+
+
 # Edit database sectionå
 
 
@@ -149,28 +170,10 @@ def update_game(game_id):
         'developer_name': request.values.getlist('developer_name'),
         'publisher_name': request.values.getlist('publisher_name'),
         'release_date': request.form.get('release_date'),
-        'affiliate_link': request.form.get('affiliate_link')
+        'affiliate_link': request.form.get('affiliate_link'),
+        'game_summ': request.form.get('game_summ')
     })
 
-    return redirect(url_for('get_admin_panel'))
-
-
-@app.route('/add_developer')
-def add_developer():
-    return render_template('add_developer.html')
-
-
-@app.route('/insert_developer', methods=['GET', 'POST'])
-def insert_developer():
-    developers = mongo.db.developers
-    developer_name = request.form.get('developer_name')
-    developer_desc = request.form.get('developer_desc')
-    developer_founding_date = request.form.get('developer_founding_date')
-    developers.insert_one({
-        'developer_name': developer_name,
-        'developer_desc': developer_desc,
-        'developer_founding_date': developer_founding_date
-    })
     return redirect(url_for('get_admin_panel'))
 
 
