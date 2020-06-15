@@ -36,7 +36,8 @@ def get_admin_panel():
 
 @app.route('/add_game')
 def add_game():
-    return render_template('addgame.html', categories=mongo.db.categories.find(),
+    return render_template('addgame.html', 
+                           categories=mongo.db.categories.find(),
                            developers=mongo.db.developers.find(),
                            publishers=mongo.db.publishers.find(),
                            platforms=mongo.db.platforms.find())
