@@ -1,95 +1,67 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="row" style="text-align: center;">
-	<h1 style="display: inline_block;">Admin Panel</h1>
+<div class="row" >
+  <h1 class="mx-auto">Admin Panel</h1>
 </div>
 
 <div class="row">
-	<div class="col s3 " style="text-align: center;">
-		<h3>Categories</h3>
-		<ul class="collapsible" data-collapsible="accordion">
-			{% for category in categories %}
-			<li>
-				<div class="collapsible-header dr-less-green hover-salmon">
-					<div class="task_header">
-						<strong>{{category.category_name}}</strong>
-						<a href="{{url_for('edit_category', category_id=category._id)}}"
-							class="waves-effect waves-light btn btn_small blue">Edit</a>
-					</div>
-				</div>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
+  <div class="col-3" style="text-align: center;">
+    <div class="list-group">
+      <h3>Categories</h3>
+      {% for category in categories %}
+      <a
+        href="{{url_for('edit_category', category_id=category._id)}}"
+        class="list-group-item list-group-item-action dr-less-green hover-salmon"
+        ><strong> {{category.category_name}}</strong></a>
+      {% endfor %}
+    </div>
+  </div>
 
-	<div class="col s3" style="text-align: center;">
-		<h3>Games</h3>
-		<ul class="collapsible" data-collapsible="accordion">
-			{% for game in games %}
-			<li>
-				<div class="collapsible-header dr-less-green hover-salmon">
-					<div class="task_header">
-						<strong>{{game.game_name}} </strong>
-						<a href="{{url_for('edit_game', game_id=game._id)}}"
-							class="waves-effect waves-light btn btn_small blue">Edit</a>
-					</div>
-				</div>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
+  <div class="col-3" style="text-align: center;">
+    <div class="list-group">
+      <h3>Games</h3>
+      {% for game in games %}
+      <a
+        href="{{url_for('edit_game', game_id=game._id)}}"
+        class="list-group-item list-group-item-action dr-less-green hover-salmon"
+        ><strong> {{game.game_name}}</strong></a>
+      {% endfor %}
+    </div>
+  </div>
 
-	<div class="col s3" style="text-align: center;">
-		<h3>Publishers</h3>
-		<ul class="collapsible hover-salmon" data-collapsible="accordion">
-			{% for publisher in publishers %}
-			<li>
-				<div class="collapsible-header dr-less-green hover-salmon">
-					<div class="task_header">
-						<strong>{{publisher.publisher_name}}</strong>
-                        <a href="{{url_for('edit_publisher', publisher_id=publisher._id)}}"
-							class="waves-effect waves-light btn btn_small blue">Edit</a>
-                        
-					</div>
-				</div>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
+  <div class="col-3" style="text-align: center;">
+    <div class="list-group">
+      <h3>Publisher</h3>
+      {% for publisher in publishers %}
+      <a
+        href="{{url_for('edit_publisher', publisher_id=publisher._id)}}"
+        class="list-group-item list-group-item-action dr-less-green hover-salmon"
+        ><strong> {{publisher.publisher_name}}</strong></a>
+      {% endfor %}
+    </div>
+  </div>
 
-	<div class="col s3" style="text-align: center;">
-		<h3>Developers</h3>
-		<ul class="collapsible " data-collapsible="accordion">
-			{% for developer in developers %}
-			<li>
-				<div class="collapsible-header dr-less-green hover-salmon">
-					<div class="task_header">
-						<strong>{{developer.developer_name}}</strong>
-                        <a href="{{url_for('edit_developer', developer_id=developer._id)}}"
-							class="waves-effect waves-light btn btn_small blue">Edit</a>
-					</div>
-				</div>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
-</div>
+  <div class="col-3" style="text-align: center;">
+    <div class="list-group">
+      <h3>Developers</h3>
+      {% for developer in developers %}
+      <a
+        href="{{url_for('edit_developer', developer_id=developer._id)}}"
+        class="list-group-item list-group-item-action dr-less-green hover-salmon"
+        ><strong> {{developer.developer_name}}</strong></a>
+      {% endfor %}
+    </div>
+  </div>
 
-<div class="row" style="text-align: center;">
-	<div class="col s3" style="text-align: center;">
-		<h3>Platforms</h3>
-		<ul class="collapsible " data-collapsible="accordion">
-			{% for plat in platforms %}
-			<li>
-				<div class="collapsible-header dr-less-green hover-salmon">
-					<div class="task_header">
-						<strong>{{plat.platform_name}}</strong>
-					</div>
-				</div>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
-</div>
-
+  <div class="col-3" style="text-align: center;">
+    <div class="list-group">
+      <h3>Platforms</h3>
+      {% for plat in platforms %}
+      <a
+        href="#"
+        class="list-group-item list-group-item-action dr-less-green hover-salmon"
+        ><strong> {{plat.platform_name}}</strong></a>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock %}

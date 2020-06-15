@@ -17,22 +17,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
   </head>
   <body class="dr-grey">
-    <nav>
-      <div class="nav-wrapper padding dr-green">
-        <a href="{{url_for('get_admin_panel')}}" class="brand-logo m_left"
-          ><span>Game</span><span>Score</span><i class="fas fa-gamepad"></i></a
-        >
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a class="hover-salmon" href="{{url_for('get_admin_panel')}}">Admin Panel</a></li>
-          <li><a class="hover-salmon" href="{{url_for('add_game')}}">Add Game</a></li>
-          <li><a class="hover-salmon" href="{{url_for('add_category')}}">Add Category</a></li>
-          <li><a class="hover-salmon" href="{{url_for('add_publisher')}}">Add Publisher</a></li>
-          <li><a class="hover-salmon" href="{{url_for('add_developer')}}">Add Developer</a></li>
-          <li><a class="hover-salmon" href="{{url_for('add_review')}}">Add Review</a></li>
 
-        </ul>
-      </div>
-    </nav>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{url_for('get_admin_panel')}}">GameScore<i class="fas fa-gamepad"></i></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item"><a class=" nav-link hover-salmon" href="{{url_for('get_admin_panel')}}">Admin Panel</a></li>
+      <li class="nav-item"><a class=" nav-link hover-salmon" href="{{url_for('add_game')}}">Add Game</a></li>
+      <li class="nav-item"><a class=" nav-link hover-salmon" href="{{url_for('add_category')}}">Add Category</a></li>
+      <li class="nav-item"><a class=" nav-link hover-salmon" href="{{url_for('add_publisher')}}">Add Publisher</a></li>
+      <li class="nav-item"><a class=" nav-link hover-salmon" href="{{url_for('add_developer')}}">Add Developer</a></li>
+      <li class="nav-item"><a class=" nav-link hover-salmon" href="{{url_for('add_review')}}">Add Review</a></li>
+
+    </ul>
+  </div>
+</nav>
 
     <div class="container">
       {% block content %} {% endblock %}
