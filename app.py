@@ -16,6 +16,23 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'Game_score'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
+mongo = PyMongo(app)
+
+# Initial load page
+
+
+@app.route('/')
+@app.route('/get_admin_panel')
+def get_admin_panel():
+    return render_template('adminpanel.html',
+                           categories=mongo.db.categories.find(),
+                           games=mongo.db.games.find(),
+                           publishers=mongo.db.publishers.find(),
+                           developers=mongo.db.developers.find(),
+                           platforms=mongo.db.platforms.find())
+
+# Routing and functions to add to the database
+
 
 @app.route('/add_game')
 def add_game():
@@ -23,9 +40,6 @@ def add_game():
                            developers=mongo.db.developers.find(),
                            publishers=mongo.db.publishers.find(),
                            platforms=mongo.db.platforms.find())
-
-
-mongo = PyMongo(app)
 
 
 @app.route('/insert_game', methods=['GET', 'POST'])
@@ -46,44 +60,6 @@ def insert_game():
         'publisher_name': publisher_name,
         'release_date': release_date,
         'affiliate_link': affiliate_link
-    })
-
-    return redirect(url_for('get_admin_panel'))
-
-
-@app.route('/')
-@app.route('/get_admin_panel')
-def get_admin_panel():
-    return render_template('adminpanel.html',
-                           categories=mongo.db.categories.find(),
-                           games=mongo.db.games.find(),
-                           publishers=mongo.db.publishers.find(),
-                           developers=mongo.db.developers.find(),
-                           platforms=mongo.db.platforms.find())
-
-
-@app.route('/edit_game/<game_id>')
-def edit_game(game_id):
-    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
-    return render_template('editgame.html', game=the_game,
-                           categories=mongo.db.categories.find(),
-                           developers=mongo.db.developers.find(),
-                           publishers=mongo.db.publishers.find(),
-                           platforms=mongo.db.platforms.find())
-
-
-@app.route('/update_game/<game_id>', methods=["POST", "GET"])
-def update_game(game_id):
-    games = mongo.db.games
-    games.update({'_id': ObjectId(game_id)},
-                 {
-        'game_name': request.form.get('game_name'),
-        'categories': request.form.getlist('categories'),
-        'platforms': request.values.getlist('platforms'),
-        'developer_name': request.values.getlist('developer_name'),
-        'publisher_name': request.values.getlist('publisher_name'),
-        'release_date': request.form.get('release_date'),
-        'affiliate_link': request.form.get('affiliate_link')
     })
 
     return redirect(url_for('get_admin_panel'))
@@ -117,6 +93,34 @@ def insert_publisher():
         'publisher_desc': publisher_desc,
         'publisher_founding_date': publisher_founding_date
 
+    })
+    return redirect(url_for('get_admin_panel'))
+
+
+# Edit database section
+
+@app.route('/edit_game/<game_id>')
+def edit_game(game_id):
+    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    return render_template('editgame.html', game=the_game,
+                           categories=mongo.db.categories.find(),
+                           developers=mongo.db.developers.find(),
+                           publishers=mongo.db.publishers.find(),
+                           platforms=mongo.db.platforms.find())
+
+
+@app.route('/update_game/<game_id>', methods=["POST", "GET"])
+def update_game(game_id):
+    games = mongo.db.games
+    games.update({'_id': ObjectId(game_id)},
+                 {
+        'game_name': request.form.get('game_name'),
+        'categories': request.form.getlist('categories'),
+        'platforms': request.values.getlist('platforms'),
+        'developer_name': request.values.getlist('developer_name'),
+        'publisher_name': request.values.getlist('publisher_name'),
+        'release_date': request.form.get('release_date'),
+        'affiliate_link': request.form.get('affiliate_link')
     })
 
     return redirect(url_for('get_admin_panel'))
