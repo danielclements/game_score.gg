@@ -1,1 +1,4 @@
 https://stackoverflow.com/questions/31499804/insert-data-into-with-pymongo-and-flask?fbclid=IwAR016xRCAl9lBS-EAmkbEE3pjJq2k0KxA86ZiGY3SPcEb6uVVGeTzYJ9h4w used to insert arrays from the game_add forum
+
+
+https://stackoverflow.com/questions/50895806/bootstrap-4-multiselect-dropdown multiple select 
