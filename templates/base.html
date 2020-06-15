@@ -13,14 +13,14 @@
       href="{{url_for('static', filename='css/style.css')}}"
       type="text/css"
     />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
   </head>
   <body class="dr-grey">
     <nav>
       <div class="nav-wrapper padding dr-green">
         <a href="{{url_for('get_admin_panel')}}" class="brand-logo m_left"
-          ><span>Game</span><span>Score</span><span class="material-icons">
-            videogame_asset
-          </span></a
+          ><span>Game</span><span>Score</span><i class="fas fa-gamepad"></i></a
         >
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a class="hover-salmon" href="{{url_for('get_admin_panel')}}">Admin Panel</a></li>
