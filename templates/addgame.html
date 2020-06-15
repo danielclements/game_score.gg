@@ -2,102 +2,105 @@
 
 <h3>Add Game</h3>
 <div class="row">
-	<form action="{{url_for('insert_game')}}" method="POST" class="col s12">
+  <form action="{{url_for('insert_game')}}" method="POST">
 
-		<div class="row">
-			<div class="input-field col s12 text-white">
-            <i class="fas fa-list"></i>
-				<select id="categories" name="categories" multiple>
-                <option value="" disabled >Select Category</option>
-                     {% for category in categories %}
-                        <option  value="{{category.category_name}}">{{category.category_name}}</option>
-                     {% endfor %}
-                </select>
-				<label>Game Categories</label>
-			</div>
-		</div>
+  
+    <div class="form-group">
+      <label for="exampleFormControlSelect2">
+        <i class="fas fa-list"></i>Select Categories</label
+      >
+      <select class="selectpicker" multiple data-live-search="true" id="categories" name="categories">
+        <option value="" disabled>Select Category</option>
+        {% for category in categories %}
+        <option value="{{category.category_name}}"
+          >{{category.category_name}}</option
+        >
+        {% endfor %}
+      </select>
+    </div>
 
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">gamepad</i>
-				<input class="text-white" id="game_name" name="game_name" type="text"/>
-				<label for="icon_prefix">Game Name</label>
-			</div>
-		</div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">gamepad</i>
+        <input class="" id="game_name" name="game_name" type="text" />
+        <label for="icon_prefix">Game Name</label>
+      </div>
+    </div>
 
-        <div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">gamepad</i>
-				<input class="text-white" id="game_summ" name="game_summ" type="text"/>
-				<label for="icon_prefix">Game Summary</label>
-			</div>
-		</div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">gamepad</i>
+        <input class="" id="game_summ" name="game_summ" type="text" />
+        <label for="icon_prefix">Game Summary</label>
+      </div>
+    </div>
 
-		<div class="row">
-			<div class="input-field col s12">
-            <i class="material-icons prefix">important_devices</i>
-				<select id="platforms" name="platforms" multiple>
-                <option  disabled >Select Platform</option>
-                     {% for plat in platforms %}
-                        <option value="{{plat.platform_name}}">{{plat.platform_name}}</option>
-                     {% endfor %}
-                </select>
-				<label>Platforms</label>
-			</div>
-		</div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">important_devices</i>
+        <select id="platforms" name="platforms" multiple>
+          <option disabled>Select Platform</option>
+          {% for plat in platforms %}
+          <option value="{{plat.platform_name}}">{{plat.platform_name}}</option>
+          {% endfor %}
+        </select>
+        <label>Platforms</label>
+      </div>
+    </div>
 
-
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix" >build</i>
-				<select id="developer_name" name="developer_name">
-          <option  disabled selected>Choose Developer</option>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">build</i>
+        <select id="developer_name" name="developer_name">
+          <option disabled selected>Choose Developer</option>
           {% for dev in developers %}
           <option value="{{dev.developer_name}}">{{dev.developer_name}}</option>
           {% endfor %}
         </select>
-				<label>Developer Name</label>
-			</div>
-		</div>
+        <label>Developer Name</label>
+      </div>
+    </div>
 
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">theaters</i>
-				<select id="publisher_name" name="publisher_name">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">theaters</i>
+        <select id="publisher_name" name="publisher_name">
           <option value="" disabled selected>Choose Publisher</option>
           {% for pub in publishers %}
           <option value="{{pub.publisher_name}}">{{pub.publisher_name}}</option>
           {% endfor %}
         </select>
-				<label>Publisher Name</label>
-			</div>
-		</div>
+        <label>Publisher Name</label>
+      </div>
+    </div>
 
+    <div class="row">
+      <div id="matfix" class="input-field col s12">
+        <i class="material-icons prefix">today</i>
+         <input type="date" id="release_date" name="release_date">
+        <label for="icon_prefix">Release Date</label>
+      </div>
+    </div>
 
-		<div class="row">
-			<div id="matfix" class="input-field col s12">
-				<i class="material-icons prefix">today</i>
-				<input id="release_date" name="release_date" type="text" class="datepicker text-white" />
-				<label for="icon_prefix">Release Date</label>
-			</div>
-		</div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">local_atm</i>
+        <input
+          id="affiliate_link"
+          name="affiliate_link"
+          type="text"
+        />
+        <label for="icon_prefix">Affiliate Link</label>
+      </div>
+    </div>
 
-
-        <div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">local_atm</i>
-				<input class="text-white" id="affiliate_link" name="affiliate_link" type="text" />
-				<label for="icon_prefix">Affiliate Link</label>
-			</div>
-		</div>
-
-		<div calss="row">
-			<button class="btn dr-less-green text-white" type="submit">
-            Add Game!
-            <i class="fas fa-folder-plus"></i>
-            </button>
-	    </div>
-	</form>
+    <div calss="row">
+      <button class="btn dr-less-green text-white" type="submit">
+        Add Game!
+        <i class="fas fa-folder-plus"></i>
+      </button>
+    </div>
+  </form>
 </div>
 
 {% endblock %}
