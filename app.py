@@ -173,7 +173,6 @@ def update_game(game_id):
         'affiliate_link': request.form.get('affiliate_link'),
         'game_summ': request.form.get('game_summ')
     })
-
     return redirect(url_for('get_admin_panel'))
 
 
