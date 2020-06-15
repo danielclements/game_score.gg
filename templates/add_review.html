@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>Add Game</h3>
+<div class="row">
+	<form action="{{url_for('insert_review')}}" method="POST" class="col s12">
+
+	    <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix" >videogame_asset</i>
+				<select id="review_game" name="review_game">
+            <option  disabled selected>Choose Game</option>
+            {% for game in games %}
+          <option value="{{game.game_name}}">{{game.game_name}}</option>
+          {% endfor %}
+        </select>
+				<label>Game Name</label>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input class="text-white" id="review_header" name="review_header" type="text"/>
+				<label for="icon_prefix">Review Title</label>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input class="text-white" id="review_author" name="review_author" type="text"/>
+				<label for="icon_prefix">Author Name</label>
+			</div>
+		</div>
+
+
+
+        <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input class="text-white" id="review_body" name="review_body" type="text"/>
+				<label for="icon_prefix">Review body</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div id="matfix" class="input-field col s12">
+				<i class="material-icons prefix">today</i>
+				<input id="review_date" name="review_date" type="text" class="datepicker text-white" />
+				<label for="icon_prefix">Review Date</label>
+			</div>
+		</div>
+
+
+        <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input class="text-white" id="review_score" name="review_score" type="text" />
+				<label for="icon_prefix">Review Score</label>
+			</div>
+		</div>
+
+		<div calss="row">
+			<button class="btn waves-effect waves-light" type="submit">
+      Add Review!
+      <i class="material-icons right">playlist_add</i>
+    </button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

@@ -97,7 +97,36 @@ def insert_publisher():
     return redirect(url_for('get_admin_panel'))
 
 
-# Edit database section
+@app.route('/add_review')
+def add_review():
+    return render_template('add_review.html',
+                           games=mongo.db.games.find())
+
+
+@app.route('/insert_review', methods=['POST', 'GET'])
+def insert_review():
+    reviews = mongo.db.reviews
+    review_game = request.form.get('review_game')
+    review_header = request.form['review_header']
+    review_author = request.form['review_author']
+    review_body = request.form['review_body']
+    review_date = request.form['review_date']
+    review_score = request.form['review_score']
+
+    reviews.insert_one({
+        'review_game': review_game,
+        'review_header': review_header,
+        'review_author': review_author,
+        'review_body': review_body,
+        'review_date': review_date,
+        'review_score': review_score,
+    })
+
+    return redirect(url_for('get_admin_panel'))
+
+
+# Edit database sectionå
+
 
 @app.route('/edit_game/<game_id>')
 def edit_game(game_id):
