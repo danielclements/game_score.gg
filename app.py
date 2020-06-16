@@ -4,7 +4,8 @@ from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
-
+# checks if the env.py file exists, if true it imports the file,
+# used to get the enviramental variables
 if path.exists('env.py'):
     import env
 
@@ -255,6 +256,14 @@ def update_review(review_id):
         'review_score': request.form.get('review_score')
     })
     return redirect(url_for('get_admin_panel'))
+
+
+# View section
+
+@app.route('/view_games')
+def view_games():
+    return render_template('view_games.html',
+                           games=mongo.db.games.find())
 
 
 if __name__ == '__main__':

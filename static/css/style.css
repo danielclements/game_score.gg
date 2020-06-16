@@ -33,3 +33,9 @@
 .select-dropdown {
   color: white;
 }
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100px;
+}
