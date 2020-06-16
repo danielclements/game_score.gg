@@ -2,6 +2,8 @@
   color: #eeeeee;
 } */
 
+a { color: inherit; } 
+
 .m_left {
   margin-left: 100px !important;
 }
@@ -22,12 +24,9 @@
   background-color: #c78074;
 }
 
-.orange-click {
-  background-color: #eba270;
-}
-
-.text-white {
-  color: #eeeeee;
+.link-white {
+  color: #ffffffbf;
+  text-decoration: none;
 }
 
 .select-dropdown {
@@ -38,4 +37,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   height: 100px;
+}
+
+.orange-click:focus{
+    background-color: #eba270;
 }
