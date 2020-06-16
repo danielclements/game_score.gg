@@ -3,11 +3,15 @@
 <h3>Add Game</h3>
 <div class="row">
   <form action="{{url_for('insert_game')}}" method="POST">
-
-  
     <div class="form-group">
-        <i class="fas fa-list"></i>
-      <select class="selectpicker" multiple data-live-search="true" id="game_categories" name="game_ategories">
+      <i class="fas fa-list"></i>
+      <select
+        class="selectpicker"
+        multiple
+        data-live-search="true"
+        id="game_categories"
+        name="game_ategories"
+      >
         <option value="" disabled>Select Category</option>
         {% for category in categories %}
         <option value="{{category.category_name}}"
@@ -26,13 +30,18 @@
       </div>
     </div>
 
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <i class="material-icons prefix">gamepad</i>
-            </div>
-            <textarea class="form-control" aria-label="With textarea" id="game_summ" name="game_summ" ></textarea>
-            <label for="icon_prefix">Game Summary</label>
-        </div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <i class="material-icons prefix">gamepad</i>
+      </div>
+      <textarea
+        class="form-control"
+        aria-label="With textarea"
+        id="game_summ"
+        name="game_summ"
+      ></textarea>
+      <label for="icon_prefix">Game Summary</label>
+    </div>
 
     <div class="form-group">
       <div class="input-field">
@@ -76,7 +85,7 @@
     <div class="form-group">
       <div id="matfix" class="input-field">
         <i class="material-icons prefix">today</i>
-         <input type="date" id="release_date" name="release_date">
+        <input type="date" id="release_date" name="release_date" />
         <label for="icon_prefix">Release Date</label>
       </div>
     </div>
@@ -84,11 +93,7 @@
     <div class="form-group">
       <div class="input-field">
         <i class="material-icons prefix">local_atm</i>
-        <input
-          id="affiliate_link"
-          name="affiliate_link"
-          type="text"
-        />
+        <input id="affiliate_link" name="affiliate_link" type="text" />
         <label for="icon_prefix">Affiliate Link</label>
       </div>
     </div>
