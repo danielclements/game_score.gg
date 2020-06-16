@@ -269,7 +269,7 @@ def view_games():
 @app.route('/view_developers')
 def view_developers():
     return render_template('view_developers.html',
-                           developers=mongo.db.games.find())
+                           developers=mongo.db.developers.find())
 
 
 
