@@ -266,6 +266,13 @@ def view_games():
                            games=mongo.db.games.find())
 
 
+@app.route('/view_developers')
+def view_developers():
+    return render_template('view_developers.html',
+                           developers=mongo.db.games.find())
+
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

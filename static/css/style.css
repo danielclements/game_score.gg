@@ -22,9 +22,10 @@ a { color: inherit; }
 
 .hover-salmon:hover {
   background-color: #c78074;
+  color: #ffffffbf;
 }
 
-.link-white {
+.text-whites {
   color: #ffffffbf;
   text-decoration: none;
 }
@@ -37,8 +38,4 @@ a { color: inherit; }
   overflow: hidden;
   text-overflow: ellipsis;
   height: 100px;
-}
-
-.orange-click:focus{
-    background-color: #eba270;
 }
