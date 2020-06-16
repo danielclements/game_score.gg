@@ -29,14 +29,15 @@ def get_admin_panel():
                            games=mongo.db.games.find(),
                            publishers=mongo.db.publishers.find(),
                            developers=mongo.db.developers.find(),
-                           platforms=mongo.db.platforms.find())
+                           platforms=mongo.db.platforms.find(),
+                           reviews=mongo.db.reviews.find())
 
 # Routing and functions to add to the database
 
 
 @app.route('/add_game')
 def add_game():
-    return render_template('addgame.html', 
+    return render_template('addgame.html',
                            categories=mongo.db.categories.find(),
                            developers=mongo.db.developers.find(),
                            publishers=mongo.db.publishers.find(),
@@ -228,6 +229,30 @@ def update_developer(developer_id):
         'developer_desc': request.form.get('developer_desc'),
         'developer_founding_date': request.form.get('developer_founding_date')
 
+    })
+    return redirect(url_for('get_admin_panel'))
+
+
+@app.route('/edit_review/<review_id>')
+def edit_review(review_id):
+    the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    all_games = mongo.db.games.find()
+    return render_template('edit_review.html',
+                           review=the_review,
+                           games=all_games)
+
+
+@app.route('/update_review/<review_id>', methods=['POST'])
+def update_review(review_id):
+    reviews = mongo.db.reviews
+    reviews.update({'_id': ObjectId(review_id)},
+                   {
+        'review_game': request.form.get('review_game'),
+        'review_header': request.form.get('review_header'),
+        'review_author': request.form.get('review_author'),
+        'review_body': request.form.get('review_body'),
+        'review_date': request.form.get('review_date'),
+        'review_score': request.form.get('review_score')
     })
     return redirect(url_for('get_admin_panel'))
 
