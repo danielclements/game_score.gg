@@ -3,8 +3,12 @@
 <div class="row d-flex justify-content-center">
   {% for game in games %}
 
-  <div class="card m-2 " style="width: 18rem;">
-    <img src="/static/images/generic_place_holder.jpg" class="card-img-top" alt="..." />
+  <div class="card m-2" style="width: 18rem;">
+    <img
+      src="/static/images/generic_place_holder.jpg"
+      class="card-img-top"
+      alt="missing image"
+    />
     <div class="card-body">
       <h5 class="card-title">{{game.game_name}}</h5>
       <p class="card-text text-overflow">{{game.game_summ}}</p>
@@ -15,4 +19,4 @@
 
   {% endfor %}
 </div>
-{% endblock %}å å
+{% endblock %}
