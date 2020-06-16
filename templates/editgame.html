@@ -6,7 +6,7 @@
 
     <div class="form-group">
         <i class="fas fa-list"></i>
-      <select class="selectpicker" multiple data-live-search="true" id="categories" name="categories">
+      <select class="selectpicker" multiple data-live-search="true" id="game_categories" name="game_categories">
         <option value="" disabled>Select Category</option>
         {% for category in categories %}
         <option value="{{category.category_name}}"
@@ -20,7 +20,7 @@
     <div class="form-group">
       <div class="input-field">
         <i class="material-icons prefix">gamepad</i>
-        <input class="" id="game_name" name="game_name" type="text" />
+        <input class="" id="game_name" name="game_name" type="text" value="{{game.game_name}}" />
         <label for="icon_prefix">Game Name</label>
       </div>
     </div>
@@ -29,7 +29,7 @@
             <div class="input-group-prepend">
                 <i class="material-icons prefix">gamepad</i>
             </div>
-            <textarea class="form-control" aria-label="With textarea" id="game_summ" name="game_summ" ></textarea>
+            <textarea class="form-control" aria-label="With textarea" id="game_summ" name="game_summ">{{game.game_summ}}</textarea>
             <label for="icon_prefix">Game Summary</label>
         </div>
 
@@ -75,7 +75,7 @@
     <div class="form-group">
       <div id="matfix" class="input-field">
         <i class="material-icons prefix">today</i>
-         <input type="date" id="release_date" name="release_date">
+         <input type="date" id="release_date" name="release_date" value="{{game.release_date}}">
         <label for="icon_prefix">Release Date</label>
       </div>
     </div>
@@ -87,6 +87,7 @@
           id="affiliate_link"
           name="affiliate_link"
           type="text"
+          value="{{game.affiliate_link}}"
         />
         <label for="icon_prefix">Affiliate Link</label>
       </div>

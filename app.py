@@ -48,16 +48,16 @@ def add_game():
 def insert_game():
     games = mongo.db.games
     platforms = request.values.getlist('platforms')
-    categories = request.values.getlist('categories')
+    game_categories = request.values.getlist('game_categories')
     game_name = request.form['game_name']
     game_summ = request.form['game_summ']
-    developer_name = request.values.getlist('developer_name')
-    publisher_name = request.values.getlist('publisher_name')
+    developer_name = request.form.get('developer_name')
+    publisher_name = request.form.get('publisher_name')
     release_date = request.form['release_date']
     affiliate_link = request.form['affiliate_link']
     games.insert_one({
         'game_name': game_name,
-        'categories': categories,
+        'game_categories': game_categories,
         'platforms': platforms,
         'game_summ': game_summ,
         'developer_name': developer_name,
@@ -167,10 +167,10 @@ def update_game(game_id):
     games.update({'_id': ObjectId(game_id)},
                  {
         'game_name': request.form.get('game_name'),
-        'categories': request.form.getlist('categories'),
+        'game_categories': request.form.getlist('game_categories'),
         'platforms': request.values.getlist('platforms'),
-        'developer_name': request.values.getlist('developer_name'),
-        'publisher_name': request.values.getlist('publisher_name'),
+        'developer_name': request.form.get('developer_name'),
+        'publisher_name': request.form.get('publisher_name'),
         'release_date': request.form.get('release_date'),
         'affiliate_link': request.form.get('affiliate_link'),
         'game_summ': request.form.get('game_summ')
