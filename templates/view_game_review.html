@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row" >
+  <h3 class="mx-auto">{{game.game_name}}</h3>
+</div>
+<div class="row">
+    <p><strong>Summary:</strong> {{game.game_summ}}</p>
+</div>
+
+<div class="row" >
+  <h4 class="mx-auto">Reviews</h4>
+</div>
+{% for review in reviews %}
+    {% if game.game_name == review.review_game %}
+        <div class="row text-darks">
+            <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {{review.review_header}}
+                    </button>
+                </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <p>{{review.review_body}}</p>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
+
+{% endblock %}

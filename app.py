@@ -272,6 +272,14 @@ def view_developers():
                            developers=mongo.db.developers.find())
 
 
+@app.route('/view_game_review/<game_id>')
+def view_game_review(game_id):
+    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    all_reviews = mongo.db.reviews.find()
+    return render_template('view_game_review.html',
+                           reviews=all_reviews,
+                           game=the_game)
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
