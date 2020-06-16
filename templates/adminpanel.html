@@ -4,14 +4,14 @@
   <h1 class="mx-auto">Admin Panel</h1>
 </div>
 
-<div class="row">
+<div class="row ">
   <div class="col-3" style="text-align: center;">
     <div class="list-group">
       <h3>Categories</h3>
       {% for category in categories %}
       <a
         href="{{url_for('edit_category', category_id=category._id)}}"
-        class="list-group-item list-group-item-action dr-less-green hover-salmon text-whites"
+        class="list-group-item list-group-item-action navy-bg hover-salmon text-whites"
         ><strong> {{category.category_name}}</strong></a>
       {% endfor %}
     </div>
@@ -23,7 +23,7 @@
       {% for game in games %}
       <a
         href="{{url_for('edit_game', game_id=game._id)}}"
-        class="list-group-item list-group-item-action dr-less-green hover-salmon text-whites"
+        class="list-group-item list-group-item-action  navy-bg hover-salmon text-whites"
         ><strong> {{game.game_name}}</strong></a>
       {% endfor %}
     </div>
@@ -35,7 +35,7 @@
       {% for publisher in publishers %}
       <a
         href="{{url_for('edit_publisher', publisher_id=publisher._id)}}"
-        class="list-group-item list-group-item-action dr-less-green hover-salmon text-whites"
+        class="list-group-item list-group-item-action  navy-bg hover-salmon text-whites"
         ><strong> {{publisher.publisher_name}}</strong></a>
       {% endfor %}
     </div>
@@ -47,7 +47,7 @@
       {% for developer in developers %}
       <a
         href="{{url_for('edit_developer', developer_id=developer._id)}}"
-        class="list-group-item list-group-item-action dr-less-green hover-salmon text-whites"
+        class="list-group-item list-group-item-action  navy-bg hover-salmon text-whites"
         ><strong> {{developer.developer_name}}</strong></a>
       {% endfor %}
     </div>
@@ -59,7 +59,7 @@
       {% for plat in platforms %}
       <a
         href="#"
-        class="list-group-item list-group-item-action dr-less-green text-whites"
+        class="list-group-item list-group-item-action  navy-bg text-whites"
         ><strong> {{plat.platform_name}}</strong></a>
       {% endfor %}
     </div>
@@ -72,7 +72,7 @@
       <a
 
         href="{{url_for('edit_review', review_id=review._id)}}"
-        class="list-group-item list-group-item-action dr-less-green hover-salmon text-whites"
+        class="list-group-item list-group-item-action  navy-bg hover-salmon text-whites"
         ><strong> {{review.review_header}}</strong></a>
       {% endfor %}
     </div>

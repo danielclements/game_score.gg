@@ -1,9 +1,8 @@
-/* body {
-  color: #eeeeee;
-} */
-
 a { color: inherit; } 
 
+body{
+    color: #ffffffd6;
+}
 .m_left {
   margin-left: 100px !important;
 }
@@ -22,20 +21,29 @@ a { color: inherit; }
 
 .hover-salmon:hover {
   background-color: #c78074;
-  color: #ffffffbf;
+  color: #ffffffd6;
 }
 
 .text-whites {
-  color: #ffffffbf;
+  color: #ffffffd6;
   text-decoration: none;
 }
 
-.select-dropdown {
-  color: white;
+.text-darks{
+    color: black
 }
 
 .text-overflow {
   overflow: hidden;
   text-overflow: ellipsis;
   height: 100px;
+}
+
+
+.navy-bg{
+    background-color:#222831;
+}
+
+.orange-bg{
+    background-color: #EBA270;
 }
