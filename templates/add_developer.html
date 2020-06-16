@@ -2,24 +2,24 @@
 
 <h3>Add Developer</h3>
 <div class="row">
-	<form action="{{url_for('insert_developer')}}" method="POST" class="col s12">
+	<form action="{{url_for('insert_developer')}}" method="POST">
 
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">gamepad</i>
 				<input id="developer_name" name="developer_name" type="text"/>
-				<label for="icon_prefix">developer Name</label>
+				<label for="icon_prefix">Developer Name</label>
 			</div>
 		</div>
 
 
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">gamepad</i>
-				<input id="developer_desc" name="developer_desc" type="text"/>
-				<label for="icon_prefix">Developer Description</label>
-			</div>
-		</div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <i class="material-icons prefix">gamepad</i>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" id="developer_desc" name="developer_desc" ></textarea>
+            <label for="icon_prefix">Developer description</label>
+        </div>
 		
 
 

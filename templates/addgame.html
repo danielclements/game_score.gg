@@ -6,9 +6,7 @@
 
   
     <div class="form-group">
-      <label for="exampleFormControlSelect2">
-        <i class="fas fa-list"></i>Select Categories</label
-      >
+        <i class="fas fa-list"></i>
       <select class="selectpicker" multiple data-live-search="true" id="categories" name="categories">
         <option value="" disabled>Select Category</option>
         {% for category in categories %}
@@ -17,26 +15,27 @@
         >
         {% endfor %}
       </select>
+      <label for="categories">Select Categories</label>
     </div>
 
-    <div class="row">
-      <div class="input-field col s12">
+    <div class="form-group">
+      <div class="input-field">
         <i class="material-icons prefix">gamepad</i>
         <input class="" id="game_name" name="game_name" type="text" />
         <label for="icon_prefix">Game Name</label>
       </div>
     </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">gamepad</i>
-        <input class="" id="game_summ" name="game_summ" type="text" />
-        <label for="icon_prefix">Game Summary</label>
-      </div>
-    </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <i class="material-icons prefix">gamepad</i>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" id="game_summ" name="game_summ" ></textarea>
+            <label for="icon_prefix">Game Summary</label>
+        </div>
 
-    <div class="row">
-      <div class="input-field col s12">
+    <div class="form-group">
+      <div class="input-field">
         <i class="material-icons prefix">important_devices</i>
         <select id="platforms" name="platforms" multiple>
           <option disabled>Select Platform</option>
@@ -48,8 +47,8 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="input-field col s12">
+    <div class="form-group">
+      <div class="input-field">
         <i class="material-icons prefix">build</i>
         <select id="developer_name" name="developer_name">
           <option disabled selected>Choose Developer</option>
@@ -61,8 +60,8 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="input-field col s12">
+    <div class="form-group">
+      <div class="input-field">
         <i class="material-icons prefix">theaters</i>
         <select id="publisher_name" name="publisher_name">
           <option value="" disabled selected>Choose Publisher</option>
@@ -74,16 +73,16 @@
       </div>
     </div>
 
-    <div class="row">
-      <div id="matfix" class="input-field col s12">
+    <div class="form-group">
+      <div id="matfix" class="input-field">
         <i class="material-icons prefix">today</i>
          <input type="date" id="release_date" name="release_date">
         <label for="icon_prefix">Release Date</label>
       </div>
     </div>
 
-    <div class="row">
-      <div class="input-field col s12">
+    <div class="form-group">
+      <div class="input-field">
         <i class="material-icons prefix">local_atm</i>
         <input
           id="affiliate_link"
@@ -94,7 +93,7 @@
       </div>
     </div>
 
-    <div calss="row">
+    <div calss="form-group">
       <button class="btn dr-less-green text-white" type="submit">
         Add Game!
         <i class="fas fa-folder-plus"></i>
