@@ -273,6 +273,12 @@ def view_developers():
                            developers=mongo.db.developers.find())
 
 
+@app.route('/publishers')
+def view_publishers():
+    return render_template('view_publishers.html',
+                           publishers=mongo.db.publishers.find())
+
+
 @app.route('/game/review/<game_id>')
 def view_game_review(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
@@ -287,6 +293,13 @@ def view_games_by_developer(developer_name):
     return render_template('view_games.html',
                            games=mongo.db.games.find({"developer_name":
                                                       developer_name}))
+
+
+@app.route('/games/publisher/<publisher_name>')
+def view_games_by_publisher(publisher_name):
+    return render_template('view_games.html',
+                           games=mongo.db.games.find({"publisher_name":
+                                                      publisher_name}))
 
 
 @app.route('/games/category/<category_name>')
