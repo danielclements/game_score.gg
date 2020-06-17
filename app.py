@@ -260,19 +260,19 @@ def update_review(review_id):
 
 # View section
 
-@app.route('/view_games')
+@app.route('/games')
 def view_games():
     return render_template('view_games.html',
                            games=mongo.db.games.find())
 
 
-@app.route('/view_developers')
+@app.route('/developers')
 def view_developers():
     return render_template('view_developers.html',
                            developers=mongo.db.developers.find())
 
 
-@app.route('/view_game_review/<game_id>')
+@app.route('/game/review/<game_id>')
 def view_game_review(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     all_reviews = mongo.db.reviews.find()
