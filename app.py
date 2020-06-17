@@ -281,16 +281,13 @@ def view_game_review(game_id):
                            game=the_game)
 
 
-@app.route('/games/developer/<developer_id>')
-def view_games_by_developer(developer_id):
-    the_developer = mongo.db.developers.find_one(
-        {"_id": ObjectId(developer_id)})
+@app.route('/games/developer/<developer_name>')
+def view_games_by_developer(developer_name):
+    return render_template('view_games.html',
+                           games=mongo.db.games.find({"developer_name":
+                                                      developer_name}))
 
-    results = render_template('view_games.html',
-                              games=mongo.db.games.find({"_id":
-                                                         developer_id}))
-    print(the_developer)
-    return results
+
 
 
 if __name__ == '__main__':
