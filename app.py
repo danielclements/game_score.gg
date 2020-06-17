@@ -263,7 +263,8 @@ def update_review(review_id):
 @app.route('/games')
 def view_games():
     return render_template('view_games.html',
-                           games=mongo.db.games.find())
+                           games=mongo.db.games.find(),
+                           categories=mongo.db.categories.find())
 
 
 @app.route('/developers')
@@ -288,6 +289,12 @@ def view_games_by_developer(developer_name):
                                                       developer_name}))
 
 
+@app.route('/games/category/<category_name>')
+def view_games_by_category(category_name):
+    return render_template('view_games.html',
+                           games=mongo.db.games.find({"game_categories":
+                                                      category_name}),
+                           categories=mongo.db.categories.find())
 
 
 if __name__ == '__main__':

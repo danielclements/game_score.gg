@@ -2,6 +2,17 @@
 <div class="row" >
   <h1 class="mx-auto">Games</h1>
 </div>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        {% for category in categories %}
+             <a class="dropdown-item" href="{{url_for('view_games_by_category', category_name=category.category_name)}}">{{category.category_name}}</a>
+        {% endfor %}
+  </div>
+</div>
 <div class="row d-flex justify-content-center text-darks">
   {% for game in games %}
 
