@@ -159,7 +159,7 @@ def edit_game(game_id):
                            categories=mongo.db.categories.find(),
                            developers=mongo.db.developers.find(),
                            publishers=mongo.db.publishers.find(),
-                           platforms=mongo.db.platforms.find())
+                           platforms=mongo.db.platforms.find(),)
 
 
 @app.route('/update_game/<game_id>', methods=["POST", "GET"])

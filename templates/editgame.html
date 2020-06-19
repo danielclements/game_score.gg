@@ -8,10 +8,9 @@
         <i class="fas fa-list"></i>
       <select class="selectpicker" multiple data-live-search="true" id="game_categories" name="game_categories">
         <option value="" disabled>Select Category</option>
+
         {% for category in categories %}
-        <option value="{{category.category_name}}"
-          >{{category.category_name}}</option
-        >
+        <option value="{{category.category_name}}">{{category.category_name}}</option>
         {% endfor %}
       </select>
       <label for="categories">Select Categories</label>
@@ -52,7 +51,11 @@
         <select id="developer_name" name="developer_name">
           <option disabled selected>Choose Developer</option>
           {% for dev in developers %}
-          <option value="{{dev.developer_name}}">{{dev.developer_name}}</option>
+            {% if game.developer_name == dev.developer_name %}
+                <option selected value="{{dev.developer_name}}">{{dev.developer_name}}</option>
+            {% else %}
+                <option value="{{dev.developer_name}}">{{dev.developer_name}}</option>
+            {% endif %}
           {% endfor %}
         </select>
         <label>Developer Name</label>
@@ -65,7 +68,11 @@
         <select id="publisher_name" name="publisher_name">
           <option value="" disabled selected>Choose Publisher</option>
           {% for pub in publishers %}
-          <option value="{{pub.publisher_name}}">{{pub.publisher_name}}</option>
+            {% if game.publisher_name == pub.publisher_name %}
+                <option selected value="{{pub.publisher_name}}">{{pub.publisher_name}}</option>
+            {% else %}
+                <option value="{{pub.publisher_name}}">{{pub.publisher_name}}</option>
+            {% endif %}
           {% endfor %}
         </select>
         <label>Publisher Name</label>
