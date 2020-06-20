@@ -1,8 +1,13 @@
 import os
 from os import path
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, jsonify, json
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from datetime import datetime
+from flask_cros import CORS
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager
+from flask_jwt_extended import (create_access_token)
 
 # checks if the env.py file exists, if true it imports the file,
 # used to get the enviramental variables
@@ -13,13 +18,24 @@ MONGODB_URI = os.getenv("MONGO_URI")
 DBS_NAME = "Game_Score"
 COLLECTION_NAME = "games"
 
+
 app = Flask(__name__)
+
 app.config["MONGO_DBNAME"] = 'Game_score'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
 mongo = PyMongo(app)
+bcrypt = Bcrypt(app)
+jwt = JWTManager(app)
+
+CORS(app)
+
+
+
 
 # Initial load page
+
+users = mongo.db.users
 
 
 @app.route('/')
