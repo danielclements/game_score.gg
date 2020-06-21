@@ -34,6 +34,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add</a>
         <div class="dropdown-menu  navy-bg " aria-labelledby="navbarDropdown">
+          <a class=" nav-link hover-salmon" href="{{url_for('register_user')}}">User</a>
           <a class=" nav-link hover-salmon" href="{{url_for('add_game')}}">Game</a>
           <a class=" nav-link hover-salmon" href="{{url_for('add_category')}}">Category</a>
           <a class=" nav-link hover-salmon" href="{{url_for('add_publisher')}}">Publisher</a>
@@ -49,7 +50,8 @@
           <a class=" nav-link hover-salmon" href="{{url_for('view_publishers')}}">Publishers</a>
         </div>
       </li>
-      
+        <a class=" nav-link hover-salmon" href="{{url_for('user_login')}}">Log in</a>
+
     </ul>
   </div>
 </nav>

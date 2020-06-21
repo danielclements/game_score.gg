@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>Add User</h3>
+<div class="row">
+	<form action="{{url_for('login')}}" method="POST">
+
+        <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input id="username" name="username" type="text"/>
+				<label for="icon_prefix">Username</label>
+			</div>
+		</div>
+
+        <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input id="password" name="password" type="text"/>
+				<label for="icon_prefix">password</label>
+			</div>
+		</div>
+
+        <div calss="row">
+			<button class="btn dr-less-green text-white" type="submit">
+            Add User!
+            <i class="fas fa-folder-plus"></i>
+            </button>
+	    </div>
+	</form>
+</div>
+
+{% endblock %}
