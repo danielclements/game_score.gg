@@ -92,6 +92,13 @@ def login():
     return 'Invalid username/password combination'
 
 
+@app.route('/users/logout')
+def logout():
+    session.pop("username")
+    flash('You were successfully logged Out')
+
+    return redirect(url_for('get_admin_panel'))
+
 # Initial load page
 
 
@@ -119,15 +126,15 @@ def add_game():
 
 @ app.route('/insert_game', methods=['GET', 'POST'])
 def insert_game():
-    games=mongo.db.games
-    platforms=request.values.getlist('platforms')
-    game_categories=request.values.getlist('game_categories')
-    game_name=request.form['game_name']
-    game_summ=request.form['game_summ']
-    developer_name=request.form.get('developer_name')
-    publisher_name=request.form.get('publisher_name')
-    release_date=request.form['release_date']
-    affiliate_link=request.form['affiliate_link']
+    games = mongo.db.games
+    platforms = request.values.getlist('platforms')
+    game_categories = request.values.getlist('game_categories')
+    game_name = request.form['game_name']
+    game_summ = request.form['game_summ']
+    developer_name = request.form.get('developer_name')
+    publisher_name = request.form.get('publisher_name')
+    release_date = request.form['release_date']
+    affiliate_link = request.form['affiliate_link']
     games.insert_one({
         'game_name': game_name,
         'game_categories': game_categories,
@@ -149,7 +156,7 @@ def add_category():
 
 @ app.route('/insert_category', methods=['POST'])
 def insert_category():
-    category_doc={'category_name': request.form.get('category_name')}
+    category_doc = {'category_name': request.form.get('category_name')}
     mongo.db.categories.insert_one(category_doc)
     return redirect(url_for('get_admin_panel'))
 
@@ -161,10 +168,10 @@ def add_publisher():
 
 @ app.route('/insert_publisher', methods=['GET', 'POST'])
 def insert_publisher():
-    publishers=mongo.db.publishers
-    publisher_name=request.form.get('publisher_name')
-    publisher_desc=request.form.get('publisher_desc')
-    publisher_founding_date=request.form.get('publisher_founding_date')
+    publishers = mongo.db.publishers
+    publisher_name = request.form.get('publisher_name')
+    publisher_desc = request.form.get('publisher_desc')
+    publisher_founding_date = request.form.get('publisher_founding_date')
     publishers.insert_one({
         'publisher_name': publisher_name,
         'publisher_desc': publisher_desc,
@@ -182,13 +189,13 @@ def add_review():
 
 @ app.route('/insert_review', methods=['POST', 'GET'])
 def insert_review():
-    reviews=mongo.db.reviews
-    review_game=request.form.get('review_game')
-    review_header=request.form['review_header']
-    review_author=request.form['review_author']
-    review_body=request.form['review_body']
-    review_date=request.form['review_date']
-    review_score=request.form['review_score']
+    reviews = mongo.db.reviews
+    review_game = request.form.get('review_game')
+    review_header = request.form['review_header']
+    review_author = request.form['review_author']
+    review_body = request.form['review_body']
+    review_date = request.form['review_date']
+    review_score = request.form['review_score']
 
     reviews.insert_one({
         'review_game': review_game,
@@ -209,10 +216,10 @@ def add_developer():
 
 @ app.route('/insert_developer', methods=['GET', 'POST'])
 def insert_developer():
-    developers=mongo.db.developers
-    developer_name=request.form.get('developer_name')
-    developer_desc=request.form.get('developer_desc')
-    developer_founding_date=request.form.get('developer_founding_date')
+    developers = mongo.db.developers
+    developer_name = request.form.get('developer_name')
+    developer_desc = request.form.get('developer_desc')
+    developer_founding_date = request.form.get('developer_founding_date')
     developers.insert_one({
         'developer_name': developer_name,
         'developer_desc': developer_desc,
@@ -226,7 +233,7 @@ def insert_developer():
 
 @ app.route('/edit_game/<game_id>')
 def edit_game(game_id):
-    the_game=mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     return render_template('editgame.html', game=the_game,
                            categories=mongo.db.categories.find(),
                            developers=mongo.db.developers.find(),
@@ -236,7 +243,7 @@ def edit_game(game_id):
 
 @ app.route('/update_game/<game_id>', methods=["POST", "GET"])
 def update_game(game_id):
-    games=mongo.db.games
+    games = mongo.db.games
     games.update({'_id': ObjectId(game_id)},
                  {
         'game_name': request.form.get('game_name'),
@@ -275,7 +282,7 @@ def edit_publisher(publisher_id):
 
 @ app.route('/update_publisher/<publisher_id>', methods=['POST'])
 def update_publisher(publisher_id):
-    publishers=mongo.db.publishers
+    publishers = mongo.db.publishers
     publishers.update({'_id': ObjectId(publisher_id)},
                       {
         'publisher_name': request.form.get('publisher_name'),
@@ -295,7 +302,7 @@ def edit_developer(developer_id):
 
 @ app.route('/update_developer/<developer_id>', methods=['POST'])
 def update_developer(developer_id):
-    developers=mongo.db.developers
+    developers = mongo.db.developers
     developers.update({'_id': ObjectId(developer_id)},
                       {
         'developer_name': request.form.get('developer_name'),
@@ -308,8 +315,8 @@ def update_developer(developer_id):
 
 @ app.route('/edit_review/<review_id>')
 def edit_review(review_id):
-    the_review=mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
-    all_games=mongo.db.games.find()
+    the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    all_games = mongo.db.games.find()
     return render_template('edit_review.html',
                            review=the_review,
                            games=all_games)
@@ -317,7 +324,7 @@ def edit_review(review_id):
 
 @ app.route('/update_review/<review_id>', methods=['POST'])
 def update_review(review_id):
-    reviews=mongo.db.reviews
+    reviews = mongo.db.reviews
     reviews.update({'_id': ObjectId(review_id)},
                    {
         'review_game': request.form.get('review_game'),
@@ -353,8 +360,8 @@ def view_publishers():
 
 @ app.route('/game/review/<game_id>')
 def view_game_review(game_id):
-    the_game=mongo.db.games.find_one({"_id": ObjectId(game_id)})
-    all_reviews=mongo.db.reviews.find()
+    the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
+    all_reviews = mongo.db.reviews.find()
     return render_template('view_game_review.html',
                            reviews=all_reviews,
                            game=the_game)
@@ -383,7 +390,7 @@ def view_games_by_category(category_name):
 
 
 if __name__ == '__main__':
-    app.secret_key=os.getenv('SECRET_KEY')
+    app.secret_key = os.getenv('SECRET_KEY')
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
