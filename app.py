@@ -59,17 +59,20 @@ def register():
             password = bcrypt.hashpw(
                 request.form['password'].encode('utf-8'), bcrypt.gensalt())
             created = datetime.utcnow()
+            permission = 'default'
             users.insert_one({
                 'first_name': first_name,
                 'last_name': last_name,
                 'email': email,
                 'password': password,
                 'username': username,
+                'permission': permission,
                 'created': created
             })
             session['username'] = request.form.get('username')
             return redirect(url_for('index'))
-        return 'That Username already exists!'
+        flash('That Username already exists!')
+        return redirect(url_for('register_user'))
     return redirect(url_for('user_login'))
 
 
