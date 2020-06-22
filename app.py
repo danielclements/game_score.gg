@@ -1,6 +1,6 @@
 import os
 from os import path
-from flask import Flask, render_template, redirect, request, url_for, jsonify, session
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import datetime
@@ -31,8 +31,8 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    if 'username' in session:
-        return 'You are logged in as ' + session['username']
+    # if 'username' in session:
+    #     return 'You are logged in as ' + session['username']
 
     return redirect(url_for('get_admin_panel'))
 
@@ -87,6 +87,7 @@ def login():
     if login_user:
         if bcrypt.hashpw(request.form.get('password').encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
+            flash('You were successfully logged in')
             return redirect(url_for('index'))
     return 'Invalid username/password combination'
 
