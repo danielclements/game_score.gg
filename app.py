@@ -205,6 +205,7 @@ def insert_review():
     review_body = request.form['review_body']
     review_date = request.form['review_date']
     review_score = request.form['review_score']
+    review_by = session['username']
 
     reviews.insert_one({
         'review_game': review_game,
@@ -213,6 +214,7 @@ def insert_review():
         'review_body': review_body,
         'review_date': review_date,
         'review_score': review_score,
+        'review_by': review_by
     })
 
     return redirect(url_for('get_admin_panel'))
