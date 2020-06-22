@@ -32,9 +32,9 @@ mongo = PyMongo(app)
 @app.route('/')
 def index():
     # if 'username' in session:
-    #     return 'You are logged in as ' + session['username']
+    #     flash('You are logged in as ' + session['username'])
 
-    return redirect(url_for('get_admin_panel'))
+    return redirect(url_for('view_games'))
 
 
 @app.route('/users/registration', methods=["POST", "GET"])
@@ -107,13 +107,19 @@ def logout():
 
 @ app.route('/get_admin_panel')
 def get_admin_panel():
-    return render_template('adminpanel.html',
-                           categories=mongo.db.categories.find(),
-                           games=mongo.db.games.find(),
-                           publishers=mongo.db.publishers.find(),
-                           developers=mongo.db.developers.find(),
-                           platforms=mongo.db.platforms.find(),
-                           reviews=mongo.db.reviews.find())
+
+    if 'username' in session:
+        if session["username"] == 'admin':
+            return render_template('adminpanel.html',
+                                categories=mongo.db.categories.find(),
+                                games=mongo.db.games.find(),
+                                publishers=mongo.db.publishers.find(),
+                                developers=mongo.db.developers.find(),
+                                platforms=mongo.db.platforms.find(),
+                                reviews=mongo.db.reviews.find())
+    else:
+        flash("Please Log In as Administrator to access this page")
+        return redirect(url_for('user_login'))
 
 # Routing and functions to add to the database
 

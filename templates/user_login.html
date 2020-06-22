@@ -1,6 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add User</h3>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{msg}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<h3>Login</h3>
 <div class="row">
 	<form action="{{url_for('login')}}" method="POST">
 
@@ -22,7 +30,7 @@
 
         <div calss="row">
 			<button class="btn dr-less-green text-white" type="submit">
-            Add User!
+            Login
             <i class="fas fa-folder-plus"></i>
             </button>
 	    </div>
