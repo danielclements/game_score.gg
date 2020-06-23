@@ -4,6 +4,14 @@
 <div class="row">
 	<form action="{{ url_for('update_game', game_id=game._id) }}" method="POST">
 
+
+    <div class="form-group">
+      <div class="input-field">
+        <i class="material-icons prefix">gamepad</i>
+        <p>Game added by: {{session['username']}}</p>
+      </div>
+    </div>
+
     <div class="form-group">
         <i class="fas fa-list"></i>
       <select class="selectpicker" multiple data-live-search="true" id="game_categories" name="game_categories">
@@ -15,6 +23,9 @@
       </select>
       <label for="categories">Select Categories</label>
     </div>
+
+
+
 
     <div class="form-group">
       <div class="input-field">

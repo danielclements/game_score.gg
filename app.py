@@ -144,6 +144,8 @@ def insert_game():
     publisher_name = request.form.get('publisher_name')
     release_date = request.form['release_date']
     affiliate_link = request.form['affiliate_link']
+    game_added_by = session['username']
+
     games.insert_one({
         'game_name': game_name,
         'game_categories': game_categories,
@@ -152,7 +154,8 @@ def insert_game():
         'developer_name': developer_name,
         'publisher_name': publisher_name,
         'release_date': release_date,
-        'affiliate_link': affiliate_link
+        'affiliate_link': affiliate_link,
+        'game_added_by': game_added_by
     })
 
     return redirect(url_for('get_admin_panel'))
