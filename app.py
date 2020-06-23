@@ -252,6 +252,7 @@ def add_developer():
         flash("Please login to access this feature!")
         return redirect(url_for('user_login'))
 
+
 @ app.route('/insert_developer', methods=['GET', 'POST'])
 def insert_developer():
     developers = mongo.db.developers
@@ -266,18 +267,24 @@ def insert_developer():
     return redirect(url_for('get_admin_panel'))
 
 
-# Edit database sectionå
+# Edit database section
 
 
 @ app.route('/edit_game/<game_id>')
 def edit_game(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
-    return render_template('editgame.html', game=the_game,
-                           games=mongo.db.games.find(),
-                           categories=mongo.db.categories.find(),
-                           developers=mongo.db.developers.find(),
-                           publishers=mongo.db.publishers.find(),
-                           platforms=mongo.db.platforms.find(),)
+    creator = the_game['game_added_by']
+    if session['username'] == creator:
+        return render_template('editgame.html', game=the_game,
+                               games=mongo.db.games.find(),
+                               categories=mongo.db.categories.find(),
+                               developers=mongo.db.developers.find(),
+                               publishers=mongo.db.publishers.find(),
+                               platforms=mongo.db.platforms.find(),)
+
+    else:
+        flash('Please log in as:' + creator)
+        return redirect(url_for('user_login'))
 
 
 @ app.route('/update_game/<game_id>', methods=["POST", "GET"])
@@ -355,11 +362,16 @@ def update_developer(developer_id):
 @ app.route('/edit_review/<review_id>')
 def edit_review(review_id):
     the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
+    creator = the_review['review_by']
     all_games = mongo.db.games.find()
-    return render_template('edit_review.html',
-                           review=the_review,
-                           games=all_games)
-
+    print(creator)
+    if session['username'] == creator:
+        return render_template('edit_review.html',
+                               review=the_review,
+                               games=all_games)
+    else:
+        flash('please login as: ' + creator)
+        return redirect(url_for('user_login'))
 
 @ app.route('/update_review/<review_id>', methods=['POST'])
 def update_review(review_id):

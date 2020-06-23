@@ -3,7 +3,7 @@
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for msg in messages %}
-            <p>{{msg}}</p>
+            <h5 class="text-success">{{msg}}</h5>
         {% endfor %}
     {% endif %}
 {% endwith %}
