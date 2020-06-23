@@ -89,6 +89,8 @@ def login():
 
     if login_user:
         if bcrypt.hashpw(request.form.get('password').encode('utf-8'), login_user['password']) == login_user['password']:
+            if session:
+                session.pop("username")
             session['username'] = request.form['username']
             flash('You were successfully logged in')
             return redirect(url_for('index'))
@@ -111,12 +113,15 @@ def get_admin_panel():
     if 'username' in session:
         if session["username"] == 'admin':
             return render_template('adminpanel.html',
-                                categories=mongo.db.categories.find(),
-                                games=mongo.db.games.find(),
-                                publishers=mongo.db.publishers.find(),
-                                developers=mongo.db.developers.find(),
-                                platforms=mongo.db.platforms.find(),
-                                reviews=mongo.db.reviews.find())
+                                   categories=mongo.db.categories.find(),
+                                   games=mongo.db.games.find(),
+                                   publishers=mongo.db.publishers.find(),
+                                   developers=mongo.db.developers.find(),
+                                   platforms=mongo.db.platforms.find(),
+                                   reviews=mongo.db.reviews.find())
+        else:
+            flash("Please Log In as Administrator to access this page")
+            return redirect(url_for('user_login'))
     else:
         flash("Please Log In as Administrator to access this page")
         return redirect(url_for('user_login'))
@@ -158,7 +163,7 @@ def insert_game():
         'game_added_by': game_added_by
     })
 
-    return redirect(url_for('get_admin_panel'))
+    return redirect(url_for('view_games'))
 
 
 @ app.route('/add_category')
@@ -249,6 +254,7 @@ def insert_developer():
 def edit_game(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     return render_template('editgame.html', game=the_game,
+                           games=mongo.db.games.find(),
                            categories=mongo.db.categories.find(),
                            developers=mongo.db.developers.find(),
                            publishers=mongo.db.publishers.find(),
