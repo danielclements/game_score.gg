@@ -131,11 +131,15 @@ def get_admin_panel():
 
 @ app.route('/add_game')
 def add_game():
-    return render_template('addgame.html',
-                           categories=mongo.db.categories.find(),
-                           developers=mongo.db.developers.find(),
-                           publishers=mongo.db.publishers.find(),
-                           platforms=mongo.db.platforms.find())
+    if 'username' in session:
+        return render_template('addgame.html',
+                               categories=mongo.db.categories.find(),
+                               developers=mongo.db.developers.find(),
+                               publishers=mongo.db.publishers.find(),
+                               platforms=mongo.db.platforms.find())
+    else:
+        flash("Please login to access this feature!")
+        return redirect(url_for('user_login'))
 
 
 @ app.route('/insert_game', methods=['GET', 'POST'])
@@ -168,7 +172,11 @@ def insert_game():
 
 @ app.route('/add_category')
 def add_category():
-    return render_template('addcategory.html')
+    if 'username' in session:
+        return render_template('addcategory.html')
+    else:
+        flash("Please login to access this feature!")
+        return redirect(url_for('user_login'))
 
 
 @ app.route('/insert_category', methods=['POST'])
@@ -180,7 +188,11 @@ def insert_category():
 
 @ app.route('/add_publisher')
 def add_publisher():
-    return render_template('add_publisher.html')
+    if 'username' in session:
+        return render_template('add_publisher.html')
+    else:
+        flash("Please login to access this feature!")
+        return redirect(url_for('user_login'))
 
 
 @ app.route('/insert_publisher', methods=['GET', 'POST'])
@@ -200,8 +212,12 @@ def insert_publisher():
 
 @ app.route('/add_review')
 def add_review():
-    return render_template('add_review.html',
-                           games=mongo.db.games.find())
+    if 'username' in session:
+        return render_template('add_review.html',
+                               games=mongo.db.games.find())
+    else:
+        flash("Please login to access this feature!")
+        return redirect(url_for('user_login'))
 
 
 @ app.route('/insert_review', methods=['POST', 'GET'])
@@ -230,8 +246,11 @@ def insert_review():
 
 @ app.route('/add_developer')
 def add_developer():
-    return render_template('add_developer.html')
-
+    if 'username' in session:
+        return render_template('add_developer.html')
+    else:
+        flash("Please login to access this feature!")
+        return redirect(url_for('user_login'))
 
 @ app.route('/insert_developer', methods=['GET', 'POST'])
 def insert_developer():
