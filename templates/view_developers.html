@@ -11,6 +11,9 @@
         <h6 class="card-subtitle mb-2 text-muted">Founded: {{developer.developer_founding_date}}</h6>
         <p class="card-text text-overflow">{{developer.developer_desc}}</p>
         <a href="{{url_for('view_games_by_developer', developer_name=developer.developer_name)}}" class="btn btn-primary">view Games</a>
+        {% if session['username'] == developer.added_by %}
+            <a href="{{url_for('edit_developer', developer_id=developer._id)}}" class="btn btn-primary">Edit Developer</a>
+        {% endif %}
     </div>
     </div>
 

@@ -2,3 +2,8 @@ https://stackoverflow.com/questions/31499804/insert-data-into-with-pymongo-and-f
 
 
 https://stackoverflow.com/questions/50895806/bootstrap-4-multiselect-dropdown multiple select 
+
+
+https://www.youtube.com/watch?v=vVx1737auSE login session tutorial 
+
+https://www.youtube.com/watch?v=qbnqNWXf_tU message flashing 

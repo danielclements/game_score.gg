@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% block content %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p>{{msg}}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<h3>Add User</h3>
+<div class="row">
+	<form action="{{url_for('register')}}" method="POST">
+
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input id="first_name" name="first_name" type="text"/>
+				<label for="icon_prefix">First Name</label>
+			</div>
+		</div>
+
+
+        <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input id="last_name" name="last_name" type="text"/>
+				<label for="icon_prefix">Last Name</label>
+			</div>
+		</div>
+
+        <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input id="username" name="username" type="text"/>
+				<label for="icon_prefix">Username</label>
+			</div>
+		</div>        
+		
+
+
+        <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input id="email" name="email" type="text"/>
+				<label for="icon_prefix">email</label>
+			</div>
+		</div>
+
+        <div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix">gamepad</i>
+				<input id="password" name="password" type="text"/>
+				<label for="icon_prefix">password</label>
+			</div>
+		</div>
+
+        <div calss="row">
+			<button class="btn dr-less-green text-white" type="submit">
+            Add User!
+            <i class="fas fa-folder-plus"></i>
+            </button>
+	    </div>
+	</form>
+</div>
+
+{% endblock %}
