@@ -181,7 +181,8 @@ def add_category():
 
 @ app.route('/insert_category', methods=['POST'])
 def insert_category():
-    category_doc = {'category_name': request.form.get('category_name')}
+    category_doc = {'category_name': request.form.get('category_name'),
+                    'added_by': session['username']}
     mongo.db.categories.insert_one(category_doc)
     return redirect(url_for('get_admin_panel'))
 
@@ -201,10 +202,12 @@ def insert_publisher():
     publisher_name = request.form.get('publisher_name')
     publisher_desc = request.form.get('publisher_desc')
     publisher_founding_date = request.form.get('publisher_founding_date')
+    added_by = session['username']
     publishers.insert_one({
         'publisher_name': publisher_name,
         'publisher_desc': publisher_desc,
-        'publisher_founding_date': publisher_founding_date
+        'publisher_founding_date': publisher_founding_date,
+        'added_by': added_by
 
     })
     return redirect(url_for('get_admin_panel'))
@@ -259,10 +262,12 @@ def insert_developer():
     developer_name = request.form.get('developer_name')
     developer_desc = request.form.get('developer_desc')
     developer_founding_date = request.form.get('developer_founding_date')
+    added_by = session['username']
     developers.insert_one({
         'developer_name': developer_name,
         'developer_desc': developer_desc,
-        'developer_founding_date': developer_founding_date
+        'developer_founding_date': developer_founding_date,
+        'added_by': added_by
     })
     return redirect(url_for('get_admin_panel'))
 
@@ -370,7 +375,7 @@ def edit_review(review_id):
                                review=the_review,
                                games=all_games)
     else:
-        flash('please login as: ' + creator)
+        flash('please login as:' + creator)
         return redirect(url_for('user_login'))
 
 @ app.route('/update_review/<review_id>', methods=['POST'])
