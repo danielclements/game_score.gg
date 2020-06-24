@@ -31,10 +31,7 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    # if 'username' in session:
-    #     flash('You are logged in as ' + session['username'])
-
-    return redirect(url_for('view_games'))
+    return redirect(url_for('home_page'))
 
 
 @app.route('/home')
@@ -100,7 +97,8 @@ def login():
             session['username'] = request.form['username']
             flash('You were successfully logged in')
             return redirect(url_for('index'))
-    return 'Invalid username/password combination'
+    flash('Invalid username/password combination')
+    return redirect(url_for('user_login'))
 
 
 @app.route('/users/logout')
@@ -108,7 +106,7 @@ def logout():
     session.pop("username")
     flash('You were successfully logged Out')
 
-    return redirect(url_for('get_admin_panel'))
+    return redirect(url_for('home_page'))
 
 # Initial load page
 
