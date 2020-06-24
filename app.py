@@ -311,9 +311,15 @@ def update_game(game_id):
 
 @ app.route('/edit_category/<category_id>')
 def edit_category(category_id):
-    return render_template('edit_category.html',
-                           category=mongo.db.categories.find_one(
-                               {'_id': ObjectId(category_id)}))
+    the_category = mongo.db.categories.find_one(
+        {'_id': ObjectId(category_id)})
+    creator = the_category['added_by']
+    if session['username'] == creator:
+        return render_template('edit_category.html',
+                               category=the_category)
+    else:
+        flash('Please log in as   ' + creator)
+        return redirect(url_for('user_login'))
 
 
 @ app.route('/update_category/<category_id>', methods=['POST'])
@@ -326,9 +332,15 @@ def update_category(category_id):
 
 @ app.route('/edit_publisher/<publisher_id>')
 def edit_publisher(publisher_id):
-    return render_template('edit_publisher.html',
-                           publisher=mongo.db.publishers.find_one(
-                               {'_id': ObjectId(publisher_id)}))
+    the_publisher = mongo.db.publishers.find_one(
+        {'_id': ObjectId(publisher_id)})
+    creator = the_publisher['added_by']
+    if session['username'] == creator:
+        return render_template('edit_publisher.html',
+                               publisher=the_publisher)
+    else:
+        flash('Please login as  ' + creator)
+        return redirect(url_for('user_login'))
 
 
 @ app.route('/update_publisher/<publisher_id>', methods=['POST'])
@@ -346,9 +358,15 @@ def update_publisher(publisher_id):
 
 @ app.route('/edit_developer/<developer_id>')
 def edit_developer(developer_id):
-    return render_template('edit_developer.html',
-                           developer=mongo.db.developers.find_one(
-                               {'_id': ObjectId(developer_id)}))
+    the_developer = mongo.db.developers.find_one(
+        {'_id': ObjectId(developer_id)})
+    creator = the_developer['added_by']
+    if session['username'] == creator:
+        return render_template('edit_developer.html',
+                               developer=the_developer)
+    else:
+        flash('Please login as :  ' + creator)
+        return redirect(url_for('user_login'))
 
 
 @ app.route('/update_developer/<developer_id>', methods=['POST'])
@@ -377,6 +395,7 @@ def edit_review(review_id):
     else:
         flash('please login as:' + creator)
         return redirect(url_for('user_login'))
+
 
 @ app.route('/update_review/<review_id>', methods=['POST'])
 def update_review(review_id):
