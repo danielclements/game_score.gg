@@ -37,6 +37,12 @@ def index():
     return redirect(url_for('view_games'))
 
 
+@app.route('/home')
+def home_page():
+    return render_template('home_page.html',
+                           games=mongo.db.games.find())
+
+
 @app.route('/users/registration', methods=["POST", "GET"])
 def register_user():
     return render_template('user_registration.html',
