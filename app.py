@@ -73,6 +73,7 @@ def register():
                 'created': created
             })
             session['username'] = request.form.get('username')
+            flash('Account successfully registered!')
             return redirect(url_for('index'))
         flash('That Username already exists!')
         return redirect(url_for('register_user'))
