@@ -14,14 +14,22 @@
   </div>
 </div>
 <div class="row d-flex justify-content-center text-darks">
-  {% for game in games %}
+    {% for game in games %}
 
-  <div class="card m-2" style="width: 18rem;">
-    <img
-      src="/static/images/generic_place_holder.jpg"
-      class="card-img-top"
-      alt="missing image"
-    />
+      <div class="card m-2" style="width: 18rem;">
+        {% if game.game_image_url is defined %}
+            <img
+            src="{{game.game_image_url}}"
+            class="card-img-top"
+            alt="Missing Game Image"
+            />
+        {% else %}
+            <img
+            src="/static/images/generic_place_holder.jpg"
+            class="card-img-top"
+            alt="Missing Game Image"
+            />
+        {% endif %}
     <div class="card-body">
       <h6 class="card-title">{{game.game_name}}</h6>
       <h6 class="card-subtitle mb-2 text-muted">Released: {{game.release_date}}</h6>

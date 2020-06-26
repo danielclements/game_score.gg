@@ -158,6 +158,7 @@ def insert_game():
     publisher_name = request.form.get('publisher_name')
     release_date = request.form['release_date']
     affiliate_link = request.form['affiliate_link']
+    game_image_url = request.form['game_image_url']
     game_added_by = session['username']
 
     games.insert_one({
@@ -169,6 +170,7 @@ def insert_game():
         'publisher_name': publisher_name,
         'release_date': release_date,
         'affiliate_link': affiliate_link,
+        'game_image_url': game_image_url,
         'game_added_by': game_added_by
     })
 
