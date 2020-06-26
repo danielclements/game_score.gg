@@ -9,8 +9,12 @@
 				<i class="material-icons prefix" >videogame_asset</i>
 				<select id="review_game" name="review_game">
             <option  disabled selected>Choose Game</option>
-            {% for game in games %}
-          <option value="{{game.game_name}}">{{game.game_name}}</option>
+          {% for game in games %}
+            {% if the_game.game_name == game.game_name %}
+                    <option selected value="{{the_game.game_name}}">{{the_game.game_name}}</option>
+            {% else %}
+                    <option value="{{game.game_name}}">{{game.game_name}}</option>
+            {% endif %}
           {% endfor %}
         </select>
 				<label>Game Name</label>

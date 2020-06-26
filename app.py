@@ -228,7 +228,7 @@ def add_review():
         return redirect(url_for('user_login'))
 
 
-@ app.route('/insert_review', methods=['POST', 'GET'])
+@app.route('/insert_review', methods=['POST', 'GET'])
 def insert_review():
     users = mongo.db.users
     login_user = users.find_one({'username': session['username']})
@@ -253,7 +253,20 @@ def insert_review():
     return redirect(url_for('home_page'))
 
 
-@ app.route('/add_developer')
+@app.route('/review/game/<game_id>')
+def review_by_game(game_id):
+    the_game = mongo.db.games.find_one({'_id': ObjectId(game_id)})
+    print(the_game)
+    if 'username' in session:
+        return render_template('add_review.html',
+                               the_game=the_game,
+                               games=mongo.db.games.find())
+    else:
+        flash("Please login to access this feature!")
+        return redirect(url_for('user_login'))
+
+
+@app.route('/add_developer')
 def add_developer():
     if 'username' in session:
         return render_template('add_developer.html')
