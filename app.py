@@ -325,7 +325,8 @@ def update_game(game_id):
         'publisher_name': request.form.get('publisher_name'),
         'release_date': request.form.get('release_date'),
         'affiliate_link': request.form.get('affiliate_link'),
-        'game_summ': request.form.get('game_summ')
+        'game_summ': request.form.get('game_summ'),
+        'game_image_url': request.form['game_image_url']
     })
     return redirect(url_for('get_admin_panel'))
 
