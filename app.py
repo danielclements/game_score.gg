@@ -230,14 +230,15 @@ def add_review():
 
 @ app.route('/insert_review', methods=['POST', 'GET'])
 def insert_review():
+    users = mongo.db.users
+    login_user = users.find_one({'username': session['username']})
     reviews = mongo.db.reviews
     review_game = request.form.get('review_game')
     review_header = request.form['review_header']
-    review_author = request.form['review_author']
+    review_author = login_user['first_name'] + ' ' + login_user['last_name']
     review_body = request.form['review_body']
-    review_date = request.form['review_date']
+    review_date = datetime.utcnow()
     review_score = request.form['review_score']
-    review_by = session['username']
 
     reviews.insert_one({
         'review_game': review_game,
@@ -245,11 +246,10 @@ def insert_review():
         'review_author': review_author,
         'review_body': review_body,
         'review_date': review_date,
-        'review_score': review_score,
-        'review_by': review_by
+        'review_score': review_score
     })
 
-    return redirect(url_for('get_admin_panel'))
+    return redirect(url_for('home_page'))
 
 
 @ app.route('/add_developer')
