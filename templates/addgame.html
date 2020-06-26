@@ -10,11 +10,11 @@
         multiple
         data-live-search="true"
         id="game_categories"
-        name="game_ategories"
+        name="game_categories"
       >
         <option value="" disabled>Select Category</option>
         {% for category in categories %}
-        <option value="{{category.category_name}}"
+        <option id="category_name" name="category_name" value="{{category.category_name}}"
           >{{category.category_name}}</option
         >
         {% endfor %}
