@@ -17,15 +17,17 @@
     {% for game in games %}
 
       <div class="card m-2" style="width: 18rem;">
-        {% if game.game_image_url is defined %}
+        {% if game.game_image_url == "" %}
+
             <img
-            src="{{game.game_image_url}}"
+            src="/static/images/generic_place_holder.jpg"
             class="card-img-top"
             alt="Missing Game Image"
             />
+          
         {% else %}
             <img
-            src="/static/images/generic_place_holder.jpg"
+            src="{{game.game_image_url}}"
             class="card-img-top"
             alt="Missing Game Image"
             />
