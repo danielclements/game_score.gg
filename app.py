@@ -160,6 +160,7 @@ def insert_game():
     affiliate_link = request.form['affiliate_link']
     game_image_url = request.form['game_image_url']
     game_added_by = session['username']
+    game_add_date = datetime.utcnow()
 
     games.insert_one({
         'game_name': game_name,
@@ -171,7 +172,8 @@ def insert_game():
         'release_date': release_date,
         'affiliate_link': affiliate_link,
         'game_image_url': game_image_url,
-        'game_added_by': game_added_by
+        'game_added_by': game_added_by,
+        'game_add_date': game_add_date
     })
 
     return redirect(url_for('view_games'))
@@ -313,22 +315,23 @@ def edit_game(game_id):
         return redirect(url_for('user_login'))
 
 
-@ app.route('/update_game/<game_id>', methods=["PUT", "GET"])
+@ app.route('/update_game/<game_id>', methods=["POST", "GET"])
 def update_game(game_id):
     games = mongo.db.games
-    games.update({'_id': ObjectId(game_id)},
+    games.update_one({'_id': ObjectId(game_id)},
                  {
-        'game_name': request.form.get('game_name'),
-        'game_categories': request.form.getlist('game_categories'),
-        'platforms': request.values.getlist('platforms'),
-        'developer_name': request.form.get('developer_name'),
-        'publisher_name': request.form.get('publisher_name'),
-        'release_date': request.form.get('release_date'),
-        'affiliate_link': request.form.get('affiliate_link'),
-        'game_summ': request.form.get('game_summ'),
-        'game_image_url': request.form['game_image_url'],
-        'game_added_by': session['username']
-    })
+                     '$set': {
+                         'game_name': request.form.get('game_name'),
+                         'game_categories': request.form.getlist('game_categories'),
+                         'platforms': request.values.getlist('platforms'),
+                         'developer_name': request.form.get('developer_name'),
+                         'publisher_name': request.form.get('publisher_name'),
+                         'release_date': request.form.get('release_date'),
+                         'affiliate_link': request.form.get('affiliate_link'),
+                         'game_summ': request.form.get('game_summ'),
+                         'game_image_url': request.form['game_image_url'],
+                         'game_edit_date': datetime.utcnow()
+                     }})
     return redirect(url_for('get_admin_panel'))
 
 
