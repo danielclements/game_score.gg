@@ -10,8 +10,10 @@
 				<select id="review_game" name="review_game">
             <option  disabled selected>Choose Game</option>
           {% for game in games %}
-            {% if the_game.game_name == game.game_name %}
-                    <option selected value="{{the_game.game_name}}">{{the_game.game_name}}</option>
+            {% if the_game is defined %}
+                {% if the_game.game_name == game.game_name %}
+                        <option selected value="{{the_game.game_name}}">{{the_game.game_name}}</option>
+                {% endif %}
             {% else %}
                     <option value="{{game.game_name}}">{{game.game_name}}</option>
             {% endif %}

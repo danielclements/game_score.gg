@@ -313,7 +313,7 @@ def edit_game(game_id):
         return redirect(url_for('user_login'))
 
 
-@ app.route('/update_game/<game_id>', methods=["POST", "GET"])
+@ app.route('/update_game/<game_id>', methods=["PUT", "GET"])
 def update_game(game_id):
     games = mongo.db.games
     games.update({'_id': ObjectId(game_id)},
@@ -326,7 +326,8 @@ def update_game(game_id):
         'release_date': request.form.get('release_date'),
         'affiliate_link': request.form.get('affiliate_link'),
         'game_summ': request.form.get('game_summ'),
-        'game_image_url': request.form['game_image_url']
+        'game_image_url': request.form['game_image_url'],
+        'game_added_by': session['username']
     })
     return redirect(url_for('get_admin_panel'))
 
@@ -404,7 +405,7 @@ def update_developer(developer_id):
     return redirect(url_for('get_admin_panel'))
 
 
-@ app.route('/edit_review/<review_id>')
+@ app.route('/edit_review/<review_id>', methods=['get'])
 def edit_review(review_id):
     the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     creator = the_review['review_by']
@@ -421,16 +422,18 @@ def edit_review(review_id):
 
 @ app.route('/update_review/<review_id>', methods=['POST'])
 def update_review(review_id):
+    the_review = mongo.db.review.find_one({'_id': ObjectId(review_id)})
+    print(the_review)
     reviews = mongo.db.reviews
-    reviews.update({'_id': ObjectId(review_id)},
-                   {
-        'review_game': request.form.get('review_game'),
-        'review_header': request.form.get('review_header'),
-        'review_author': request.form.get('review_author'),
-        'review_body': request.form.get('review_body'),
-        'review_date': request.form.get('review_date'),
-        'review_score': request.form.get('review_score')
-    })
+    reviews.update_one({'_id': ObjectId(review_id)},
+                       {
+        '$set': {
+            'review_game': request.form.get('review_game'),
+            'review_header': request.form.get('review_header'),
+            'review_body': request.form.get('review_body'),
+            'review_edit_date': datetime.utcnow(),
+            'review_score': request.form.get('review_score')
+        }})
     return redirect(url_for('get_admin_panel'))
 
 

@@ -7,6 +7,14 @@
     method="POST"
     >
 
+    
+    <div class="row">
+      <div class="col s12">
+        <p id="review_author" name="review_author">Review By: {{review.review_author}}</p>
+      </div>
+    </div>
+
+
     <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">poll</i>
@@ -31,27 +39,11 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">gamepad</i>
-        <input id="review_author" name="review_author" type="text" value="{{review.review_author}}" />
-        <label for="icon_prefix">Author Name</label>
-      </div>
-    </div>
-
     <div class="input-group">
       <div class="input-group-prepend">
         <i class="material-icons prefix">gamepad</i>
       </div>
       <textarea id="review_body" name="review_body" class="form-control" aria-label="Review Body" >{{review.review_body}}</textarea>
-    </div>
-
-    <div class="row">
-      <div id="matfix" class="input-field col s12">
-        <i class="material-icons prefix">today</i>
-        <input type="datetime-local" id="review_date" name="review_date" value="{{review.review_date}}" />
-        <label for="icon_prefix">Review Date</label>
-      </div>
     </div>
 
     <div class="row">
