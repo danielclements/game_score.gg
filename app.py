@@ -212,11 +212,13 @@ def insert_publisher():
     publisher_desc = request.form.get('publisher_desc')
     publisher_founding_date = request.form.get('publisher_founding_date')
     added_by = session['username']
+    date_added = datetime.utcnow()
     publishers.insert_one({
         'publisher_name': publisher_name,
         'publisher_desc': publisher_desc,
         'publisher_founding_date': publisher_founding_date,
-        'added_by': added_by
+        'added_by': added_by,
+        'date_added': date_added
 
     })
     return redirect(url_for('get_admin_panel'))
@@ -286,11 +288,13 @@ def insert_developer():
     developer_desc = request.form.get('developer_desc')
     developer_founding_date = request.form.get('developer_founding_date')
     added_by = session['username']
+    date_added = datetime.utcnow()
     developers.insert_one({
         'developer_name': developer_name,
         'developer_desc': developer_desc,
         'developer_founding_date': developer_founding_date,
-        'added_by': added_by
+        'added_by': added_by,
+        'date_added': date_added
     })
     return redirect(url_for('get_admin_panel'))
 
@@ -319,7 +323,7 @@ def edit_game(game_id):
 def update_game(game_id):
     games = mongo.db.games
     games.update_one({'_id': ObjectId(game_id)},
-                 {
+                     {
                      '$set': {
                          'game_name': request.form.get('game_name'),
                          'game_categories': request.form.getlist('game_categories'),
@@ -350,9 +354,11 @@ def edit_category(category_id):
 
 @ app.route('/update_category/<category_id>', methods=['POST'])
 def update_category(category_id):
-    mongo.db.categories.update(
-        {'_id': ObjectId(category_id)},
-        {'category_name': request.form.get('category_name')})
+    mongo.db.categories.update_one({'_id': ObjectId(category_id)},
+                                   {
+        '$set': {
+            'category_name': request.form.get('category_name'),
+            'edit_date': datetime.utcnow()}})
     return redirect(url_for('get_admin_panel'))
 
 
@@ -372,13 +378,15 @@ def edit_publisher(publisher_id):
 @ app.route('/update_publisher/<publisher_id>', methods=['POST'])
 def update_publisher(publisher_id):
     publishers = mongo.db.publishers
-    publishers.update({'_id': ObjectId(publisher_id)},
-                      {
-        'publisher_name': request.form.get('publisher_name'),
-        'publisher_desc': request.form.get('publisher_desc'),
-        'publisher_founding_date': request.form.get('publisher_founding_date')
+    publishers.update_one({'_id': ObjectId(publisher_id)},
+                          {
+        '$set': {
+            'publisher_name': request.form.get('publisher_name'),
+            'publisher_desc': request.form.get('publisher_desc'),
+            'publisher_founding_date': request.form.get('publisher_founding_date'),
+            'edit_date': datetime.utcnow()
 
-    })
+        }})
     return redirect(url_for('get_admin_panel'))
 
 
@@ -398,13 +406,15 @@ def edit_developer(developer_id):
 @ app.route('/update_developer/<developer_id>', methods=['POST'])
 def update_developer(developer_id):
     developers = mongo.db.developers
-    developers.update({'_id': ObjectId(developer_id)},
-                      {
-        'developer_name': request.form.get('developer_name'),
-        'developer_desc': request.form.get('developer_desc'),
-        'developer_founding_date': request.form.get('developer_founding_date')
+    developers.update_one({'_id': ObjectId(developer_id)},
+                          {
+                          '$set': {
+                              'developer_name': request.form.get('developer_name'),
+                              'developer_desc': request.form.get('developer_desc'),
+                              'developer_founding_date': request.form.get('developer_founding_date'),
+                              'edit_date':  datetime.utcnow()
 
-    })
+                          }})
     return redirect(url_for('get_admin_panel'))
 
 
