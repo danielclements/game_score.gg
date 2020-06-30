@@ -1,24 +1,12 @@
 .landing-page-background {
-    background: url(/static/images/1041188.jpg) no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    position: relative;
-    min-height: 100vh;
+  background: url(/static/images/1041188.jpg) fixed ;
+  background-size: 100%
 
 }
 
 .background-alpha {
-    background: rgba(0, 0, 0, 0.2) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    padding: 0px;
-    position: relative;
-    min-height: 100vh;
-
+    background: rgba(0, 0, 0, 0.2) fixed;
+    min-height: 100vh
 }
 
 
@@ -46,6 +34,9 @@ a:hover{color: inherit;}
     background-color:#393e46;
     color: #f2f2f2;
     text-decoration: none;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 .navbar-grey:hover{
