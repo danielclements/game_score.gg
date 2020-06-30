@@ -3,16 +3,24 @@
   <h1 class="mx-auto">Games</h1>
 </div>
 
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Sort
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        {% for category in categories %}
-             <a class="dropdown-item" href="{{url_for('view_games_by_category', category_name=category.category_name)}}">{{category.category_name}}</a>
-        {% endfor %}
-  </div>
+<div class="row">
+    <div class="dropdown offset-1 col-5">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{{url_for('view_games')}}">None</a>
+            {% for category in categories %}
+                <a class="dropdown-item" href="{{url_for('view_games_by_category', category_name=category.category_name)}}">{{category.category_name}}</a>
+            {% endfor %}
+    </div>
+    </div>
+    <div class="d-flex justify-content-end col-5">
+        <a class="btn btn-primary " href="{{url_for('add_game')}}">Add Game</a>
+    </div>
 </div>
+
+
 <div class="row d-flex justify-content-center text-darks">
     {% for game in games %}
 
@@ -21,14 +29,14 @@
 
             <img
             src="/static/images/generic_place_holder.jpg"
-            class="card-img-top"
+            class="card-img-top game_card_img"
             alt="Missing Game Image"
             />
           
         {% else %}
             <img
             src="{{game.game_image_url}}"
-            class="card-img-top"
+            class="card-img-top game_card_img"
             alt="Missing Game Image"
             />
         {% endif %}
@@ -37,9 +45,9 @@
       <h6 class="card-subtitle mb-2 text-muted">Released: {{game.release_date}}</h6>
       <p class="card-text text-overflow">{{game.game_summ}}</p>
       <a href="{{url_for('view_game_review', game_id=game._id)}}" class="btn btn-primary">View reviews</a>
-      <a href="{{url_for('review_by_game', game_id=game._id)}}" class="btn btn-alert">Add Review</a>
+      <a href="{{url_for('review_by_game', game_id=game._id)}}" class="btn btn-secondary">Add Review</a>
       {% if session['username'] == game.game_added_by %}
-            <a href="{{url_for('edit_game', game_id=game._id)}}" class="btn btn-primary">Edit Game</a>
+            <a href="{{url_for('edit_game', game_id=game._id)}}" class="btn btn-warning">Edit Game</a>
       {% endif %}
     </div>
   </div>

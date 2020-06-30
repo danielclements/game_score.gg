@@ -1,36 +1,38 @@
-a { color: inherit; } 
+.landing-page-background {
+    background: url(/static/images/1041188.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+    min-height: 100vh;
 
-body{
-    color: #ffffffd6;
 }
+
+.background-alpha {
+    background: rgba(0, 0, 0, 0.2) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 0px;
+    position: relative;
+    min-height: 100vh;
+
+}
+
+
+a { color: inherit; } 
+a:hover{color: inherit;}
+
 .m_left {
   margin-left: 100px !important;
 }
 
-.dr-green {
-  background-color: #222e31;
-}
 
-.dr-less-green {
-  background-color: #173539;
-}
-
-.dr-grey {
-  background-color: #1a1d21;
-}
-
-.hover-salmon:hover {
-  background-color: #c78074;
+.hover-blue:hover {
+  background-color: rgb(34, 115, 197);
   color: #ffffffd6;
-}
-
-.text-whites {
-  color: #ffffffd6;
-  text-decoration: none;
-}
-
-.text-darks{
-    color: rgb(36, 35, 35)
 }
 
 .text-overflow {
@@ -40,13 +42,17 @@ body{
 }
 
 
-.navy-bg{
-    background-color:#222831;
+.navbar-grey{
+    background-color:#393e46;
+    color: #f2f2f2;
+    text-decoration: none;
 }
 
-.orange-bg{
-    background-color: #EBA270;
+.navbar-grey:hover{
+    color: #f2f2f2;
+    
 }
+
 
 .home_slide{
     max-height: 1500px;
@@ -56,4 +62,13 @@ body{
 .login_forum{
     border-radius: 10px;
     background-color: #d1d1d1
+}
+
+
+.game_card_img {
+  display: block;
+  max-width:286px;
+  max-height:161px;
+  min-width: 286px;
+  min-height: 161px;
 }
