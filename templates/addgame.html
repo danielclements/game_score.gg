@@ -1,118 +1,103 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add Game</h3>
-<div class="row">
-  <form action="{{url_for('insert_game')}}" method="POST">
-    <div class="form-group">
-      <i class="fas fa-list"></i>
-      <select
-        class="selectpicker"
-        multiple
-        data-live-search="true"
-        id="game_categories"
-        name="game_categories"
-      >
-        <option value="" disabled>Select Category</option>
-        {% for category in categories %}
-        <option id="category_name" name="category_name" value="{{category.category_name}}"
-          >{{category.category_name}}</option
-        >
-        {% endfor %}
-      </select>
-      <label for="categories">Select Categories</label>
+
+<div class="row d-flex justify-content-center pb-4 pt-4">
+  <form class="col-10 col-md-7 pt-4 pb-4 form-add-game" action="{{url_for('insert_game')}}" method="POST">
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="h3 mb-3 font-weight-normal">Add Game</h1>
+        </div>
+    </div>  
+
+    <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="first">Select Categories</label>
+                <select class="selectpicker selector-white select-w-100"
+                        multiple data-live-search="true"
+                        id="game_categories" name="game_categories">
+                        <option value="" disabled>Select Category</option>
+                        {% for category in categories %}
+                            <option id="category_name" name="category_name" value="{{category.category_name}}">
+                            {{category.category_name}}</option>
+                        {% endfor %}
+                </select>
+                </div>
+            <div class="form-group col-md-6">
+                <label for="game_name">Game Name</label>
+                <input type="text" class="form-control" id="game_name" name="game_name" placeholder="Game Name">
+            </div>
     </div>
 
-    <div class="form-group">
-      <div class="input-field">
-        <i class="material-icons prefix">gamepad</i>
-        <input class="" id="game_name" name="game_name" type="text" />
-        <label for="icon_prefix">Game Name</label>
-      </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="game_summ">Game Summary</label>
+             <textarea
+                class="form-control"
+                aria-label="With textarea"
+                id="game_summ"
+                name="game_summ" placeholder="Game Summary"></textarea>
+        </div>
     </div>
 
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <i class="material-icons prefix">gamepad</i>
-      </div>
-      <textarea
-        class="form-control"
-        aria-label="With textarea"
-        id="game_summ"
-        name="game_summ"
-      ></textarea>
-      <label for="icon_prefix">Game Summary</label>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+                <label for="developer_name">Developer</label>
+                <select class="select-w-100"  id="developer_name" name="developer_name">
+                    <option disabled selected>Choose Developer</option>
+                    {% for dev in developers %}
+                        <option value="{{dev.developer_name}}">{{dev.developer_name}}</option>
+                    {% endfor %}
+                </select>   
+        </div>
+        <div class="form-group col-md-6">
+                <label for="publisher_name">Publisher</label>
+                <select class="select-w-100" id="publisher_name select-w-100" name="publisher_name">
+                <option value="" disabled selected>Choose Publisher</option>
+                {% for pub in publishers %}
+                <option value="{{pub.publisher_name}}">{{pub.publisher_name}}</option>
+                {% endfor %}
+                </select>  
+        </div>
     </div>
 
-    <div class="form-group">
-      <div class="input-field">
-        <i class="material-icons prefix">important_devices</i>
-        <select id="platforms" name="platforms" multiple>
-          <option disabled>Select Platform</option>
-          {% for plat in platforms %}
-          <option value="{{plat.platform_name}}">{{plat.platform_name}}</option>
-          {% endfor %}
-        </select>
-        <label>Platforms</label>
-      </div>
-    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+                <label for="platforms">Platforms</label>
+                <select class="select-w-100" id="platforms" name="platforms" multiple>
+                    <option disabled>Select Platform</option>
+                    {% for plat in platforms %}
+                    <option value="{{plat.platform_name}}">{{plat.platform_name}}</option>
+                    {% endfor %}
+                </select>   
+        </div>
+        <div class="form-group col-md-6">
+                <label for="Release_date">Release Date</label>
+                <input class="release-date-picker select-w-100" type="date" id="release_date" name="release_date"/>
+        </div>
+    </div>  
 
-    <div class="form-group">
-      <div class="input-field">
-        <i class="material-icons prefix">build</i>
-        <select id="developer_name" name="developer_name">
-          <option disabled selected>Choose Developer</option>
-          {% for dev in developers %}
-          <option value="{{dev.developer_name}}">{{dev.developer_name}}</option>
-          {% endfor %}
-        </select>
-        <label>Developer Name</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="input-field">
-        <i class="material-icons prefix">theaters</i>
-        <select id="publisher_name" name="publisher_name">
-          <option value="" disabled selected>Choose Publisher</option>
-          {% for pub in publishers %}
-          <option value="{{pub.publisher_name}}">{{pub.publisher_name}}</option>
-          {% endfor %}
-        </select>
-        <label>Publisher Name</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div id="matfix" class="input-field">
-        <i class="material-icons prefix">today</i>
-        <input type="date" id="release_date" name="release_date" />
-        <label for="icon_prefix">Release Date</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="input-field">
-        <i class="material-icons prefix">local_atm</i>
-        <input id="affiliate_link" name="affiliate_link" type="text" />
-        <label for="icon_prefix">Affiliate Link</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="input-field">
-        <i class="material-icons prefix">local_atm</i>
-        <input id="game_image_url" name="game_image_url" type="text" />
-        <label for="icon_prefix">Game Image URL</label>
-      </div>
-    </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="game_image_url">Game Image URL</label>
+                <input type="text" class="form-control" id="game_image_url" name="game_image_url" placeholder="Main Display Image">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="affiliate_link">Affiliate Link</label>
+                <input type="text" class="form-control" id="affiliate_link" name="affiliate_link" placeholder="Affiliate Link">
+            </div>
+        </div>
 
     <div calss="form-group">
-      <button class="btn orange-bg text-white" type="submit">
+      <button class="btn btn-primary text-white" type="submit">
         Add Game!
         <i class="fas fa-folder-plus"></i>
       </button>
     </div>
   </form>
+</div>
+
+<div class="spacer">
 </div>
 
 {% endblock %}
