@@ -11,8 +11,12 @@ Creating a new account:
 - When creating an account, all fields have been filled out and the user clicks register, the backend code will do a quick check on the username provided by    the user and check it against all the usernames in the datebase, if the username exists they will be redirected to the registration page and a message will be   flashed.
 ![User Alrady registered](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/user-already.png) 
 
--If registration is successful the user will be registered to the home page and flashed a successful message
+- If registration is successful the user will be registered to the home page and flashed a successful message
 ![successful Message](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/successful-message.png) 
+
+
+- Below is the layout for the username data in MONGODB
+![Username MONGODB](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/user-db.png) 
 
 ## Login
 Loggin In:

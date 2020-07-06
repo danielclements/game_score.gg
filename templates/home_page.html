@@ -3,7 +3,7 @@
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for msg in messages %}
-            <div class="alert alert-success text-center" role="alert">
+            <div class="alert alert-success text-center mt-3" role="alert">
                 {{msg}}
             </div>
         {% endfor %}
@@ -11,7 +11,7 @@
 {% endwith %}
 
 <div class="row pt-5">
-    <div class="col-8">
+    <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-0">
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -20,14 +20,28 @@
         </ol>
         <div class="carousel-inner">
             {% for game in games %}
-                {% if game.featured == true %}
-            <div class="carousel-item active">
-            <img src="{{game.game_image_url}}" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>{{game.game_name}}</h5>
-                <!-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
-            </div>
-            </div>
+               {% if game.featured == "1" %}
+                    <div class="carousel-item active">
+                        <a href="{{url_for('view_game_review', game_id=game._id)}}">
+                            <img src="{{game.game_image_url}}" class="d-block w-100 " alt="...">
+                        </a>
+                    </div>
+                {% endif %}
+
+                {% if game.featured == "2" %}
+                <div class="carousel-item">
+                        <a href="{{url_for('view_game_review', game_id=game._id)}}">
+                            <img src="{{game.game_image_url}}" class="d-block w-100 home_featured_img" alt="...">
+                        </a>
+                </div>
+                {% endif %}
+
+                {% if game.featured == "3" %}
+                <div class="carousel-item">
+                        <a href="{{url_for('view_game_review', game_id=game._id)}}">
+                            <img src="{{game.game_image_url}}" class="d-block w-100 home_featured_img" alt="...">
+                        </a>
+                </div>
                 {% endif %}
             {% endfor %}
         </div>
@@ -42,11 +56,13 @@
         </div>
     </div>
 
-    <div class="col-4 orange-bg border">
+    <div class="offset-1 col-sm-8 col-md-4 offset-md-0 featured_dev border">
         <div class="text-center">
-            <h5>Featured Developer</h5>
+            <u><h5>Featured Developer</h5></u>
 
         </div>
     </div>
 </div>
+
+<div class="row"></div>
 {% endblock %}

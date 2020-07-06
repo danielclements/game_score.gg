@@ -3,7 +3,6 @@
 
 <div class="row d-flex justify-content-center pb-4 pt-4">
   <form class="col-10 col-md-7 pt-4 pb-4 form-add-game" action="{{url_for('insert_game')}}" method="POST">
-
     <div class="row">
         <div class="col-12 text-center">
             <h1 class="h3 mb-3 font-weight-normal">Add Game</h1>
@@ -52,7 +51,7 @@
         </div>
         <div class="form-group col-md-6">
                 <label for="publisher_name">Publisher</label>
-                <select class="select-w-100" id="publisher_name select-w-100" name="publisher_name">
+                <select class="select-w-100 selectpicker selector-white" id="publisher_name" name="publisher_name">
                 <option value="" disabled selected>Choose Publisher</option>
                 {% for pub in publishers %}
                 <option value="{{pub.publisher_name}}">{{pub.publisher_name}}</option>

@@ -37,7 +37,8 @@ def index():
 @app.route('/home')
 def home_page():
     return render_template('home_page.html',
-                           games=mongo.db.games.find())
+                           games=mongo.db.games.find(),
+                           developers=mongo.db.developers.find())
 
 
 @app.route('/users/registration', methods=["POST", "GET"])
@@ -336,7 +337,7 @@ def update_game(game_id):
                          'game_image_url': request.form['game_image_url'],
                          'game_edit_date': datetime.utcnow()
                      }})
-    return redirect(url_for('get_admin_panel'))
+    return redirect(url_for('home'))
 
 
 @ app.route('/edit_category/<category_id>')
