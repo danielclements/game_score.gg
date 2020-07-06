@@ -1,18 +1,20 @@
 # GameScore.GG
 
 I got the idea for this project when I was looking for A new game to play, as A was scrolling through game review sites I noticed a glaring issue that all the reviews were written and published by said websites, very few websites had a focus on user reviews.   
-I wanted to build this project as a place for people to read real opinions from gamers like them, not.
+
+I wanted to build this project as a place for people to read real opinions from gamers like them and make an informed purchase decision.
 
  
 ## UX
  
-For this project I wanted to create a sight that was easy to navigate and had all the information no more than 2 clicks away, for that reason I decided to go for a single page design broken in to different sections as I believe this also creates a smoother experience for the user.  
+My design philosophy for this project was to keep everything simple for the user side of the site. I wanted people to visit the site and discover new games, I didn't want to force anyone to make an account in order to view thing like games, developers or publishers. A user would need to create an account to review a game. I would hope seeing other users reviews would inspire other users to submit reviews too, once a user discovers a game on the site and decides that they will purchase it would be ideal if they to would return to the site to leave a review on said game. I  have added a featured games section to the home page, this way if people are only having a glance at the site hopefully they will click on one of the featured games and check some of the reviews out.
+
+This project is hosted on heroku [GameScore.GG](http://game-score-gg.herokuapp.com/home)
 
 
-- As someone who wants to get a tattoo, I want to be able to view the tattoo artists previous work and if I like what I see I would want a way to contact him so that I can schedule a appointment.
+- As someone who wants to 
 
-
-[Wireframes / Mockups!](https://github.com/danielclements/TJ-Dean-Portfolio/tree/master/Wireframes)
+[Wireframes / Mockups!]()
 
 ## Features
 
