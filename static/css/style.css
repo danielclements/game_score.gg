@@ -7,11 +7,6 @@
     background-size: cover;
     min-height: 94vh;
     position: relative;
-    
-   
-
-  
-
 }
 
 .background-alpha {
@@ -123,7 +118,9 @@ a:hover{color: inherit;}
 }
 
 
-
+.spacer{
+    height: 100px;
+}
 /*-- Media Queries----------------*/
 
 
@@ -143,6 +140,16 @@ a:hover{color: inherit;}
 
 }
 
+@media (max-width: 1024px) {
+    .landing-page-background {
+        min-height: 96vh;
+    }
+
+    .background-alpha{
+        min-height: 96vh;
+    }
+
+}
 
 
 

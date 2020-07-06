@@ -8,13 +8,16 @@
     {% endif %}
 {% endwith %}
 
-<div class="row" >
-  <h3 class="mx-auto">Registration</h3>
-</div>
 
-<div class="row d-flex justify-content-center mt-5">
-    <div class="col-6 login_forum p-5 text-darks">
+
+<div class="row d-flex justify-content-center mt-0 mt-md-5">
+    <div class="col-10 col-md-6 login_forum p-5 text-darks">
         <form action="{{url_for('register')}}" method="POST">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="h3 mb-5 font-weight-normal">Register</h1>
+            </div>
+        </div>    
         <div class="form-row">
             <div class="form-group col-md-6">
             <label for="first_name">First Name</label>
@@ -42,5 +45,7 @@
         <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
+</div>
+<div class="spacer">
 </div>
 {% endblock %}
