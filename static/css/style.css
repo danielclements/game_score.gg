@@ -1,15 +1,13 @@
 
-
-
 .landing-page-background {
     background: url(/static/images/person-holding-gray-and-black-sony-ps-4-controller-3945654.jpg) fixed center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: auto;
+    min-height: 94vh;
     position: relative;
-    min-height: 100vh;
+    
    
 
   
@@ -22,17 +20,22 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100vh;
     padding: 0px;
     position: relative;
-    min-height: 100vh;
+    min-height: 94vh;
 }
 
 
 .svg-login{
         position: absolute;
-        bottom: 0px;
+        bottom: 50px;
+        left: 0px;
     }
+
+.register-now{
+  color:  #007bff;
+  text-decoration: underline;
+}
 
 .main_container{
     background-color: #ffffffde;
@@ -113,4 +116,49 @@ a:hover{color: inherit;}
 
 .footer-style{
     position: absolute;
+    bottom: 0 ;
+    left: 0;
+    width: 100%;
+    background-color: #efefef;
+}
+
+
+
+/*-- Media Queries----------------*/
+
+
+@media (max-width: 375px) {
+    .login-container{
+        margin-top: 0px !important;
+    }
+
+    .login_forum{
+        margin-top: 0px !important;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+
+}
+
+
+
+
+
+@media (min-width: 992px) {
+
+}
+
+
+
+@media (max-height:720px) {
+     
+}
+
+
+
+@media (min-height: 1200px) {
+
 }
