@@ -51,7 +51,7 @@ This project is hosted on heroku [GameScore.GG](http://game-score-gg.herokuapp.c
 
 
 ## Testing
-[Testing](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/testing.md)
+[Testing](https://github.com/danielclements/game_score.gg/blob/master/readme/testing.md)
 
 ### Browsers used for testing:
 
