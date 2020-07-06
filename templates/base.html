@@ -29,7 +29,7 @@
 
 
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg  ">
-    <a class="navbar-brand " href="{{url_for('get_admin_panel')}}">GameScore<i class="fas fa-gamepad"></i></a>
+    <a class="navbar-brand " href="{{url_for('home_page')}}">GameScore<i class="fas fa-gamepad"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -97,8 +97,17 @@
 
 
     <script type="text/javascript">
-      $(document).ready(function () { 
+    $(document).ready(function () { 
        $('select').selectpicker();
+
+    var slider = document.getElementById("review_score");
+    var output = document.getElementById("score");
+    output.innerHTML = slider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+    output.innerHTML = this.value;
+    }
 
       });
     </script>
