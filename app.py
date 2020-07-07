@@ -312,7 +312,7 @@ def edit_game(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     creator = the_game['game_added_by']
     if session['username'] == creator:
-        return render_template('editgame.html', game=the_game,
+        return render_template('edit_game.html', game=the_game,
                                games=mongo.db.games.find(),
                                categories=mongo.db.categories.find(),
                                developers=mongo.db.developers.find(),
@@ -327,10 +327,11 @@ def edit_game(game_id):
 @ app.route('/update_game/<game_id>', methods=["POST", "GET"])
 def update_game(game_id):
     games = mongo.db.games
+    game_name = request.form.get('game_name')
     games.update_one({'_id': ObjectId(game_id)},
                      {
                      '$set': {
-                         'game_name': request.form.get('game_name'),
+                         'game_name': game_name,
                          'game_categories': request.form.getlist('game_categories'),
                          'platforms': request.values.getlist('platforms'),
                          'developer_name': request.form.get('developer_name'),
@@ -341,7 +342,8 @@ def update_game(game_id):
                          'game_image_url': request.form['game_image_url'],
                          'game_edit_date': datetime.utcnow()
                      }})
-    return redirect(url_for('home'))
+    flash(game_name + " " + "successfully edited!")
+    return redirect(url_for('view_games'))
 
 
 @ app.route('/edit_category/<category_id>')
