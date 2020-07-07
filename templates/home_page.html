@@ -10,59 +10,95 @@
     {% endif %}
 {% endwith %}
 
-<div class="row pt-5">
-    <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-0">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            {% for game in games %}
-               {% if game.featured == "1" %}
-                    <div class="carousel-item active">
-                        <a href="{{url_for('view_game_review', game_id=game._id)}}">
-                            <img src="{{game.game_image_url}}" class="d-block w-100 " alt="...">
-                        </a>
+    <div class="row pt-5">
+        <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-0">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                {% for game in games %}
+                {% if game.featured == "1" %}
+                        <div class="carousel-item active">
+                            <a href="{{url_for('view_game_review', game_id=game._id)}}">
+                                <img src="{{game.game_image_url}}" class="d-block w-100 " alt="...">
+                            </a>
+                        </div>
+                    {% endif %}
+
+                    {% if game.featured == "2" %}
+                    <div class="carousel-item">
+                            <a href="{{url_for('view_game_review', game_id=game._id)}}">
+                                <img src="{{game.game_image_url}}" class="d-block w-100 home_featured_img" alt="...">
+                            </a>
                     </div>
-                {% endif %}
+                    {% endif %}
 
-                {% if game.featured == "2" %}
-                <div class="carousel-item">
-                        <a href="{{url_for('view_game_review', game_id=game._id)}}">
-                            <img src="{{game.game_image_url}}" class="d-block w-100 home_featured_img" alt="...">
-                        </a>
-                </div>
-                {% endif %}
-
-                {% if game.featured == "3" %}
-                <div class="carousel-item">
-                        <a href="{{url_for('view_game_review', game_id=game._id)}}">
-                            <img src="{{game.game_image_url}}" class="d-block w-100 home_featured_img" alt="...">
-                        </a>
-                </div>
-                {% endif %}
-            {% endfor %}
+                    {% if game.featured == "3" %}
+                    <div class="carousel-item">
+                            <a href="{{url_for('view_game_review', game_id=game._id)}}">
+                                <img src="{{game.game_image_url}}" class="d-block w-100 home_featured_img" alt="...">
+                            </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+
+        <div class="offset-1 col-sm-8 col-md-4 offset-md-0 featured_dev border">
+            <div class="text-center">
+                <u><h5>Featured Developer</h5></u>
+
+            </div>
+        </div>
+    </div>
+    <div class="row m-0 mt-4">
+        <div class="col-md-5">
+            <h4 class="text-center">Recently added games</h4>
+            <ul class="newest_games_ul p-3">
+                {% for games in newest_games %}
+                    <li class="list-group">
+                                 <div class="row m-0">
+                                    <div class="col-12">
+                                        <a href="{{url_for('view_game_review', game_id=games._id)}}" class="font-weight-bold">{{games.game_name}}
+                                     {% if games.game_image_url == "" %}
+
+                                         <img
+                                        src="/static/images/generic_place_holder.jpg"
+                                        class="img-recent-game ml-auto"
+                                        alt="Missing Game Image"
+                                        />
+                                        
+                                    {% else %}
+                                         <img
+                                         src="{{games.game_image_url}}"
+                                         class="img-recent-game ml-auto"
+                                         alt="Missing Game Image"
+                                        />
+                                    {% endif %}
+
+                                    <p class="text-muted">{{games.release_date}}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <hr class="block-divider col-sm-12">
+                {% endfor %}
+            </ul> 
         </div>
     </div>
 
-    <div class="offset-1 col-sm-8 col-md-4 offset-md-0 featured_dev border">
-        <div class="text-center">
-            <u><h5>Featured Developer</h5></u>
-
-        </div>
+    <div class="spacer">
     </div>
-</div>
-
-<div class="row"></div>
 {% endblock %}

@@ -25,7 +25,6 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
 mongo = PyMongo(app)
 
-
 # User authentication
 
 
@@ -38,7 +37,8 @@ def index():
 def home_page():
     return render_template('home_page.html',
                            games=mongo.db.games.find(),
-                           developers=mongo.db.developers.find())
+                           developers=mongo.db.developers.find(),
+                           newest_games=mongo.db.games.find().sort("_id", -1).limit(5))
 
 
 @app.route('/users/registration', methods=["POST", "GET"])
