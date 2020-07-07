@@ -176,7 +176,7 @@ def insert_game():
         'game_added_by': game_added_by,
         'game_add_date': game_add_date
     })
-
+    flash('Game successfully added!')
     return redirect(url_for('view_games'))
 
 

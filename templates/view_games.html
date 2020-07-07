@@ -1,5 +1,15 @@
 {% extends 'base.html'%} {% block content %}
 
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="alert alert-success text-center mt-3" role="alert">
+                {{msg}}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
 <div class="main_container">
 <div class="row" >
     <div class="col-12 mt-3">
