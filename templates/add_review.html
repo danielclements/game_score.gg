@@ -11,7 +11,7 @@
             <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="review_game">Game Name</label>
-                            <select class="select-w-100 selectpicker" id="review_game" name="review_game">
+                            <select class="select-w-100 selectpicker" id="review_game" name="review_game" required>
                                 <option  disabled selected>Choose Game</option>
                                 {% for game in games %}
                                     {% if the_game is defined %}
@@ -26,14 +26,14 @@
                         </div>
                     <div class="form-group col-md-6">
                         <label for="review_header">review_title</label>
-                        <input class="form-control" id="review_header" name="review_header" type="text"/>
+                        <input class="form-control" id="review_header" name="review_header" type="text" required />
                     </div>
             </div>
 
             <div class="form-row">
                     <div class="form-group col-12">
                         <label for="review_body">Review Body</label>
-                        <textarea class="form-control" aria-label="With textarea" id="review_body" name="review_body" ></textarea>
+                        <textarea class="form-control" aria-label="With textarea" id="review_body" name="review_body" required></textarea>
                     </div>
             </div>
 

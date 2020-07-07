@@ -256,7 +256,7 @@ def insert_review():
         'review_score': review_score,
         'review_by': review_by
     })
-
+    flash('Review succesfully added!')
     return redirect(url_for('home_page'))
 
 
