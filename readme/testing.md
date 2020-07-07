@@ -16,7 +16,7 @@ Creating a new account:
 ![User Alrady registered](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/user-already.png) 
 
 - If registration is successful the user will be redirected to the home page and flashed a successful message
-![successful Message](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/successful-message.png) 
+![successful Message](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/successfull-message.png) 
 
 
 - Below is the layout for the username data in MONGODB
