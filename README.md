@@ -39,14 +39,24 @@ This project is hosted on heroku [GameScore.GG](http://game-score-gg.herokuapp.c
 - [CSS 3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
     - This project uses **CSS 3** to style the front end of the website.
 
-- [JQuery](https://jquery.com)
-    - The project uses **JQuery** to change the navbar opacity at a certain scroll point, and also validates the form for any user errors.
+- [Javascript](https://www.javascript.com/)
+    - Used within bootstrap elements.
+
+- [Python](https://www.python.org/)
+    - Python handles all backend code for this site
 
 - [Bootstrap 4](https://getbootstrap.com)
     - This project uses **Bootstrap** to improve scaling to mobile and to add the contact form.
 
 - [Sketch](https://www.sketch.com/)
     - This project uses **Sketch** to create mockups / wireframes, also used to create the background for the Contact page.
+
+### Frameworks Used
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+    - Flask is a back-end micro framework and is used in this project.
+
+- [jinja](https://jinja.palletsprojects.com/en/2.11.x/)
+    - The project uses jinja for the templating language.
     
 
 
