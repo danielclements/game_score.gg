@@ -445,16 +445,18 @@ def update_review(review_id):
     the_review = mongo.db.review.find_one({'_id': ObjectId(review_id)})
     print(the_review)
     reviews = mongo.db.reviews
+    review_game = request.form.get('review_game')
     reviews.update_one({'_id': ObjectId(review_id)},
                        {
         '$set': {
-            'review_game': request.form.get('review_game'),
+            'review_game': review_game,
             'review_header': request.form.get('review_header'),
             'review_body': request.form.get('review_body'),
             'review_edit_date': datetime.utcnow(),
             'review_score': request.form.get('review_score')
         }})
-    return redirect(url_for('get_admin_panel'))
+    flash('Your review of ' + review_game + ' was successfully updated')
+    return redirect(url_for('home_page'))
 
 
 # View section
