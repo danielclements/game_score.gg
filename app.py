@@ -74,7 +74,7 @@ def register():
                 'created': created
             })
             session['username'] = request.form.get('username')
-            flash('Account successfully registered!')
+            flash(username + ' ' + 'welcome to GameScore.gg!')
             return redirect(url_for('index'))
         flash('That Username already exists!')
         return redirect(url_for('register_user'))
@@ -183,7 +183,7 @@ def insert_game():
 @ app.route('/add_category')
 def add_category():
     if 'username' in session:
-        return render_template('addcategory.html')
+        return render_template('add_category.html')
     else:
         flash("Please login to access this feature!")
         return redirect(url_for('user_login'))
@@ -191,10 +191,12 @@ def add_category():
 
 @ app.route('/insert_category', methods=['POST'])
 def insert_category():
-    category_doc = {'category_name': request.form.get('category_name'),
+    category_name = request.form.get('category_name')
+    category_doc = {'category_name': category_name,
                     'added_by': session['username']}
     mongo.db.categories.insert_one(category_doc)
-    return redirect(url_for('get_admin_panel'))
+    flash('Category: ' + category_name + ' successfully added!')
+    return redirect(url_for('home_page'))
 
 
 @ app.route('/add_publisher')
