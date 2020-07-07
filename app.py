@@ -138,7 +138,7 @@ def get_admin_panel():
 @ app.route('/add_game')
 def add_game():
     if 'username' in session:
-        return render_template('addgame.html',
+        return render_template('add_game.html',
                                categories=mongo.db.categories.find(),
                                developers=mongo.db.developers.find(),
                                publishers=mongo.db.publishers.find(),
@@ -176,7 +176,7 @@ def insert_game():
         'game_added_by': game_added_by,
         'game_add_date': game_add_date
     })
-    flash('Game successfully added!')
+    flash(game_name + 'successfully added!')
     return redirect(url_for('view_games'))
 
 
