@@ -222,7 +222,8 @@ def insert_publisher():
         'date_added': date_added
 
     })
-    return redirect(url_for('get_admin_panel'))
+    flash(publisher_name + ' ' + "successfully added")
+    return redirect(url_for('view_publishers'))
 
 
 @ app.route('/add_review')
@@ -289,7 +290,7 @@ def insert_developer():
     developer_desc = request.form.get('developer_desc')
     developer_founding_date = request.form.get('developer_founding_date')
     added_by = session['username']
-    date_added = datetime.utcnow()
+    date_added = datetime.utcnow() 
     developers.insert_one({
         'developer_name': developer_name,
         'developer_desc': developer_desc,
@@ -297,7 +298,8 @@ def insert_developer():
         'added_by': added_by,
         'date_added': date_added
     })
-    return redirect(url_for('get_admin_panel'))
+    flash(developer_name + ' ' +  "successfully added")
+    return redirect(url_for('view_developers'))
 
 
 # Edit database section

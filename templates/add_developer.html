@@ -6,7 +6,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">gamepad</i>
-        <input id="developer_name" name="developer_name" type="text" />
+        <input id="developer_name" name="developer_name" type="text" required/>
         <label for="icon_prefix">Developer Name</label>
       </div>
     </div>
@@ -15,12 +15,8 @@
       <div class="input-group-prepend">
         <i class="material-icons prefix">gamepad</i>
       </div>
-      <textarea
-        class="form-control"
-        aria-label="With textarea"
-        id="developer_desc"
-        name="developer_desc"
-      ></textarea>
+      <textarea class="form-control" aria-label="With textarea"
+        id="developer_desc" name="developer_desc" required></textarea>
       <label for="icon_prefix">Developer Description</label>
     </div>
 
@@ -30,7 +26,7 @@
         <input
           id="developer_founding_date"
           name="developer_founding_date"
-          type="date"
+          type="date" required
         />
         <label for="icon_prefix">Founding Date</label>
       </div>
