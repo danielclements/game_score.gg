@@ -12,7 +12,7 @@
                     <div class="form-group col-md-6">
                         <label for="review_game">Game Name</label>
                             <select class="select-w-100 selectpicker" id="review_game" name="review_game" required>
-                                <option  disabled selected>Choose Game</option>
+                                <option  value="" disabled selected>Choose Game</option>
                                 {% for game in games %}
                                     {% if the_game is defined %}
                                         {% if the_game.game_name == game.game_name %}
