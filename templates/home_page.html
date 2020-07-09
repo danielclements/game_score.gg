@@ -71,7 +71,7 @@
                     <li class="list-group">
                                  <div class="row m-0">
                                     <div class="col-12">
-                                        <a href="{{url_for('view_game_review', game_id=games._id)}}" class="font-weight-bold">{{games.game_name}}
+                                        <a href="{{url_for('view_game_review', game_id=games._id)}}" class="font-weight-bold new-games-a">{{games.game_name}}
                                      {% if games.game_image_url == "" %}
 
                                          <img
@@ -88,7 +88,7 @@
                                         />
                                     {% endif %}
 
-                                    <p class="text-muted">{{games.release_date}}</p>
+                                    <p class="text-muted m-0">{{games.release_date}}</p>
                                 </a>
                             </div>
                         </div>

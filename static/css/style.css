@@ -28,6 +28,15 @@ body{
 
 .newest_games_ul{
     background-color: #ffffffde;
+    
+}
+
+.new-games-a{
+    text-decoration: none;
+}
+.new-games-a:hover{
+    color: #007bff;
+    text-decoration: none !important;
 }
 .block-divider {
     width: 100%;
@@ -140,7 +149,7 @@ a:hover{color: inherit;}
 
 .featured_dev{
     background-color:  #efefef;  
-    box-shadow: 2px 2px 2px #888888;
+    box-shadow: 0px 2px 2px #49505738;
 }
 
 .alert-danger{
