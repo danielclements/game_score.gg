@@ -38,53 +38,49 @@ def home_page():
     return render_template('home_page.html',
                            games=mongo.db.games.find(),
                            developers=mongo.db.developers.find(),
-                           newest_games=mongo.db.games.find().sort("_id", -1).limit(5))
+                           newest_games=mongo.db.games.find().sort("_id", -1).limit(7))
 
 
-@app.route('/users/registration', methods=["POST", "GET"])
+@app.route('/users/registration', methods=["GET"])
 def register_user():
     return render_template('user_registration.html',
                            users=mongo.db.users.find())
 
 
-@app.route('/users/insert', methods=["POST", "GET"])
+@app.route('/users/insert', methods=["POST"])
 def register():
+    users = mongo.db.users
+    existing_user = users.find_one(
+        {'username': request.form.get('username')})
 
-    if request.method == 'POST':
-        users = mongo.db.users
-        existing_user = users.find_one(
-            {'username': request.form.get('username')})
-
-        if existing_user is None:
-            first_name = request.form.get('first_name')
-            last_name = request.form.get('last_name')
-            username = request.form.get('username')
-            email = request.form.get('email')
-            password = bcrypt.hashpw(
-                request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            created = datetime.utcnow()
-            permission = 'default'
-            users.insert_one({
-                'first_name': first_name,
-                'last_name': last_name,
-                'email': email,
-                'password': password,
-                'username': username,
-                'permission': permission,
-                'created': created
-            })
-            session['username'] = request.form.get('username')
-            flash(username + ' ' + 'welcome to GameScore.gg!')
-            return redirect(url_for('index'))
-        flash('That Username already exists!')
-        return redirect(url_for('register_user'))
-    return redirect(url_for('user_login'))
+    if existing_user is None:
+        first_name = request.form.get('first_name')
+        last_name = request.form.get('last_name')
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = bcrypt.hashpw(
+            request.form['password'].encode('utf-8'), bcrypt.gensalt())
+        created = datetime.utcnow()
+        permission = 'default'
+        users.insert_one({
+            'first_name': first_name,
+            'last_name': last_name,
+            'email': email,
+            'password': password,
+            'username': username,
+            'permission': permission,
+            'created': created
+        })
+        session['username'] = request.form.get('username')
+        flash(username + ' ' + 'welcome to GameScore.gg!')
+        return redirect(url_for('index'))
+    flash('That Username already exists!')
+    return redirect(url_for('register_user'))
 
 
-@app.route('/users/login', methods=["POST", "GET"])
+@app.route('/users/login', methods=["GET"])
 def user_login():
-    return render_template('user_login.html',
-                           users=mongo.db.users.find())
+    return render_template('user_login.html')
 
 
 @app.route('/users/login/test', methods=["POST"])
@@ -135,7 +131,7 @@ def get_admin_panel():
 # Routing and functions to add to the database
 
 
-@ app.route('/add_game')
+@ app.route('/game/add')
 def add_game():
     if 'username' in session:
         return render_template('add_game.html',
@@ -148,7 +144,7 @@ def add_game():
         return redirect(url_for('user_login'))
 
 
-@ app.route('/insert_game', methods=['GET', 'POST'])
+@app.route('/insert_game', methods=['GET', 'POST'])
 def insert_game():
     games = mongo.db.games
     platforms = request.values.getlist('platforms')
@@ -208,7 +204,7 @@ def add_publisher():
         return redirect(url_for('user_login'))
 
 
-@ app.route('/insert_publisher', methods=['GET', 'POST'])
+@ app.route('/insert_publisher', methods=['POST'])
 def insert_publisher():
     publishers = mongo.db.publishers
     publisher_name = request.form.get('publisher_name')
@@ -292,7 +288,7 @@ def insert_developer():
     developer_desc = request.form.get('developer_desc')
     developer_founding_date = request.form.get('developer_founding_date')
     added_by = session['username']
-    date_added = datetime.utcnow() 
+    date_added = datetime.utcnow()
     developers.insert_one({
         'developer_name': developer_name,
         'developer_desc': developer_desc,
@@ -300,7 +296,7 @@ def insert_developer():
         'added_by': added_by,
         'date_added': date_added
     })
-    flash(developer_name + ' ' +  "successfully added")
+    flash(developer_name + ' ' + "successfully added")
     return redirect(url_for('view_developers'))
 
 
