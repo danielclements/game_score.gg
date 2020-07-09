@@ -1,25 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Edit Category</h3>
-<div class="row">
-	<form action="{{ url_for('update_category', category_id=category._id) }}" method="POST">
-
-		<div class="row">
-			<div class="input-field col s12">
-				<i class="material-icons prefix">gamepad</i>
-				<input   id="category_name" name="category_name" type="text" value="{{category.category_name}}" maxlength="35" required />
-				<label  for="icon_prefix">Category Name</label>
-			</div>
-		</div>
-
-
-		<div calss="row">
-			<button class="btn btn-primary hvr-radial-out" type="submit">
-            Edit Category!
-            <i class="fas fa-edit"></i>
-            </button>
-	    </div>
-	</form>
+<div class="row d-flex justify-content-center m-0 mb-5">
+    <div class="col-10 col-md-4 text-center mt-md-4 login-container">
+        <div class="login_forum mt-5"> 
+            <form action="{{ url_for('update_category', category_id=category._id) }}" method="POST" class="form-signin">
+                <h5 class="h3 mb-5 font-weight-normal">Edit Category</h5>
+                <label for="category_name" class="sr-only">Category Name</label>
+                <input id="category_name" name="category_name" class="form-control mb-3" placeholder="Category Name" value="{{category.category_name}}" maxlength="35" required>
+                <button class="btn btn-lg btn-primary btn-block hvr-radial-out" type="submit">Add Category</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
