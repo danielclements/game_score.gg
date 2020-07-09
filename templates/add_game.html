@@ -11,20 +11,13 @@
 
     <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="first">Select Categories</label>
-                <select class="selectpicker selector-white select-w-100"
-                        multiple data-live-search="true"
-                        id="game_categories" name="game_categories"  required>
-                        <option value="" disabled>Select Category</option>
-                        {% for category in categories %}
-                            <option id="category_name" name="category_name" value="{{category.category_name}}">
-                            {{category.category_name}}</option>
-                        {% endfor %}
-                </select>
-                </div>
-            <div class="form-group col-md-6">
                 <label for="game_name">Game Name</label>
                 <input type="text" class="form-control" id="game_name" name="game_name" placeholder="Game Name" maxlength="40" required>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="Release_date">Release Date</label>
+                <input class="release-date-picker select-w-100" type="date" id="release_date" name="release_date" required/>
             </div>
     </div>
 
@@ -70,10 +63,19 @@
                     {% endfor %}
                 </select>   
         </div>
+
         <div class="form-group col-md-6">
-                <label for="Release_date">Release Date</label>
-                <input class="release-date-picker select-w-100" type="date" id="release_date" name="release_date" required/>
-        </div>
+                <label for="first">Select Categories</label>
+                <select class="selectpicker selector-white select-w-100"
+                        multiple data-live-search="true"
+                        id="game_categories" name="game_categories"  required>
+                        <option value="" disabled>Select Category</option>
+                        {% for category in categories %}
+                            <option id="category_name" name="category_name" value="{{category.category_name}}">
+                            {{category.category_name}}</option>
+                        {% endfor %}
+                </select>
+         </div>
     </div>  
 
         <div class="form-row">
