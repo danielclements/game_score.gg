@@ -12,13 +12,13 @@
 
 
 <div class="row d-flex justify-content-center m-0 mb-5">
-    <div class="col-10 col-md-4 text-center mt-md-4login-container">
+    <div class="col-10 col-md-4 text-center mt-4 login-container">
         <div class="login_forum mt-5"> 
             <form action="{{url_for('login')}}" method="POST" class="form-signin">
                 <h1 class="h3 mb-5 font-weight-normal">Login</h1>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input id="username" name="username" class="form-control" placeholder="Username" required>
-                <label for="inputPassword" class="sr-only">Password</label>
+                <label for="Username" class="sr-only">Username</label>
+                <input id="username" name="username" class="form-control mb-2" placeholder="Username" required>
+                <label for="password" class="sr-only">Password</label>
                 <input type="password" id="Password" name="password" class="form-control" placeholder="Password" required>
                 <div class="checkbox mb-3">
                 </div>

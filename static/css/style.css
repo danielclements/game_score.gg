@@ -139,12 +139,6 @@ a:hover{color: inherit;}
     border: 1px solid #ced4da !important;
 }
 
-.btn-light{
-    background-color:#ffffff !important;
-    border: 1px solid #ced4da !important;
-
-}
-
 .home_featured_img{
     max-width: 750px;
     max-height: 421px ;
@@ -173,6 +167,14 @@ a:hover{color: inherit;}
     filter: drop-shadow(0 0 0.15rem #007bff);
 }
 
+.btn-secondary{
+    filter: drop-shadow(0 0 0.15rem #737374);
+}
+
+.btn{
+    font-size: 0.90rem !important;
+    margin-bottom:10px;
+}
 .spacer{
     height: 100px;
 }
@@ -235,11 +237,12 @@ a:hover{color: inherit;}
 
 @media (max-width: 375px) {
     .login-container{
-        margin-top: 0px !important;
+        margin-top: 30px !important;
+        margin-bottom: 30px;
     }
 
     .login_forum{
-        margin-top: 0px !important;
+        margin-bottom: 30px !important;
     }
 }
 
