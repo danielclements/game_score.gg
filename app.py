@@ -482,7 +482,8 @@ def view_game_review(game_id):
     all_reviews = mongo.db.reviews.find()
     return render_template('view_game_review.html',
                            reviews=all_reviews,
-                           game=the_game)
+                           game=the_game,
+                           )
 
 
 @ app.route('/games/developer/<developer_name>')

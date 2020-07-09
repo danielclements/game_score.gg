@@ -1,11 +1,27 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row" >
-  <h3 class="mx-auto">{{game.game_name}}</h3>
+<div class="row mt-3 pt-2 pb-2 mb-3 reviews-wrapper">
+    <div class="col-md-8 p-0">
+        <img class="review-img " src="{{game.game_image_url}}" alt="test">
+    </div>
+
+    <div class="col-md-4">
+        <h5 class="text-center game-details mb-4">Game Details</h5>
+        <p>Game Name: {{game.game_name}}</p>
+        <p>Release Date: {{game.release_date}}</p>
+        <p>Developer: {{game.developer_name}}</p>
+        <p>Developer: {{game.publisher_name}}</p>
+        <p id="test">Platform: {{game.platforms}}</p>
+      
+    </div>
 </div>
 <div class="row">
-    <p><strong>Summary:</strong> {{game.game_summ}}</p>
+    <div class="col-md-12 mt-3 p-4 reviews-wrapper">
+        <p><strong>Summary:</strong> {{game.game_summ}}</p>
+    </div>
 </div>
+
+
 
 <div class="row" >
   <h4 class="mx-auto">Reviews</h4>
