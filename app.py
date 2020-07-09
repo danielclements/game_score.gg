@@ -109,7 +109,7 @@ def logout():
 # Initial load page
 
 
-@ app.route('/get_admin_panel')
+@ app.route('/adminpanel')
 def get_admin_panel():
 
     if 'username' in session:
@@ -131,7 +131,7 @@ def get_admin_panel():
 # Routing and functions to add to the database
 
 
-@ app.route('/game/add')
+@ app.route('/games/add')
 def add_game():
     if 'username' in session:
         return render_template('add_game.html',
@@ -176,7 +176,7 @@ def insert_game():
     return redirect(url_for('view_games'))
 
 
-@ app.route('/add_category')
+@ app.route('/category/add')
 def add_category():
     if 'username' in session:
         return render_template('add_category.html')
@@ -195,7 +195,7 @@ def insert_category():
     return redirect(url_for('home_page'))
 
 
-@ app.route('/add_publisher')
+@ app.route('/publisher/add')
 def add_publisher():
     if 'username' in session:
         return render_template('add_publisher.html')
@@ -224,7 +224,7 @@ def insert_publisher():
     return redirect(url_for('view_publishers'))
 
 
-@ app.route('/add_review')
+@ app.route('/review/add')
 def add_review():
     if 'username' in session:
         return render_template('add_review.html',
@@ -272,7 +272,7 @@ def review_by_game(game_id):
         return redirect(url_for('user_login'))
 
 
-@app.route('/add_developer')
+@app.route('/developer/add')
 def add_developer():
     if 'username' in session:
         return render_template('add_developer.html')
@@ -303,7 +303,7 @@ def insert_developer():
 # Edit database section
 
 
-@ app.route('/edit_game/<game_id>')
+@ app.route('/game/edit/<game_id>')
 def edit_game(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     creator = the_game['game_added_by']
@@ -342,7 +342,7 @@ def update_game(game_id):
     return redirect(url_for('view_games'))
 
 
-@ app.route('/edit_category/<category_id>')
+@ app.route('/category/edit/<category_id>')
 def edit_category(category_id):
     the_category = mongo.db.categories.find_one(
         {'_id': ObjectId(category_id)})
@@ -355,7 +355,7 @@ def edit_category(category_id):
         return redirect(url_for('user_login'))
 
 
-@ app.route('/update_category/<category_id>', methods=['POST'])
+@ app.route('/edit_category/<category_id>', methods=['POST'])
 def update_category(category_id):
     mongo.db.categories.update_one({'_id': ObjectId(category_id)},
                                    {
@@ -365,7 +365,7 @@ def update_category(category_id):
     return redirect(url_for('get_admin_panel'))
 
 
-@ app.route('/edit_publisher/<publisher_id>')
+@ app.route('/publisher/edit/<publisher_id>')
 def edit_publisher(publisher_id):
     the_publisher = mongo.db.publishers.find_one(
         {'_id': ObjectId(publisher_id)})
@@ -393,7 +393,7 @@ def update_publisher(publisher_id):
     return redirect(url_for('get_admin_panel'))
 
 
-@ app.route('/edit_developer/<developer_id>')
+@ app.route('/developer/edit//<developer_id>')
 def edit_developer(developer_id):
     the_developer = mongo.db.developers.find_one(
         {'_id': ObjectId(developer_id)})
@@ -406,7 +406,7 @@ def edit_developer(developer_id):
         return redirect(url_for('user_login'))
 
 
-@ app.route('/update_developer/<developer_id>', methods=['POST'])
+@ app.route('/edit_developer/<developer_id>', methods=['POST'])
 def update_developer(developer_id):
     developers = mongo.db.developers
     developers.update_one({'_id': ObjectId(developer_id)},
@@ -421,7 +421,7 @@ def update_developer(developer_id):
     return redirect(url_for('get_admin_panel'))
 
 
-@ app.route('/edit_review/<review_id>', methods=['get'])
+@ app.route('/review/edit/<review_id>', methods=['get'])
 def edit_review(review_id):
     the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     creator = the_review['review_by']
@@ -476,7 +476,7 @@ def view_publishers():
                            publishers=mongo.db.publishers.find())
 
 
-@ app.route('/game/review/<game_id>')
+@ app.route('/games/review/<game_id>')
 def view_game_review(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     all_reviews = mongo.db.reviews.find()
