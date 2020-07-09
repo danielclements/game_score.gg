@@ -8,12 +8,13 @@
   >
     <div class="row">
       <div class="input-field col s12">
-        <i class="material-icons prefix">gamepad</i>
         <input
           id="developer_name"
           name="developer_name"
           type="text"
           value="{{developer.developer_name}}"
+          maxlength="40"
+          required
         />
         <label for="icon_prefix">Developer Name</label>
       </div>
@@ -21,14 +22,11 @@
 
     <div class="input-group">
       <div class="input-group-prepend">
-        <i class="material-icons prefix">gamepad</i>
       </div>
-      <textarea
-        class="form-control"
-        aria-label="With textarea"
-        id="developer_desc"
-        name="developer_desc"
-      >{{developer.developer_desc}}</textarea>
+      <textarea class="form-control" aria-label="With textarea"
+        id="developer_desc" name="developer_desc" maxlength="1500" required>
+            {{developer.developer_desc}}
+      </textarea>
       <label for="icon_prefix">Developer Description</label>
     </div>
 
@@ -40,13 +38,14 @@
           name="developer_founding_date"
           type="date"
           value="{{developer.developer_founding_date}}"
+          required
         />
         <label for="icon_prefix">Developer Founding Date</label>
       </div>
     </div>
 
     <div calss="row">
-      <button class="btn dr-less-green text-white" type="submit">
+      <button class="btn btn-primary" type="submit">
         Edit developer!
         <i class="fas fa-edit"></i>
       </button>

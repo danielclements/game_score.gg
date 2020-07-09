@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="input-field col s12">
 				<i class="material-icons prefix">gamepad</i>
-				<input id="publisher_name" name="publisher_name" type="text" required/>
+				<input id="publisher_name" name="publisher_name" type="text" maxlength="40" required/>
 				<label for="icon_prefix">Publisher Name</label>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
       </div>
       <textarea
         class="form-control" aria-label="With textarea"
-        id="publisher_desc" name="publisher_desc" required></textarea>
+        id="publisher_desc" name="publisher_desc" maxlength="1500" required></textarea>
       <label for="icon_prefix">Publisher Description</label>
     </div>
 		
@@ -34,7 +34,7 @@
 		</div>
 
         <div calss="row">
-			<button class="btn dr-less-green text-white" type="submit">
+			<button class="btn btn-primary" type="submit">
             Add Publisher!
             <i class="fas fa-folder-plus"></i>
             </button>

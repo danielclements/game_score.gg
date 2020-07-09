@@ -24,7 +24,7 @@
                     </div>
                 <div class="form-group col-md-6">
                     <label for="game_name">Game Name</label>
-                    <input type="text" class="form-control" id="game_name" name="game_name" placeholder="Game Name" value="{{game.game_name}}" required>
+                    <input type="text" class="form-control" id="game_name" name="game_name" placeholder="Game Name" value="{{game.game_name}}" maxlength="40" required>
                 </div>
         </div>
 
@@ -35,8 +35,7 @@
                     class="form-control"
                     aria-label="With textarea"
                     id="game_summ"
-                    name="game_summ" placeholder="Game Summary" required>{{game.game_summ
-}}</textarea>
+                    name="game_summ" placeholder="Game Summary" maxlength="1500" required>{{game.game_summ}}</textarea>
             </div>
         </div>
 

@@ -6,7 +6,7 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">gamepad</i>
-        <input id="developer_name" name="developer_name" type="text" required/>
+        <input id="developer_name" name="developer_name" type="text" maxlength="40" required/>
         <label for="icon_prefix">Developer Name</label>
       </div>
     </div>
@@ -16,7 +16,7 @@
         <i class="material-icons prefix">gamepad</i>
       </div>
       <textarea class="form-control" aria-label="With textarea"
-        id="developer_desc" name="developer_desc" required></textarea>
+        id="developer_desc" name="developer_desc" maxlength="1500" required></textarea>
       <label for="icon_prefix">Developer Description</label>
     </div>
 
@@ -33,7 +33,7 @@
     </div>
 
     <div calss="row">
-      <button class="btn dr-less-green text-white" type="submit">
+      <button class="btn btn-primary" type="submit">
         Add Developer!
         <i class="fas fa-folder-plus"></i>
       </button>

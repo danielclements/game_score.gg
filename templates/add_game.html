@@ -14,7 +14,7 @@
                 <label for="first">Select Categories</label>
                 <select class="selectpicker selector-white select-w-100"
                         multiple data-live-search="true"
-                        id="game_categories" name="game_categories" required>
+                        id="game_categories" name="game_categories"  required>
                         <option value="" disabled>Select Category</option>
                         {% for category in categories %}
                             <option id="category_name" name="category_name" value="{{category.category_name}}">
@@ -24,7 +24,7 @@
                 </div>
             <div class="form-group col-md-6">
                 <label for="game_name">Game Name</label>
-                <input type="text" class="form-control" id="game_name" name="game_name" placeholder="Game Name" required>
+                <input type="text" class="form-control" id="game_name" name="game_name" placeholder="Game Name" maxlength="40" required>
             </div>
     </div>
 
@@ -35,7 +35,7 @@
                 class="form-control"
                 aria-label="With textarea"
                 id="game_summ"
-                name="game_summ" placeholder="Game Summary" required></textarea>
+                name="game_summ" placeholder="Game Summary" maxlength="1500" required></textarea>
         </div>
     </div>
 

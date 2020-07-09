@@ -106,6 +106,7 @@ a:hover{color: inherit;}
     padding-top: 48px;
     padding-bottom: 48px;
     padding-right: 25px;
+    box-shadow:  0px 15px 10px rgba(0,0,0,0.15);
 }
 
 /*-- User Registration------------------------------*/
