@@ -144,7 +144,7 @@ def add_game():
         return redirect(url_for('user_login'))
 
 
-@app.route('/insert_game', methods=['GET', 'POST'])
+@app.route('/insert_game', methods=['POST'])
 def insert_game():
     games = mongo.db.games
     platforms = request.values.getlist('platforms')
@@ -234,7 +234,7 @@ def add_review():
         return redirect(url_for('user_login'))
 
 
-@app.route('/insert_review', methods=['POST', 'GET'])
+@app.route('/insert_review', methods=['POST'])
 def insert_review():
     users = mongo.db.users
     login_user = users.find_one({'username': session['username']})
@@ -255,7 +255,7 @@ def insert_review():
         'review_score': review_score,
         'review_by': review_by
     })
-    flash('Review succesfully added!')
+    flash('Your review of ' + review_game + ' was successfully added!')
     return redirect(url_for('home_page'))
 
 
@@ -281,7 +281,7 @@ def add_developer():
         return redirect(url_for('user_login'))
 
 
-@ app.route('/insert_developer', methods=['GET', 'POST'])
+@ app.route('/insert_developer', methods=['POST'])
 def insert_developer():
     developers = mongo.db.developers
     developer_name = request.form.get('developer_name')
@@ -320,7 +320,7 @@ def edit_game(game_id):
         return redirect(url_for('user_login'))
 
 
-@ app.route('/update_game/<game_id>', methods=["POST", "GET"])
+@ app.route('/update_game/<game_id>', methods=["POST"])
 def update_game(game_id):
     games = mongo.db.games
     game_name = request.form.get('game_name')
