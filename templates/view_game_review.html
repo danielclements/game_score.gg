@@ -1,17 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row mt-3 pt-2 pb-2 mb-3 reviews-wrapper">
+<div class="row mt-3  mb-3 reviews-wrapper">
     <div class="col-md-8 p-0">
         <img class="review-img " src="{{game.game_image_url}}" alt="test">
     </div>
 
     <div class="col-md-4">
         <h5 class="text-center game-details mb-4">Game Details</h5>
-        <p>Game Name: {{game.game_name}}</p>
-        <p>Release Date: {{game.release_date}}</p>
-        <p>Developer: {{game.developer_name}}</p>
-        <p>Developer: {{game.publisher_name}}</p>
-        <p id="test">Platform: {{game.platforms}}</p>
+        <p class="game-details-p" ><b class="details-title">Game Name</b> :&nbsp;&nbsp; {{game.game_name}}</p>
+        <p class="game-details-p" ><b class="details-title">Developer</b> :&nbsp;&nbsp; {{game.developer_name}}</p>
+        <p class="game-details-p" ><b class="details-title">Publisher</b> :&nbsp;&nbsp; {{game.publisher_name}}</p>
+        <p class="game-details-p" ><b class="details-title">Release Date</b> :&nbsp;&nbsp; {{game.release_date}}</p>
+        <p class="game-details-p" ><b class="details-title">Platform</b> :&nbsp;&nbsp; {{game.platforms}}</p>
+        <p class="game-details-p" ><b class="details-title">Game Added By</b> :&nbsp;&nbsp; {{game.game_added_by}}</p>
       
     </div>
 </div>
@@ -23,32 +24,36 @@
 
 
 
-<div class="row" >
-  <h4 class="mx-auto">Reviews</h4>
-</div>
-{% for review in reviews %}
-    {% if game.game_name == review.review_game %}
-        <div class="row text-darks">
-            <div class="accordion" id="accordionExample">
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    {{review.review_header}}
-                    </button>
-                </h2>
-                </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+<div class="row mt-3 p-2 d-flex justify-content-center reviews-wrapper">
+    <div class="col-md-12 mt-2">
+        <h4 class="text-center">Reviews</h4>
+    </div>
+
+    <div class="row d-flex justify-content-center pb-5">
+        {% for review in reviews %}
+            {% if game.game_name == review.review_game %}
+                <div class="card m-2" style="width: 18rem;">
                 <div class="card-body">
-                    <p>{{review.review_body}}</p>
+                    {% if review.review_score <= 4 %}
+                        <p class="review-score review-score-low text-center">&nbsp;{{review.review_score}} &nbsp;</p>
+                    {% elif review.review_score >= 8  %}
+                        <p class="review-score review-score-high text-center">&nbsp;{{review.review_score}} &nbsp;</p>
+                    {% else  %}
+                        <p class="review-score review-score-md text-center">&nbsp;{{review.review_score}} &nbsp;</p>
+                    {% endif %}
+
+                    <h5 class="card-title text-center mt-2">{{review.review_header}}</h5>
+                    <h6 class="card-subtitle mb-2 text-center text-muted">{{review.review_by}}</h6>
+                    <p class="card-text review-body">{{review.review_body}}</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
                 </div>
                 </div>
-            </div>
-            </div>
-        </div>
-    {% endif %}
-{% endfor %}
-
-
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="spacer">
+</div>
 {% endblock %}
