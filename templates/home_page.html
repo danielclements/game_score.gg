@@ -11,7 +11,7 @@
 {% endwith %}
 
     <div class="row pt-5">
-        <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-0">
+        <div class="col-md-8  mb-4" id="featured-games">
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -56,10 +56,19 @@
             </div>
         </div>
 
-        <div class="offset-1 col-sm-8 col-md-4 offset-md-0 featured_dev border">
+        <div class="col-10 offset-1  col-md-4 offset-md-0 featured_dev border mb-4">
             <div class="text-center">
-                <u><h5>Featured Developer</h5></u>
-
+                <u><h5 class="mt-2 mb-3">Featured Developer</h5></u>
+                {% for developer in developers %}
+                    {% if developer.featured_developer == True %}
+                            <p class="game-details-p text-left" ><b>Developer Name</b> :&nbsp;&nbsp; {{developer.developer_name}}</p>
+                            <p class="game-details-p text-left" ><b>Founding Date</b> :&nbsp;&nbsp; {{developer.developer_founding_date}}</p>
+                    {% endif %}
+                {% endfor %}
+                <p class="game-details-p text-left" ><b>Next release</b> :&nbsp;&nbsp; Elden Ring</p>
+                <p class="game-details-p text-left" ><b>Release Date</b> :&nbsp;&nbsp; Unknown</p>
+                <p class="game-details-p text-left" ><b>President</b> :&nbsp;&nbsp; Hidetaka Miyazaki</p>
+                <p class="game-details-p text-left" ><b>Headquarters</b> :&nbsp;&nbsp; Tokyo, Japan</p>
             </div>
         </div>
     </div>
@@ -68,7 +77,7 @@
             <h4 class="text-center">Recently added games</h4>
             <ul class="newest_games_ul p-3">
                 {% for games in newest_games %}
-                    <li class="list-group">
+                    <li class="list-group recent_games">
                                  <div class="row m-0">
                                     <div class="col-12">
                                         <a href="{{url_for('view_game_review', game_id=games._id)}}" class="font-weight-bold new-games-a">{{games.game_name}}
