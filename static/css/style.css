@@ -286,6 +286,9 @@ a:hover{color: inherit;}
     transform: scale(1.015);
 }
 
+.dropdown-menu{
+    min-width: 130px !important;
+}
 
 /* Radial Out by Hover.css */
 
