@@ -35,7 +35,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
                 <label for="developer_name">Developer</label>
-                <select class="select-w-100"  id="developer_name" name="developer_name" required>
+                <select class="select-w-100 selectpicker selector-white"  id="developer_name" name="developer_name" data-live-search="true" required>
                     <option value="" disabled selected>Choose Developer</option>
                     {% for dev in developers %}
                         <option value="{{dev.developer_name}}">{{dev.developer_name}}</option>
@@ -44,10 +44,10 @@
         </div>
         <div class="form-group col-md-6">
                 <label for="publisher_name">Publisher</label>
-                <select class="select-w-100 selectpicker selector-white" id="publisher_name" name="publisher_name" required>
+                <select class="select-w-100 selectpicker selector-white" id="publisher_name" name="publisher_name" data-live-search="true" required>
                 <option value="" disabled selected>Choose Publisher</option>
                 {% for pub in publishers %}
-                <option value="{{pub.publisher_name}}">{{pub.publisher_name}}</option>
+                    <option value="{{pub.publisher_name}}">{{pub.publisher_name}}</option>
                 {% endfor %}
                 </select>  
         </div>
@@ -56,7 +56,8 @@
     <div class="form-row">
         <div class="form-group col-md-6">
                 <label for="platforms">Platforms</label>
-                <select class="select-w-100" id="platforms" name="platforms" multiple required>
+                <select class="selectpicker selector-white select-w-100"
+                        data-live-search="true" name="platforms" multiple required>
                     <option disabled>Select Platform</option>
                     {% for plat in platforms %}
                     <option value="{{plat.platform_name}}">{{plat.platform_name}}</option>
