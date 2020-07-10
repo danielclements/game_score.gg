@@ -244,7 +244,7 @@ def insert_review():
     review_author = login_user['first_name'] + ' ' + login_user['last_name']
     review_body = request.form['review_body']
     review_date = datetime.utcnow()
-    review_score = request.form['review_score']
+    review_score = int(request.form['review_score'])
     review_by = login_user['username']
     reviews.insert_one({
         'review_game': review_game,
@@ -316,7 +316,7 @@ def edit_game(game_id):
                                platforms=mongo.db.platforms.find(),)
 
     else:
-        flash('Please log in as:' + creator)
+        flash('Please log in as: ' + creator)
         return redirect(url_for('user_login'))
 
 
@@ -449,7 +449,7 @@ def update_review(review_id):
             'review_header': request.form.get('review_header'),
             'review_body': request.form.get('review_body'),
             'review_edit_date': datetime.utcnow(),
-            'review_score': request.form.get('review_score')
+            'review_score': int(request.form.get('review_score'))
         }})
     flash('Your review of ' + review_game + ' was successfully updated')
     return redirect(url_for('home_page'))
