@@ -126,7 +126,7 @@ This site is hosted on Heroku The page is being hosted directly from the master 
 
 
 
-
+- https://www.w3schools.com/howto/howto_js_password_validation.asp
 
 Live version of the site : http://game-score-gg.herokuapp.com/home
 
