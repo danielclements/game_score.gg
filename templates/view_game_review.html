@@ -11,7 +11,8 @@
         <p class="game-details-p" ><b class="details-title">Developer</b> :&nbsp;&nbsp; {{game.developer_name}}</p>
         <p class="game-details-p" ><b class="details-title">Publisher</b> :&nbsp;&nbsp; {{game.publisher_name}}</p>
         <p class="game-details-p" ><b class="details-title">Release Date</b> :&nbsp;&nbsp; {{game.release_date}}</p>
-        <p class="game-details-p" ><b class="details-title">Platform</b> :&nbsp;&nbsp; {{game.platforms}}</p>
+        <p class="game-details-p"><b class="details-title">Platform</b>:&nbsp;&nbsp;{% for plateform in game.platforms %}<span>{{plateform}},</span> {% endfor %}</p>
+        <p class="game-details-p"><b class="details-title">Categories</b>:&nbsp;&nbsp;{% for category in game.game_categories %}<span>{{category}},</span> {% endfor %}</p>
         <p class="game-details-p" ><b class="details-title">Game Added By</b> :&nbsp;&nbsp; {{game.game_added_by}}</p>
       
     </div>
@@ -45,7 +46,7 @@
 
                     <h5 class="card-title text-center mt-2">{{review.review_header}}</h5>
                     <h6 class="card-subtitle mb-2 text-center text-muted">{{review.review_by}}</h6>
-                    <p class="card-text review-body">{{review.review_body}}</p>
+                    <p class="card-text review-body" id="TEST">{{review.review_body}}</p>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
