@@ -179,8 +179,9 @@ a:hover{color: inherit;}
 }
 
 .featured_dev{
-    background-color:  #efefef;  
+    background-color: #ffffffde;
     box-shadow: 0px 2px 2px #49505738;
+    backdrop-filter: blur(3px);
 }
 
 .alert-danger{
@@ -252,6 +253,12 @@ a:hover{color: inherit;}
     height: 35px;
 }
 
+.card-review{
+      border-radius: 5px;
+      box-shadow:  0px 15px 10px rgba(0,0,0,0.10);
+      background-color: #fffffff0;
+      backdrop-filter: blur(6px);
+}
 /* Misc */
 
 .btn-primary{
@@ -333,6 +340,13 @@ a:hover{color: inherit;}
   transform: scale(2);
 }
 
+#nav-logo-img {
+    transition: 0.15s ease transform, 0.15s ease color ;
+}
+#nav-logo-img:hover{
+    transform: scale(1.025);
+    color: rgb(34, 115, 197);
+}
 /*-- Media Queries----------------*/
 
 
