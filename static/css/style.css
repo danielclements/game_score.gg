@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Merriweather', serif;}
 
 .newest_games_ul{
     background-color: #ffffffde;
-    
+    backdrop-filter: blur(6px);
 }
 
 .new-games-a{
@@ -199,10 +199,10 @@ a:hover{color: inherit;}
 /* View reviews */
 
 .reviews-wrapper{
-      border-radius: 5px;
-      box-shadow:  0px 15px 10px rgba(0,0,0,0.10);
-      background-color: #fffffff0;
-      backdrop-filter: blur(6px);
+    border-radius: 5px;
+    background-color: #ffffffde;
+    box-shadow: 0px 2px 2px #49505738;
+    backdrop-filter: blur(3px);
 }
 
 .review-img{
@@ -254,11 +254,13 @@ a:hover{color: inherit;}
 }
 
 .card-review{
-      border-radius: 5px;
-      box-shadow:  0px 15px 10px rgba(0,0,0,0.10);
-      background-color: #fffffff0;
-      backdrop-filter: blur(6px);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 178, 255, 0.2);
+    box-shadow: 0px 15px 10px rgba(0, 51, 255, 0.08);
+    background-color: #fffffff0;
+    backdrop-filter: blur(6px);
 }
+
 /* Misc */
 
 .btn-primary{
@@ -346,6 +348,10 @@ a:hover{color: inherit;}
 #nav-logo-img:hover{
     transform: scale(1.025);
     color: rgb(34, 115, 197);
+}
+
+.nav-link{
+    padding-left: 8px;
 }
 /*-- Media Queries----------------*/
 

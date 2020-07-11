@@ -1,8 +1,22 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row mt-3  mb-3 reviews-wrapper">
-    <div class="col-md-8 p-0">
-        <img class="review-img " src="{{game.game_image_url}}" alt="test">
+<div class="row mt-3  mb-3 mr-1 ml-1 mr-md-0 ml-md-0 reviews-wrapper">
+    <div class="col-md-8 mb-3 mb-md-0 p-0">
+         {% if game.game_image_url == "" %}
+
+            <img
+            src="/static/images/generic_place_holder.jpg"
+            class="review-img"
+            alt="Missing Game Image"
+            />
+          
+        {% else %}
+            <img
+            src="{{game.game_image_url}}"
+            class="review-img"
+            alt="Missing Game Image"
+            />
+        {% endif %}
     </div>
 
     <div class="col-md-4">
@@ -18,7 +32,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12 mt-3 p-4 reviews-wrapper">
+    <div class="col-md-12 mt-3 p-4 reviews-wrapper" id="game_summary">
         <p><strong>Summary:</strong> {{game.game_summ}}</p>
     </div>
 </div>
@@ -26,7 +40,7 @@
 
 
 
-<div class="row mt-3 p-2 d-flex justify-content-center reviews-wrapper">
+<div class="row  m-0 mt-3 p-2 d-flex justify-content-center">
     <div class="col-md-12 mt-2">
         <h4 class="text-center">Reviews</h4>
     </div>
@@ -34,7 +48,7 @@
     <div class="row d-flex justify-content-center pb-5">
         {% for review in reviews %}
             {% if game.game_name == review.review_game %}
-                <div class="card m-2" style="width: 18rem;">
+                <div class="card m-2 card-review" style="width: 18rem;">
                 <div class="card-body">
                     {% if review.review_score <= 4 %}
                         <p class="review-score review-score-low text-center">&nbsp;{{review.review_score}} &nbsp;</p>
@@ -46,7 +60,7 @@
 
                     <h5 class="card-title text-center mt-2">{{review.review_header}}</h5>
                     <h6 class="card-subtitle mb-2 text-center text-muted">{{review.review_by}}</h6>
-                    <p class="card-text review-body" id="TEST">{{review.review_body}}</p>
+                    <p class="card-text review-body" id="TEST">{{review.review_body | truncate(200)}}</p>
                     <a href="#" class="card-link">Card link</a>
                     <a href="#" class="card-link">Another link</a>
                 </div>
