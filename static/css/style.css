@@ -74,11 +74,6 @@ a:hover{color: inherit;}
   color: #ffffffd6;
 }
 
-.text-overflow {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 100px;
-}
 
 
 .navbar-grey{
