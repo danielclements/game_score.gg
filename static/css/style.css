@@ -258,6 +258,10 @@ a:hover{color: inherit;}
 
 /* Misc */
 
+.card-text{
+    min-height: 144px;
+}
+
 .btn-primary{
     filter: drop-shadow(0 0 0.15rem #007bff);
 }

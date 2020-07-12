@@ -487,6 +487,16 @@ def view_publishers():
                            publishers=mongo.db.publishers.find())
 
 
+@app.route('/publishers/<publisher_name>')
+def view_publisher_games(publisher_name):
+    the_pub = mongo.db.publishers.find_one({"publisher_name": publisher_name})
+    all_games = mongo.db.games.find({'publisher_name': publisher_name})
+    return render_template('view_publisher_details.html',
+                           games=all_games,
+                           the_publisher=the_pub,
+                           )
+
+
 @ app.route('/games/review/<game_id>')
 def view_game_review(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})

@@ -10,7 +10,7 @@
     {% endif %}
 {% endwith %}
 
-<div class="main_container pt-3 pb-5">
+<div class="main_container pt-3 pb-5 mt-5">
     <div class="row" >
     <h1 class="mx-auto">Publishers</h1>
     </div>
@@ -21,8 +21,8 @@
         <div class="card-body">
             <h5 class="card-title">{{publisher.publisher_name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Founded: {{publisher.publisher_founding_date}}</h6>
-            <p class="card-text text-overflow">{{publisher.publisher_desc | truncate(150)}}</p>
-            <a href="{{url_for('view_games_by_publisher', publisher_name=publisher.publisher_name)}}" class="btn btn-primary">view Games</a>
+            <p class="card-text ">{{publisher.publisher_desc | truncate(140)}}</p>
+            <a href="{{url_for('view_publisher_games', publisher_name=publisher.publisher_name)}}" class="btn btn-primary">view Games</a>
             {% if session['username'] == publisher.added_by %}
                 <a href="{{url_for('edit_publisher', publisher_id=publisher._id)}}" class="btn btn-primary">Edit Publisher</a>
             {% endif %}
@@ -31,5 +31,7 @@
 
     {% endfor %}
     </div>
+</div>
+<div class="spacer">
 </div>
 {% endblock %}
