@@ -1,56 +1,39 @@
+
 {% extends 'base.html' %} {% block content %}
+    <div class="row d-flex justify-content-center pb-4 pt-4">
+        <form class="col-10 col-md-7 pt-4 pb-4 form-add-game" action="{{ url_for('update_publisher', publisher_id=publisher._id) }}" method="POST">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="h3 mb-3 font-weight-normal">Edit Publisher</h1>
+                </div>
+            </div>  
 
-<h3>Edit Publisher</h3>
-<div class="row">
-  <form
-    action="{{ url_for('update_publisher', publisher_id=publisher._id) }}"
-    method="POST"
-  >
-    <div class="row">
-      <div class="input-field col s12">
-        <input
-          id="publisher_name"
-          name="publisher_name"
-          type="text"
-          value="{{publisher.publisher_name}}"
-          maxlength="40" required/>
-        <label for="icon_prefix">Publisher Name</label>
-      </div>
+            <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="publisher_name">Publisher Name</label>
+                            <input class="form-control" id="publisher_name" name="publisher_name" type="text" maxlength="40" value="{{publisher.publisher_name}}" required/>
+                        </div>
+                    <div class="form-group col-md-6">
+                        <label for="publisher_founding_date">Founding Date</label>
+                        <input class="form-control" id="publisher_founding_date" name="publisher_founding_date" type="date" value="{{publisher.publisher_founding_date}}"  required/>
+                    </div>
+            </div>
+
+            <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="publisher_desc">Publisher Description</label>
+                        <textarea class="form-control" aria-label="With textarea"
+                        id="publisher_desc" name="publisher_desc" maxlength="1500" required>{{publisher.publisher_desc}}</textarea>
+                    </div>
+            </div>
+            
+            <div calss="form-group">
+                <button class="btn btn-primary hvr-radial-out" type="submit">
+                Edit Publisher!
+                <i class="fas fa-folder-plus"></i>
+                </button>
+	        </div>
+        </form>
     </div>
-
-    <div class="input-group">
-      <div class="input-group-prepend">
-
-      </div>
-      <textarea
-        class="form-control"
-        aria-label="With textarea"
-        id="publisher_desc"
-        name="publisher_desc"
-        maxlength="1500" required>{{publisher.publisher_desc}}</textarea>
-      <label for="icon_prefix">Publisher Description</label>
-    </div>
-
-    <div class="row">
-      <div id="matfix" class="input-field col s12">
-        <i class="material-icons prefix">today</i>
-        <input
-          id="publisher_founding_date"
-          name="publisher_founding_date"
-          type="date"
-          value="{{publisher.publisher_founding_date}}"
-        />
-        <label for="icon_prefix">Founding Date</label>
-      </div>
-    </div>
-
-    <div calss="row">
-      <button class="btn btn-primary hvr-radial-out" type="submit">
-        Edit Publisher!
-        <i class="fas fa-edit"></i>
-      </button>
-    </div>
-  </form>
-</div>
-
 {% endblock %}
+
