@@ -38,8 +38,9 @@ def home_page():
     return render_template('home_page.html',
                            games=mongo.db.games.find(),
                            developers=mongo.db.developers.find(),
-                           newest_games=mongo.db.games.find().sort("_id", -1).limit(7),
-                           newest_publishers=mongo.db.publishers.find().sort("_id", -1).limit(7))
+                           newest_games=mongo.db.games.find().sort("_id", -1).limit(10),
+                           newest_developers=mongo.db.developers.find().sort("_id", -1).limit(10),
+                           newest_publishers=mongo.db.publishers.find().sort("_id", -1).limit(10))
 
 
 @app.route('/users/registration', methods=["GET"])

@@ -61,19 +61,20 @@
                 <u><h5 class="mt-2 mb-3">Featured Developer</h5></u>
                 {% for developer in developers %}
                     {% if developer.featured_developer == True %}
-                            <p class="game-details-p text-left" ><b>Developer Name</b> :&nbsp;&nbsp; {{developer.developer_name}}</p>
-                            <p class="game-details-p text-left" ><b>Founding Date</b> :&nbsp;&nbsp; {{developer.developer_founding_date}}</p>
+                            <p class="game-details-p text-left" ><b>Developer Name</b> :&nbsp;&nbsp; <a href="{{url_for('view_developer_games', developer_name=developer.developer_name)}}"  >{{developer.developer_name}}</a></p>
+                            <p class="game-details-p text-left" ><b>Founding Date</b>:&nbsp;&nbsp;{{developer.developer_founding_date}}</p>
                     {% endif %}
                 {% endfor %}
                 <p class="game-details-p text-left" ><b>Next release</b> :&nbsp;&nbsp; Elden Ring</p>
                 <p class="game-details-p text-left" ><b>Release Date</b> :&nbsp;&nbsp; Unknown</p>
                 <p class="game-details-p text-left" ><b>President</b> :&nbsp;&nbsp; Hidetaka Miyazaki</p>
                 <p class="game-details-p text-left" ><b>Headquarters</b> :&nbsp;&nbsp; Tokyo, Japan</p>
+                
             </div>
         </div>
     </div>
     <div class="row m-0 mt-4">
-        <div class="col-md-5">
+        <div class="col-md-4">
             <h4 class="text-center">Recently added games</h4>
             <ul class="newest_games_ul p-3">
                 {% for games in newest_games %}
@@ -85,14 +86,14 @@
 
                                          <img
                                         src="/static/images/generic_place_holder.jpg"
-                                        class="img-recent-game ml-auto"
+                                        class="img-recent-game ml-auto d-none d-md-inline"
                                         alt="Missing Game Image"
                                         />
                                         
                                     {% else %}
                                          <img
                                          src="{{games.game_image_url}}"
-                                         class="img-recent-game ml-auto"
+                                         class="img-recent-game ml-auto d-none d-md-inline"
                                          alt="Missing Game Image"
                                         />
                                     {% endif %}
@@ -106,7 +107,45 @@
                 {% endfor %}
             </ul> 
         </div>
+
+        <div class="col-md-3 offset-md-1">
+            <h4 class="text-center">Recent Developers</h4>
+            <ul class="newest_games_ul p-3">
+                {% for developer in newest_developers %}
+                    <li class="list-group recent_devs">
+                         <div class="row m-0">
+                            <div class="col-12 new_dev">
+                                <a href="" class="font-weight-bold ">{{developer.developer_name}}
+                                    <p class="text-muted m-0">{{developer.developer_founding_date}}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <hr class="block-divider col-sm-12">
+                {% endfor %}
+            </ul> 
+        </div>
+
+        <div class="col-md-3 offset-md-1 ">
+            <h4 class="text-center">Recent Publishers</h4>
+            <ul class="newest_games_ul p-3">
+                {% for publisher in newest_publishers %}
+                    <li class="list-group recent_pubs">
+                         <div class="row m-0">
+                            <div class="col-12 new_dev">
+                                <a href="{{url_for('view_publisher_games', publisher_name=publisher.publisher_name)}}" class="font-weight-bold ">{{publisher.publisher_name}}
+                                    <p class="text-muted m-0">{{publisher.publisher_founding_date}}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <hr class="block-divider col-sm-12">
+                {% endfor %}
+            </ul> 
+        </div>
     </div>
+
+
 
     <div class="spacer">
     </div>
