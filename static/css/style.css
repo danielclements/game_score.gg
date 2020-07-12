@@ -118,10 +118,10 @@ a:hover{color: inherit;}
 
 .game_card_img {
   display: block;
-  max-width:286px;
   max-height:161px;
   min-width: 286px;
   min-height: 161px;
+  padding: 1px;
 }
 
 /* The message box is shown when the user clicks on the password field */

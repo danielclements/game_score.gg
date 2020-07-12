@@ -38,7 +38,8 @@ def home_page():
     return render_template('home_page.html',
                            games=mongo.db.games.find(),
                            developers=mongo.db.developers.find(),
-                           newest_games=mongo.db.games.find().sort("_id", -1).limit(7))
+                           newest_games=mongo.db.games.find().sort("_id", -1).limit(7),
+                           newest_publishers=mongo.db.publishers.find().sort("_id", -1).limit(7))
 
 
 @app.route('/users/registration', methods=["GET"])
@@ -464,10 +465,20 @@ def view_games():
                            categories=mongo.db.categories.find())
 
 
-@ app.route('/developers')
+@app.route('/developers')
 def view_developers():
     return render_template('view_developers.html',
                            developers=mongo.db.developers.find())
+
+
+@app.route('/developers/<developer_name>')
+def view_developer_games(developer_name):
+    the_dev = mongo.db.developers.find_one({"developer_name": developer_name})
+    all_games = mongo.db.games.find({'developer_name': developer_name})
+    return render_template('view_developer_details.html',
+                           games=all_games,
+                           the_dev=the_dev,
+                           )
 
 
 @ app.route('/publishers')
@@ -484,20 +495,6 @@ def view_game_review(game_id):
                            reviews=all_reviews,
                            game=the_game,
                            )
-
-
-@ app.route('/games/developer/<developer_name>')
-def view_games_by_developer(developer_name):
-    return render_template('view_games.html',
-                           games=mongo.db.games.find({"developer_name":
-                                                      developer_name}))
-
-
-@ app.route('/games/publisher/<publisher_name>')
-def view_games_by_publisher(publisher_name):
-    return render_template('view_games.html',
-                           games=mongo.db.games.find({"publisher_name":
-                                                      publisher_name}))
 
 
 @ app.route('/games/category/<category_name>')
