@@ -308,16 +308,20 @@ def insert_developer():
 def edit_game(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
     creator = the_game['game_added_by']
-    if session['username'] == creator:
-        return render_template('edit_game.html', game=the_game,
-                               games=mongo.db.games.find(),
-                               categories=mongo.db.categories.find(),
-                               developers=mongo.db.developers.find(),
-                               publishers=mongo.db.publishers.find(),
-                               platforms=mongo.db.platforms.find(),)
+    if 'username' in session:
+        if session['username'] == creator:
+            return render_template('edit_game.html', game=the_game,
+                                   games=mongo.db.games.find(),
+                                   categories=mongo.db.categories.find(),
+                                   developers=mongo.db.developers.find(),
+                                   publishers=mongo.db.publishers.find(),
+                                   platforms=mongo.db.platforms.find(),)
+        else:
+            flash('Please log in as: ' + creator)
+            return redirect(url_for('user_login'))
 
     else:
-        flash('Please log in as: ' + creator)
+        flash("Please login to access this feature!")
         return redirect(url_for('user_login'))
 
 
@@ -348,11 +352,15 @@ def edit_category(category_id):
     the_category = mongo.db.categories.find_one(
         {'_id': ObjectId(category_id)})
     creator = the_category['added_by']
-    if session['username'] == creator:
-        return render_template('edit_category.html',
-                               category=the_category)
+    if 'username' in session:
+        if session['username'] == creator:
+            return render_template('edit_category.html',
+                                   category=the_category)
+        else:
+            flash('Please log in as   ' + creator)
+            return redirect(url_for('user_login'))
     else:
-        flash('Please log in as   ' + creator)
+        flash("Please login to access this feature!")
         return redirect(url_for('user_login'))
 
 
@@ -371,11 +379,15 @@ def edit_publisher(publisher_id):
     the_publisher = mongo.db.publishers.find_one(
         {'_id': ObjectId(publisher_id)})
     creator = the_publisher['added_by']
-    if session['username'] == creator:
-        return render_template('edit_publisher.html',
-                               publisher=the_publisher)
+    if 'username' in session:
+        if session['username'] == creator:
+            return render_template('edit_publisher.html',
+                                   publisher=the_publisher)
+        else:
+            flash('Please login as  ' + creator)
+            return redirect(url_for('user_login'))
     else:
-        flash('Please login as  ' + creator)
+        flash("Please login to access this feature!")
         return redirect(url_for('user_login'))
 
 
@@ -399,11 +411,15 @@ def edit_developer(developer_id):
     the_developer = mongo.db.developers.find_one(
         {'_id': ObjectId(developer_id)})
     creator = the_developer['added_by']
-    if session['username'] == creator:
-        return render_template('edit_developer.html',
-                               developer=the_developer)
+    if 'username' in session:
+        if session['username'] == creator:
+            return render_template('edit_developer.html',
+                                   developer=the_developer)
+        else:
+            flash('Please login as :  ' + creator)
+            return redirect(url_for('user_login'))
     else:
-        flash('Please login as :  ' + creator)
+        flash("Please login to access this feature!")
         return redirect(url_for('user_login'))
 
 
@@ -428,13 +444,18 @@ def edit_review(review_id):
     creator = the_review['review_by']
     all_games = mongo.db.games.find()
     print(creator)
-    if session['username'] == creator:
-        return render_template('edit_review.html',
-                               review=the_review,
-                               games=all_games)
+    if 'username' in session:
+        if session['username'] == creator:
+            return render_template('edit_review.html',
+                                review=the_review,
+                                games=all_games)
+        else:
+            flash('please login as:' + creator)
+            return redirect(url_for('user_login'))
     else:
-        flash('please login as:' + creator)
+        flash("Please login to access this feature!")
         return redirect(url_for('user_login'))
+
 
 
 @ app.route('/update_review/<review_id>', methods=['POST'])
