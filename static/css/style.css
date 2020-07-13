@@ -185,6 +185,7 @@ a:hover{color: inherit;}
 }
 
 .featured_dev{
+    border-radius: 5px;
     background-color: #ffffffde;
     box-shadow: 0px 2px 2px #49505738;
     backdrop-filter: blur(3px);
