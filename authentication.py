@@ -7,7 +7,6 @@ from datetime import datetime
 from app import app
 import bcrypt
 
-
 mongo = PyMongo(app)
 
 
