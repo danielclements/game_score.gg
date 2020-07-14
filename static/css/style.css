@@ -393,6 +393,9 @@ a:hover{color: inherit;}
         min-height: 96vh;
     }
 
+    .new_dev{
+        font-size: 13px !important;
+    }
 }
 
 
@@ -411,6 +414,8 @@ a:hover{color: inherit;}
 
 
 @media (max-height: 1200px) {
+
+
 
     .new-games-a{
     font-size: 13px;
