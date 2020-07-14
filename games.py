@@ -113,3 +113,11 @@ def update_game(game_id):
                      }})
     flash(game_name + " " + "successfully edited!")
     return redirect(url_for('view_games'))
+
+
+# Delete Review
+@app.route('/games/delete<game_id>')
+def delete_game(game_id):
+    mongo.db.games.remove({'_id': ObjectId(game_id)})
+    flash('Successfully deleted game!')
+    return redirect(url_for('home_page'))

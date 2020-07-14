@@ -107,3 +107,11 @@ def update_review(review_id):
         }})
     flash('Your review of ' + review_game + ' was successfully updated')
     return redirect(url_for('home_page'))
+
+
+# Delete Review
+@app.route('/review/delete<review_id>')
+def delete_review(review_id):
+    mongo.db.reviews.remove({'_id': ObjectId(review_id)})
+    flash('Successfully deleted review!')
+    return redirect(url_for('home_page'))
