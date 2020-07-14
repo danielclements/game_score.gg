@@ -28,6 +28,11 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Merriweather', serif;}
     margin-top: 6px;
 }
 
+.recent-gam-dev-pub{
+    background-color: #ffffffde;
+}
+
+
 
 .new-games-a{
     text-decoration: none;
@@ -268,6 +273,10 @@ a:hover{color: inherit;}
     backdrop-filter: blur(6px);
 }
 
+.summary-wrapper{
+    padding: 20px !important;
+}
+
 /* Misc */
 
 .card-text{
@@ -373,8 +382,20 @@ a:hover{color: inherit;}
         margin-bottom: 30px;
     }
 
+    #featured-games{
+        padding: 0px !important
+    }
+
     .login_forum{
         margin-bottom: 30px !important;
+    }
+
+    .dev-details-wrapper{
+        padding:20px !important;
+    }
+
+    .recent-wrapper{
+        padding: 20px !important;
     }
 }
 
