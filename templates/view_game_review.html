@@ -49,21 +49,21 @@
         {% for review in reviews %}
             {% if game.game_name == review.review_game %}
                 <div class="card m-2 card-review" style="width: 18rem;">
-                <div class="card-body">
-                    {% if review.review_score <= 4 %}
-                        <p class="review-score review-score-low text-center">&nbsp;{{review.review_score}} &nbsp;</p>
-                    {% elif review.review_score >= 8  %}
-                        <p class="review-score review-score-high text-center">&nbsp;{{review.review_score}} &nbsp;</p>
-                    {% else  %}
-                        <p class="review-score review-score-md text-center">&nbsp;{{review.review_score}} &nbsp;</p>
-                    {% endif %}
+                    <div class="card-body">
+                        {% if review.review_score <= 4 %}
+                            <p class="review-score review-score-low text-center">&nbsp;{{review.review_score}} &nbsp;</p>
+                        {% elif review.review_score >= 8  %}
+                            <p class="review-score review-score-high text-center">&nbsp;{{review.review_score}} &nbsp;</p>
+                        {% else  %}
+                            <p class="review-score review-score-md text-center">&nbsp;{{review.review_score}} &nbsp;</p>
+                        {% endif %}
 
-                    <h5 class="card-title text-center mt-2">{{review.review_header}}</h5>
-                    <h6 class="card-subtitle mb-2 text-center text-muted">{{review.review_by}}</h6>
-                    <p class="card-text review-body ">{{review.review_body}}</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>
+                        <h5 class="card-title text-center mt-2">{{review.review_header}}</h5>
+                        <h6 class="card-subtitle mb-2 text-center text-muted">{{review.review_by}}</h6>
+                        <p class="card-text review-body">{{review.review_body}}</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
                 </div>
             {% endif %}
         {% endfor %}
