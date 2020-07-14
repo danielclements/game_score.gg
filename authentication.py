@@ -52,13 +52,15 @@ def user_login():
     return render_template('user_login.html')
 
 
-@app.route('/users/login/test', methods=["POST"])
+@app.route('/users/login/check', methods=["POST"])
 def login():
     users = mongo.db.users
-    login_user = users.find_one({'username': request.form.get('username')})
+    username = request.form.get('username')
+    password = request.form.get('password')
+    login_user = users.find_one({'username': username})
 
     if login_user:
-        if bcrypt.hashpw(request.form.get('password').encode('utf-8'), login_user['password']) == login_user['password']:
+        if bcrypt.hashpw(password.encode('utf-8'), login_user['password']) == login_user['password']:
             if session:
                 session.pop("username")
             session['username'] = request.form['username']
