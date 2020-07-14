@@ -10,9 +10,7 @@
     output.innerHTML = this.value;
     }
 
-      });
-
-    
+    });
     //   password requirements 
     var myInput = document.getElementById("password");
     var letter = document.getElementById("letter");
