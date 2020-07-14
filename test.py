@@ -128,6 +128,53 @@ class add_http_codes(unittest.TestCase):
             '/publisher/add', content_type='html/text', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
+    def test_category_add_http(self):
+        tester = app.test_client(self)
+        tester.post('/users/login/check', data=dict(
+            username="test-account", password="Test123"))
+        response = tester.get(
+            '/category/add', content_type='html/text', follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
+
+
+# Check view routes and content
+class view_test(unittest.TestCase):
+
+    # returning the correct HTTP codes
+    def test_games_view_http(self):
+        tester = app.test_client(self)
+        response = response = tester.get(
+            '/games', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+
+    def test_developers_view_http(self):
+        tester = app.test_client(self)
+        response = response = tester.get(
+            '/developers', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+
+    def test_publishers_view_http(self):
+        tester = app.test_client(self)
+        response = response = tester.get(
+            '/publishers', content_type='html/text')
+        self.assertEqual(response.status_code, 200)
+
+    # Returning the correct content
+    def test_games_page_loads(self):
+        tester = app.test_client(self)
+        response = tester.get('/games', content_type='html/text')
+        self.assertTrue(b'Games' in response.data)
+
+    def test_developers_page_loads(self):
+        tester = app.test_client(self)
+        response = tester.get('/developers', content_type='html/text')
+        self.assertTrue(b'Developers' in response.data)
+
+    def test_publishers_page_loads(self):
+        tester = app.test_client(self)
+        response = tester.get('/publishers', content_type='html/text')
+        self.assertTrue(b'Publishers' in response.data)
+
 
 if __name__ == '__main__':
     app.secret_key = os.getenv('SECRET_KEY')
