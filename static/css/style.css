@@ -218,7 +218,7 @@ a:hover{color: inherit;}
 }
 
 .review-img{
-
+    max-height: 412.109px;
     border-radius: 5px;
     position: block;
     width: 100%;
