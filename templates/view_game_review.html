@@ -61,9 +61,13 @@
                         <h5 class="card-title text-center mt-2">{{review.review_header}}</h5>
                         <h6 class="card-subtitle mb-2 text-center text-muted">{{review.review_by}}</h6>
                         <p class="card-text review-body">{{review.review_body}}</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        
                     </div>
+                    <div class="align-items-end mx-auto">
+                            {% if session['username'] == review.review_by %}
+                                <a href="{{url_for('edit_review', review_id=review._id)}}" class="btn btn-warning">Edit Review</a>
+                            {% endif %}
+                        </div>
                 </div>
             {% endif %}
         {% endfor %}
