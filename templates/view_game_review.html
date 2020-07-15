@@ -45,7 +45,7 @@
         <h4 class="text-center">Reviews</h4>
     </div>
 
-    <div class="row d-flex justify-content-center pb-5">
+    <div class="col-12 d-flex justify-content-center pb-5">
         {% for review in reviews %}
             {% if game.game_name == review.review_game %}
                 <div class="card m-2 card-review" style="width: 18rem;">
@@ -74,7 +74,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row  m-0 mt-3 p-2 d-flex justify-content-center">
     <div class="col-12 text-center">
         <a href="{{url_for('review_by_game', game_id=game._id)}}" class="btn btn-dark">Add Review</a>
     </div>
