@@ -19,6 +19,10 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Merriweather', serif;}
 
 /* Home Page */
 
+.home_slide{
+    max-height: 1500px;
+}
+
 .img-recent-game{
     height: 40px;
     width: 70px;
@@ -50,11 +54,6 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Merriweather', serif;}
     font-size: 15px;
     min-height: 48px;
 }
-.test-bg-color{
-    background-color: #ffffffde;
-    border-radius: 10px;
-}
-
 
 .block-divider {
     width: 100%;
@@ -67,50 +66,13 @@ h1, h2, h3, h4, h5, h6 {font-family: 'Merriweather', serif;}
     padding-left: 0px;
 }
 
+/* end of home page */
+
+/* Login Page */
 .register-now{
   color:  #007bff;
   text-decoration: underline;
 }
-
-.main_container{
-    background-color: #ffffffde;
-    border-radius: 10px;
-}
-
-a { color: inherit; } 
-a:hover{color: inherit;}
-
-.m_left {
-  margin-left: 100px !important;
-}
-
-
-.hover-blue:hover {
-  background-color: rgb(34, 115, 197);
-  color: #ffffffd6;
-}
-
-
-
-.navbar-grey{
-    background-color:#393e46;
-    color: #f2f2f2;
-    text-decoration: none;
-    position: fixed;
-    width: 100%;
-    z-index: 2;
-}
-
-.navbar-grey:hover{
-    color: #f2f2f2;
-    
-}
-
-
-.home_slide{
-    max-height: 1500px;
-}
-
 
 .login_forum{
     border-radius: 12px;
@@ -121,6 +83,7 @@ a:hover{color: inherit;}
     padding-right: 25px;
     box-shadow:  0px 15px 10px rgba(0,0,0,0.15);
 }
+/* end of login page */
 
 /*-- User Registration------------------------------*/
 .select-w-100{
@@ -135,6 +98,7 @@ a:hover{color: inherit;}
   padding: 1px;
 }
 
+/* code provided by W3school  */
 /* The message box is shown when the user clicks on the password field */
 #message {
   display:none;
@@ -169,6 +133,7 @@ a:hover{color: inherit;}
   
   content:"✖";
 }
+/* end of code provided by W3school */
 
 /*-- Add Game------------------------------*/
 
@@ -278,6 +243,41 @@ a:hover{color: inherit;}
 }
 
 /* Misc */
+
+
+.main_container{
+    background-color: #ffffffde;
+    border-radius: 10px;
+}
+
+a { color: inherit; } 
+a:hover{color: inherit;}
+
+.m_left {
+  margin-left: 100px !important;
+}
+
+
+.hover-blue:hover {
+  background-color: rgb(34, 115, 197);
+  color: #ffffffd6;
+}
+
+
+
+.navbar-grey{
+    background-color:#393e46;
+    color: #f2f2f2;
+    text-decoration: none;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+.navbar-grey:hover{
+    color: #f2f2f2;
+    
+}
 
 .card-text{
     min-height: 144px;
@@ -419,21 +419,6 @@ a:hover{color: inherit;}
         font-size: 13px !important;
     }
 }
-
-
-
-
-@media (min-width: 992px) {
-
-}
-
-
-
-@media (max-height:720px) {
-     
-}
-
-
 
 @media (max-height: 1200px) {
 

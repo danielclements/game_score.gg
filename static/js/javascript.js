@@ -1,4 +1,5 @@
- $(document).ready(function () { 
+ $(document).ready(function () {
+        // multiple select by bootstrap select 
        $('select').selectpicker();
 
     var slider = document.getElementById("review_score");
