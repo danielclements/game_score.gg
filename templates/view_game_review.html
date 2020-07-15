@@ -73,6 +73,13 @@
         {% endfor %}
     </div>
 </div>
+
+<div class="row">
+    <div class="col-12 text-center">
+        <a href="{{url_for('review_by_game', game_id=game._id)}}" class="btn btn-dark">Add Review</a>
+    </div>
+</div>
+
 <div class="spacer">
 </div>
 {% endblock %}
