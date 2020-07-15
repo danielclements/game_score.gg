@@ -24,14 +24,39 @@ The form the user will have to fill out will change depending on what they decid
 ## Features
 
 ### Existing Features
-- 
+- Authentication
+    - User registration allows a user to create an account and began posing reviews 
+    - User login allows a user to login, when logged in a session is started and the Username will be printed on all documents the user adds to the DB, used later on when checking if a user has permission to edit a record
+    - User logout will stop the current user's session, when logged out a user can no longer add/edit records to the DB 
+
+- Add Developer
+    - Adding a developer using the front end form, after adding a developer it will allow you to use this developer when adding a game.
+
+- Add publishers
+    - Adding a publisher using the front end form, after adding a publisher it will allow you to use these publishers when adding a game.
+
+- Add Category
+    - Adding a category using the front end form, after adding a category it will allow you to use this category when adding a game.    
+
+- Add Game
+    - Adding a game is the result of adding all the above, after filling out the form and adding the game you can now add a review for said game.
+    ![Add game form](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/add_game_form.png)
+
+- Add Review
+    - Add a review for any of the games on the site, once added the review will appear with all the other reviews for the game you choose.
+
+- Edit records
+    - When a user wants to edit a game or a review the first thing the application does is check if the user has logged in and a session was started, if the username in the current session does not match the user name that added the game they will be denied access to the edit page, if the user name is a match then they will be redirected the edit page and allowed to submit the edits.
+
+- filter
+    - Allows the user to filter the view games page by game category, this allows a user to find games in a specific genre
 
 
 ### Features Left to Implement
 
 - pagination to games page as having to many games on one page could casue issues down the line.
 
-- A user page that will display all the items that user added, this will maek it easier for a user to update/ delete added content.
+- A profile page that will display all the items that user added, this will maek it easier for a user to update/ delete added content.
 
 ## Technologies Used
 
@@ -127,6 +152,9 @@ This project is hosted on heroku, I achieved this by:
 2. Using Git Clone:
     1. Open terminal in preferred IDE.
     2. Type "git clone https://github.com/danielclements/game_score.gg"
+    3. you will need to add a  'env.py' file containing 'os.environ["DBname"] = "withTheLinkToTheDataBase"'
+    4. This command will install the dependencies for this project: pip install -r requirements.txt
+    5. In the terminal write 'pyhton app.py' to run the application.
     
 
 
