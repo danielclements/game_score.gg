@@ -12,6 +12,8 @@ mongo = PyMongo(app)
 # Create Category
 @ app.route('/category/add')
 def add_category():
+    # checks if the user is logged in
+    # if not logged in route to the login page
     if 'username' in session:
         return render_template('add_category.html')
     else:
@@ -19,6 +21,7 @@ def add_category():
         return redirect(url_for('user_login'))
 
 
+# inserts a category document to the DB
 @ app.route('/insert_category', methods=['POST'])
 def insert_category():
     category_name = request.form.get('category_name')
@@ -29,7 +32,7 @@ def insert_category():
     return redirect(url_for('home_page'))
 
 
-# Update Category
+# Update Category route
 @ app.route('/category/edit/<category_id>')
 def edit_category(category_id):
     the_category = mongo.db.categories.find_one(
@@ -47,6 +50,8 @@ def edit_category(category_id):
         return redirect(url_for('user_login'))
 
 
+# sends the update requesto to the DB after the user submits the
+# front end form
 @ app.route('/edit_category/<category_id>', methods=['POST'])
 def update_category(category_id):
     mongo.db.categories.update_one({'_id': ObjectId(category_id)},

@@ -9,7 +9,7 @@ from app import app
 mongo = PyMongo(app)
 
 
-# Create Review
+# Add review route
 @ app.route('/review/add')
 def add_review():
     if 'username' in session:
@@ -20,6 +20,7 @@ def add_review():
         return redirect(url_for('user_login'))
 
 
+# Add review data to the db using the front end form
 @app.route('/insert_review', methods=['POST'])
 def insert_review():
     users = mongo.db.users
@@ -45,11 +46,10 @@ def insert_review():
     return redirect(url_for('home_page'))
 
 
-# Add review by game
+# Adds a reviews for a specific game
 @app.route('/review/game/<game_id>')
 def review_by_game(game_id):
     the_game = mongo.db.games.find_one({'_id': ObjectId(game_id)})
-    print(the_game)
     if 'username' in session:
         return render_template('add_review.html',
                                the_game=the_game,
@@ -59,7 +59,7 @@ def review_by_game(game_id):
         return redirect(url_for('user_login'))
 
 
-# Read Reviews
+# View Reviews
 @ app.route('/games/review/<game_id>')
 def view_game_review(game_id):
     the_game = mongo.db.games.find_one({"_id": ObjectId(game_id)})
@@ -76,7 +76,6 @@ def edit_review(review_id):
     the_review = mongo.db.reviews.find_one({"_id": ObjectId(review_id)})
     creator = the_review['review_by']
     all_games = mongo.db.games.find()
-    print(creator)
     if 'username' in session:
         if session['username'] == creator:
             return render_template('edit_review.html',
@@ -93,7 +92,6 @@ def edit_review(review_id):
 @ app.route('/update_review/<review_id>', methods=['POST'])
 def update_review(review_id):
     the_review = mongo.db.review.find_one({'_id': ObjectId(review_id)})
-    print(the_review)
     reviews = mongo.db.reviews
     review_game = request.form.get('review_game')
     reviews.update_one({'_id': ObjectId(review_id)},

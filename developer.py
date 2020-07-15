@@ -9,7 +9,7 @@ from app import app
 mongo = PyMongo(app)
 
 
-# Create Developer
+# Create Developer route
 @app.route('/developer/add')
 def add_developer():
     if 'username' in session:
@@ -19,6 +19,7 @@ def add_developer():
         return redirect(url_for('user_login'))
 
 
+# Inserts the developer to the db using date from the front end form
 @ app.route('/insert_developer', methods=['POST'])
 def insert_developer():
     developers = mongo.db.developers
@@ -38,7 +39,7 @@ def insert_developer():
     return redirect(url_for('view_developers'))
 
 
-# Update Developer
+# Update Developer route
 @ app.route('/developer/edit//<developer_id>')
 def edit_developer(developer_id):
     the_developer = mongo.db.developers.find_one(
@@ -55,7 +56,7 @@ def edit_developer(developer_id):
         flash("Please login to access this feature!")
         return redirect(url_for('user_login'))
 
-
+# Updates the developer to the db using date from the front end form
 @ app.route('/edit_developer/<developer_id>', methods=['POST'])
 def update_developer(developer_id):
     developers = mongo.db.developers
@@ -70,13 +71,14 @@ def update_developer(developer_id):
     return redirect(url_for('get_admin_panel'))
 
 
-# View Developers
+# View all Developers route
 @app.route('/developers')
 def view_developers():
     return render_template('view_developers.html',
                            developers=mongo.db.developers.find())
 
-
+# route to the developer route that displays
+# all the games by the developer
 @app.route('/developers/<developer_name>')
 def view_developer_games(developer_name):
     the_dev = mongo.db.developers.find_one({"developer_name": developer_name})

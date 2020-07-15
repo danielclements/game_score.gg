@@ -9,7 +9,7 @@ from app import app
 mongo = PyMongo(app)
 
 
-# Create Publisher
+# Add Publisher route
 @ app.route('/publisher/add')
 def add_publisher():
     if 'username' in session:
@@ -19,6 +19,7 @@ def add_publisher():
         return redirect(url_for('user_login'))
 
 
+# insert publisher to db using data from front end form
 @ app.route('/insert_publisher', methods=['POST'])
 def insert_publisher():
     publishers = mongo.db.publishers
@@ -39,13 +40,14 @@ def insert_publisher():
     return redirect(url_for('view_publishers'))
 
 
-# View Publishers
+# View Publishers route
 @ app.route('/publishers')
 def view_publishers():
     return render_template('view_publishers.html',
                            publishers=mongo.db.publishers.find())
 
 
+# View Publishers games
 @app.route('/publishers/<publisher_name>')
 def view_publisher_games(publisher_name):
     the_pub = mongo.db.publishers.find_one({"publisher_name": publisher_name})
@@ -56,13 +58,16 @@ def view_publisher_games(publisher_name):
                            )
 
 
-# Update Publisher
+# Update Publisher route
 @ app.route('/publisher/edit/<publisher_id>')
 def edit_publisher(publisher_id):
     the_publisher = mongo.db.publishers.find_one(
         {'_id': ObjectId(publisher_id)})
     creator = the_publisher['added_by']
+    #  checks if the user is in session
     if 'username' in session:
+        # if in session checks if the sure in session
+        # is the user that created the publisher
         if session['username'] == creator:
             return render_template('edit_publisher.html',
                                    publisher=the_publisher)
@@ -74,6 +79,7 @@ def edit_publisher(publisher_id):
         return redirect(url_for('user_login'))
 
 
+# submits the update data for the publisher
 @ app.route('/update_publisher/<publisher_id>', methods=['POST'])
 def update_publisher(publisher_id):
     publishers = mongo.db.publishers
