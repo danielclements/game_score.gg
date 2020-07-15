@@ -33,7 +33,6 @@ def insert_game():
     developer_name = request.form.get('developer_name')
     publisher_name = request.form.get('publisher_name')
     release_date = request.form['release_date']
-    affiliate_link = request.form['affiliate_link']
     game_image_url = request.form['game_image_url']
     game_added_by = session['username']
     game_add_date = datetime.utcnow()
@@ -46,7 +45,6 @@ def insert_game():
         'developer_name': developer_name,
         'publisher_name': publisher_name,
         'release_date': release_date,
-        'affiliate_link': affiliate_link,
         'game_image_url': game_image_url,
         'game_added_by': game_added_by,
         'game_add_date': game_add_date
@@ -106,7 +104,6 @@ def update_game(game_id):
                          'developer_name': request.form.get('developer_name'),
                          'publisher_name': request.form.get('publisher_name'),
                          'release_date': request.form.get('release_date'),
-                         'affiliate_link': request.form.get('affiliate_link'),
                          'game_summ': request.form.get('game_summ'),
                          'game_image_url': request.form['game_image_url'],
                          'game_edit_date': datetime.utcnow()
