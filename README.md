@@ -19,7 +19,7 @@ The form the user will have to fill out will change depending on what they decid
 - As a gamer I want to find a new game to play, I like to read reviews from other players and make my decision to purchase a game based on the reviews of others.
 
 
-[Wireframes / Mockups!]()
+[Wireframes / Mockups!](https://github.com/danielclements/game_score.gg/tree/master/Wireframes)
 
 ## Features
 
