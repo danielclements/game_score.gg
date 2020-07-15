@@ -63,6 +63,12 @@ The form the user will have to fill out will change depending on what they decid
 - [GSAP](https://greensock.com/gsap/)
     - The project uses Gsap to handle animations.
 
+### CDNs Used
+- [Google Font](https://fonts.google.com/)
+
+- [Font Awesome](https://fontawesome.com/)
+    
+
 
 ## Testing
 [Testing](https://github.com/danielclements/game_score.gg/blob/master/readme/testing.md)
@@ -96,7 +102,16 @@ The form the user will have to fill out will change depending on what they decid
 
 This project is hosted on heroku [GameScore.GG](http://game-score-gg.herokuapp.com/home)
 
-The page is being hosted directly from the master branch, that way any updates that are committed will be automatically deployed to heroku.  
+This python project is dependent on a few packages.
+
+First these need to be installed, we can achieve this with the following command: pip install -r requirements.txt
+
+This project is hosted on heroku, I achieved this by:
+
+1. Going to the heroku dashboard and creating a new app.
+2. Then the 'Deploy' section and down to 'deployment method' select github and link heroku to this repository.
+3. Create a 'config vars' under the 'setttings' tab and add the variable 'Game_Score' with the link and password to the database.
+4. Back to the 'Deploy' tab, continuing down to 'manual deploy' and pressing 'deploy branch'.
 
 
 ### Running Code locally:

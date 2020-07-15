@@ -76,3 +76,10 @@ These pages can be found under "ADD"  then "publisher" or "developer" both pages
 The add category page only has one input box, this input has the important tag attached too
 - When a user tries to submit an empty string to the DB it will flash requesting that the user fills out the field.
 
+## Automated Testing 
+
+Automated testing is achieved by using unittest a core python module, To use Unittest simply type "import unittest"  at the top of your test file.
+All the automated tests are stored in the test.py file, to run the test open a new terminal tab and type "Python3 test.py -v" this will display the following results:
+![Automated Test output](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/automated-tests.png)
+
+Use -v to run tests in more detail [Higher Verbosity](https://docs.python.org/2/library/unittest.html#command-line-interface)
