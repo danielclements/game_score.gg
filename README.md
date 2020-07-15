@@ -7,21 +7,21 @@ I wanted to build this project as a place for people to read real opinions from 
  
 ## UX
  
-My design philosophy for this project was to keep everything simple for the user side of the site. I wanted people to visit the site and discover new games, I didn't want to force anyone to make an account in order to view thing like games, developers or publishers. A user would need to create an account to review a game. I would hope seeing other users reviews would inspire other users to submit reviews too, once a user discovers a game on the site and decides that they will purchase it would be ideal if they to would return to the site to leave a review on said game. I  have added a featured games section to the home page, this way if people are only having a glance at the site hopefully they will click on one of the featured games and check some of the reviews out.
-
-This project is hosted on heroku [GameScore.GG](http://game-score-gg.herokuapp.com/home)
+My design philosophy for this project was to keep everything simple for the user side of the site. I wanted people to visit the site and discover new games, I didn't want to force anyone to make an account in order to view things like games, developers, or publishers. A user would need to create an account to review a game. I would hope seeing other users' reviews would inspire other users to submit reviews too, once a user discovers a game on the site and decides that they will purchase it would be ideal if they to would return to the site to leave a review on said game. I  have added a featured games section to the home page, this way if people are only having a glance at the site hopefully they will click on one of the featured games and check some of the reviews out.
 
 
-- As someone who wants to 
+When the user wants to add an item they need to press the 'add' button on the navbar and select the item they want to add (game, review ...) then fill out the form, in order to access the form the user must be logged in, if not they will be redirected to the login page.
+
+The form the user will have to fill out will change depending on what they decide to add, once the form is submitted the user will be redirected to the appropriate page and flashed a message to let them know the form was submitted and added to the DB successfully.
+
+- As a game enthusiast, I want to write reviews of my favorite games to inspire others to experience and enjoy the games I enjoy.
+
+- As a gamer I want to find a new game to play, I like to read reviews from other players and make my decision to purchase a game based on the reviews of others.
+
 
 [Wireframes / Mockups!]()
 
 ## Features
-
-- 
-- 
-
-
 
 ### Existing Features
 - 
@@ -29,7 +29,9 @@ This project is hosted on heroku [GameScore.GG](http://game-score-gg.herokuapp.c
 
 ### Features Left to Implement
 
-- 
+- pagination to games page as having to many games on one page could casue issues down the line.
+
+- A user page that will display all the items that user added, this will maek it easier for a user to update/ delete added content.
 
 ## Technologies Used
 
@@ -58,10 +60,16 @@ This project is hosted on heroku [GameScore.GG](http://game-score-gg.herokuapp.c
 - [jinja](https://jinja.palletsprojects.com/en/2.11.x/)
     - The project uses jinja for the templating language.
     
+- [GSAP](https://greensock.com/gsap/)
+    - The project uses Gsap to handle animations.
 
 
 ## Testing
 [Testing](https://github.com/danielclements/game_score.gg/blob/master/readme/testing.md)
+
+## Database Schema
+
+[Database schema](https://github.com/danielclements/game_score.gg/blob/master/readme/Game_Score.png)
 
 ### Browsers used for testing:
 
@@ -78,19 +86,17 @@ This project is hosted on heroku [GameScore.GG](http://game-score-gg.herokuapp.c
 - Iphone 11
 - Google Chrome dev tools using multiple view ports
 
-### Feature testing:
-
-1. Portfolio Gallery:
-    1. 
-
-
-    
-
 ### Bugs:
+
+- Feautred game slider on the home page, expands depending on the image selected
+
+- When a user tries to access a feature that requires login they will be rerouted to the login page, when logged in they will then be returned to the home page instead of the page they originally tried to access.
 
 ## Deployment
 
-This site is hosted on Heroku The page is being hosted directly from the master branch, that way any updates that are committed will be automatically deployed to heroku.  
+This project is hosted on heroku [GameScore.GG](http://game-score-gg.herokuapp.com/home)
+
+The page is being hosted directly from the master branch, that way any updates that are committed will be automatically deployed to heroku.  
 
 
 ### Running Code locally:
@@ -118,33 +124,20 @@ This site is hosted on Heroku The page is being hosted directly from the master 
 ### Media
 
 - Main Background for the section was provided by [Pexels](https://www.pexels.com/)
--
+
 
 ### Acknowledgements
 
 - I used code by [Chris Coyier](https://css-tricks.com/perfect-full-page-background-image/) to add full view height background images.
 
+- Password requirements by [W3Schools](https://www.w3schools.com/howto/howto_js_password_validation.asp)
 
+- Multiple select from [Stakc Overflow](https://stackoverflow.com/questions/50895806/bootstrap-4-multiselect-dropdown)
 
-- https://www.w3schools.com/howto/howto_js_password_validation.asp
+- Authentication and login provided by[Pretty Printed on Youtube](https://www.youtube.com/watch?v=vVx1737auSE)
+
+- Message flashing tutorial by [Tech With Tim](https://www.youtube.com/watch?v=qbnqNWXf_tU)
+
+- review score slider by [W3Schhols](https://www.w3schools.com/howto/howto_js_rangeslider.asp )
 
 Live version of the site : http://game-score-gg.herokuapp.com/home
-
-
-
-
-
-https://stackoverflow.com/questions/31499804/insert-data-into-with-pymongo-and-flask?fbclid=IwAR016xRCAl9lBS-EAmkbEE3pjJq2k0KxA86ZiGY3SPcEb6uVVGeTzYJ9h4w used to insert arrays from the game_add forum
-
-
-https://stackoverflow.com/questions/50895806/bootstrap-4-multiselect-dropdown multiple select 
-
-
-https://www.youtube.com/watch?v=vVx1737auSE login session tutorial 
-
-https://www.youtube.com/watch?v=qbnqNWXf_tU message flashing 
-
-https://css-tricks.com/perfect-full-page-background-image/ prefect background images
-
-
-https://www.w3schools.com/howto/howto_js_rangeslider.asp slider values on page
