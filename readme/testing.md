@@ -35,11 +35,16 @@ Loggin In:
 - If successful the following message will be flashed.
 ![Login successful](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/login-successful.png)
 
+- Automated Login Test
+![Automated login Test](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/automated-login-test.png)
+
 ## Admin panel
 
 - To access the admin panel a user must have admin permission, if the user does not have admin permission they will be redirected to the login page:
 ![Please login as admin](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/login-as-admin.png)
 
+- Automated Admin Panel test
+![Automated admin panel test](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/automated-admin-panel-test.png)
 
 ## Add game
 
@@ -83,3 +88,9 @@ All the automated tests are stored in the test.py file, to run the test open a n
 ![Automated Test output](https://raw.githubusercontent.com/danielclements/game_score.gg/master/readme/automated-tests.png)
 
 Use -v to run tests in more detail [Higher Verbosity](https://docs.python.org/2/library/unittest.html#command-line-interface)
+
+
+
+
+
+    
